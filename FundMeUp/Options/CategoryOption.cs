@@ -8,6 +8,5 @@ namespace FundMeUp.Options
   public class CategoryOption
   {
     public string Name { get; set; }
-    public List<Project> Project { get; set; }
   }
 }
