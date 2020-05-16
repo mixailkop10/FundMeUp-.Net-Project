@@ -9,7 +9,7 @@ namespace FundMeUp.Models
     public int BackerId { get; set;}
     public Project Project { get; set; }
     public int ProjectId { get; set; }
-    public DateTime Dof { get; set; }
+    public DateTime DoF { get; set; }
     public decimal Fund { get; set; }
   }
 }
