@@ -13,7 +13,7 @@ namespace FundMeUp.Models
     public decimal BudgetGoal { get; set; }
     public decimal BalanceGoal { get; set; }
     public List<BackerProject> BackerProject { get; set; }
-    public DateTime Doa { get; set; }
+    public DateTime DoΑ { get; set; }
     public List<Reward> Reward { get; set; }
     public int CategoryId { get; set; }
     public Category Category { get; set; }
