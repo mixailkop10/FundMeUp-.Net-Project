@@ -6,7 +6,7 @@ namespace FundMeUp
 {
   class Program
   {
-    static void Main(string[] args)
+    static void Main()
     {
       var dbContext = new FundMeUpDbContext();
       dbContext.Database.EnsureCreated();
