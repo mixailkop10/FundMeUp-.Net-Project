@@ -14,5 +14,6 @@ namespace FundMeUp.Models
     public string Email { get; set; } 
     public string Password { get; set; }
     public bool Active { get; set; } //For activate/deactivate reasons
+    public List<BackerProject> BackerProject { get; set; }
   }
 }
