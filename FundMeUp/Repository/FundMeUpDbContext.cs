@@ -8,6 +8,9 @@ namespace FundMeUp.Repository
 {
   public class FundMeUpDbContext : DbContext
   {
+
+    public DbSet<Backer> Backers { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);

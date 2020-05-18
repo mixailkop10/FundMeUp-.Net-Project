@@ -34,6 +34,9 @@ namespace FundMeUp.Services
         Active = true // Active by default
       };
 
+      db.Backers.Add(backer);
+      db.SaveChanges();
+
       return backer;
     }
 
