@@ -7,7 +7,7 @@ namespace FundMeUp.Options
 {
   public class ProjectOption
   {
-    public int Id { get; set; }
+    //public int Id { get; set; } νομιζω δεν χρειαζεται
     public string Name { get; set; }
     public decimal BudgetGoal { get; set; }
     public decimal BalanceGoal { get; set; }
