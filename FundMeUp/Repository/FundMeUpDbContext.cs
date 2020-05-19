@@ -10,6 +10,7 @@ namespace FundMeUp.Repository
   {
 
     public DbSet<Backer> Backers { get; set; }
+    public DbSet<Project> Projects { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -27,9 +28,6 @@ namespace FundMeUp.Repository
 
       modelBuilder.Entity<BackerProject>()
                   .ToTable("BackerProject");
-
-      modelBuilder.Entity<Category>()
-                  .ToTable("Category");
 
       modelBuilder.Entity<Project>()
                   .ToTable("Project");

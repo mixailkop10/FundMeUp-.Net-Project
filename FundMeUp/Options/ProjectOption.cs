@@ -9,6 +9,7 @@ namespace FundMeUp.Options
   {
     //public int Id { get; set; } νομιζω δεν χρειαζεται
     public string Name { get; set; }
+    public string Description { get; set; }
     public decimal BudgetGoal { get; set; }
     public decimal BalanceGoal { get; set; }
     public DateTime DoA { get; set; }
