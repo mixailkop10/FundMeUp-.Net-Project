@@ -14,7 +14,6 @@ namespace FundMeUp.Options
     public decimal BalanceGoal { get; set; }
     public DateTime DoA { get; set; }
     public Reward Reward { get; set; }
-    public Category Category { get; set; }
     public ProjectCreator ProjectCreator { get; set; }
   }
 }
