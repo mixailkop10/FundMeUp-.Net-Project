@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FundMeUp.Migrations
 {
     [DbContext(typeof(FundMeUpDbContext))]
-    [Migration("20200516101912_PasswordProperty")]
-    partial class PasswordProperty
+    [Migration("20200519091956_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,7 +46,7 @@ namespace FundMeUp.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Proffesion")
+                    b.Property<string>("Profession")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -56,45 +56,31 @@ namespace FundMeUp.Migrations
 
             modelBuilder.Entity("FundMeUp.Models.BackerProject", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("BackerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Dof")
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DoF")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Fund")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("RewardId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("BackerId");
+                    b.HasKey("BackerId", "ProjectId");
 
                     b.HasIndex("ProjectId");
 
+                    b.HasIndex("RewardId");
+
                     b.ToTable("BackerProject");
-                });
-
-            modelBuilder.Entity("FundMeUp.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("FundMeUp.Models.Project", b =>
@@ -107,16 +93,19 @@ namespace FundMeUp.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("BalanceGoal")
+                    b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("BudgetGoal")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Doa")
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DoΑ")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("Funded")
@@ -128,16 +117,12 @@ namespace FundMeUp.Migrations
                     b.Property<int?>("ProjectCreatorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RewardId")
-                        .HasColumnType("int");
+                    b.Property<string>("StatusUpdate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("ProjectCreatorId");
-
-                    b.HasIndex("RewardId");
 
                     b.ToTable("Project");
                 });
@@ -164,6 +149,9 @@ namespace FundMeUp.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TrustPoints")
                         .HasColumnType("int");
 
@@ -185,7 +173,15 @@ namespace FundMeUp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Reward");
                 });
@@ -193,33 +189,36 @@ namespace FundMeUp.Migrations
             modelBuilder.Entity("FundMeUp.Models.BackerProject", b =>
                 {
                     b.HasOne("FundMeUp.Models.Backer", "Backer")
-                        .WithMany()
+                        .WithMany("BackerProject")
                         .HasForeignKey("BackerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FundMeUp.Models.Project", "Project")
                         .WithMany("BackerProject")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FundMeUp.Models.Reward", "Reward")
+                        .WithMany("BackerProjects")
+                        .HasForeignKey("RewardId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("FundMeUp.Models.Project", b =>
                 {
-                    b.HasOne("FundMeUp.Models.Category", "Category")
-                        .WithMany("Project")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FundMeUp.Models.ProjectCreator", "ProjectCreator")
                         .WithMany("Project")
                         .HasForeignKey("ProjectCreatorId");
+                });
 
-                    b.HasOne("FundMeUp.Models.Reward", "Reward")
-                        .WithMany("Project")
-                        .HasForeignKey("RewardId")
+            modelBuilder.Entity("FundMeUp.Models.Reward", b =>
+                {
+                    b.HasOne("FundMeUp.Models.Project", "Project")
+                        .WithMany("Reward")
+                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FundMeUp.Migrations
 {
-    public partial class ModelBuilderclasses : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,27 +15,15 @@ namespace FundMeUp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Proffesion = table.Column<string>(nullable: true),
+                    Profession = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
                     Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Backer", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Category",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,6 +34,7 @@ namespace FundMeUp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Active = table.Column<bool>(nullable: false),
@@ -57,31 +46,18 @@ namespace FundMeUp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reward",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reward", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Project",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    StatusUpdate = table.Column<string>(nullable: true),
                     BudgetGoal = table.Column<decimal>(nullable: false),
-                    BalanceGoal = table.Column<decimal>(nullable: false),
-                    Doa = table.Column<DateTime>(nullable: false),
-                    RewardId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
+                    Balance = table.Column<decimal>(nullable: false),
+                    DoΑ = table.Column<DateTime>(nullable: false),
+                    Category = table.Column<int>(nullable: false),
                     ProjectCreatorId = table.Column<int>(nullable: true),
                     Available = table.Column<bool>(nullable: false),
                     Funded = table.Column<bool>(nullable: false)
@@ -90,21 +66,31 @@ namespace FundMeUp.Migrations
                 {
                     table.PrimaryKey("PK_Project", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Project_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Project_ProjectCreator_ProjectCreatorId",
                         column: x => x.ProjectCreatorId,
                         principalTable: "ProjectCreator",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reward",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    ProjectId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reward", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Project_Reward_RewardId",
-                        column: x => x.RewardId,
-                        principalTable: "Reward",
+                        name: "FK_Reward_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -113,34 +99,35 @@ namespace FundMeUp.Migrations
                 name: "BackerProject",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     BackerId = table.Column<int>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false),
-                    Dof = table.Column<DateTime>(nullable: false),
-                    Fund = table.Column<decimal>(nullable: false)
+                    Id = table.Column<int>(nullable: false),
+                    DoF = table.Column<DateTime>(nullable: false),
+                    Fund = table.Column<decimal>(nullable: false),
+                    RewardId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BackerProject", x => x.Id);
+                    table.PrimaryKey("PK_BackerProject", x => new { x.BackerId, x.ProjectId });
                     table.ForeignKey(
                         name: "FK_BackerProject_Backer_BackerId",
                         column: x => x.BackerId,
                         principalTable: "Backer",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BackerProject_Project_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Project",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BackerProject_Reward_RewardId",
+                        column: x => x.RewardId,
+                        principalTable: "Reward",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BackerProject_BackerId",
-                table: "BackerProject",
-                column: "BackerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BackerProject_ProjectId",
@@ -148,9 +135,9 @@ namespace FundMeUp.Migrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Project_CategoryId",
-                table: "Project",
-                column: "CategoryId");
+                name: "IX_BackerProject_RewardId",
+                table: "BackerProject",
+                column: "RewardId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Project_ProjectCreatorId",
@@ -158,9 +145,9 @@ namespace FundMeUp.Migrations
                 column: "ProjectCreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Project_RewardId",
-                table: "Project",
-                column: "RewardId");
+                name: "IX_Reward_ProjectId",
+                table: "Reward",
+                column: "ProjectId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -172,16 +159,13 @@ namespace FundMeUp.Migrations
                 name: "Backer");
 
             migrationBuilder.DropTable(
+                name: "Reward");
+
+            migrationBuilder.DropTable(
                 name: "Project");
 
             migrationBuilder.DropTable(
-                name: "Category");
-
-            migrationBuilder.DropTable(
                 name: "ProjectCreator");
-
-            migrationBuilder.DropTable(
-                name: "Reward");
         }
     }
 }

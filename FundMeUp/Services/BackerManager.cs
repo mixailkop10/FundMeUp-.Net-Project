@@ -1,9 +1,7 @@
 ﻿using FundMeUp.Models;
 using FundMeUp.Options;
 using FundMeUp.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace FundMeUp.Services
 {
@@ -15,6 +13,8 @@ namespace FundMeUp.Services
     {
       db = _db;
     }
+
+    //CRUD
 
     /// <summary>
     /// Creating a new Backer (User) for the platform
@@ -40,6 +40,19 @@ namespace FundMeUp.Services
       return backer;
     }
 
+
+    public Backer FindBackerById(int backerId)
+    {
+      return db.Backers.Find(backerId);
+    }
+
+    public Backer FindBackerByName(BackerOption BackerOpt)
+    {
+      return null;/* db.Backers
+        .Where(b => b.FirstName == BackerOpt.FirstName)
+        .Where(b => b.LastName == BackerOpt.LastName).ToList();*/
+
+    }
 
   }
 }
