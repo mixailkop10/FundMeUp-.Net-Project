@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FundMeUp.Services
 {
-  public class BackerManager
+  public class BackerManager : IBackerManager
   {
     private FundMeUpDbContext db;
 
