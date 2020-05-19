@@ -11,6 +11,8 @@ namespace FundMeUp.Repository
 
     public DbSet<Backer> Backers { get; set; }
     public DbSet<Project> Projects { get; set; }
+    public DbSet<BackerProject> BackerProjects { get; set; }
+    public DbSet<Reward> Rewards { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -38,6 +40,29 @@ namespace FundMeUp.Repository
       modelBuilder.Entity<Reward>()
                   .ToTable("Reward");
 
-    }
+
+            // configures Many-to-Many relationship    
+      modelBuilder.Entity<BackerProject>()
+                  .HasKey(bp => new { bp.BackerId, bp.ProjectId });
+      modelBuilder.Entity<BackerProject>()
+                  .HasOne(bp => bp.Backer)
+                  .WithMany(b => b.BackerProject)
+                  .HasForeignKey(bp => bp.BackerId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+      modelBuilder.Entity<BackerProject>()
+                  .HasOne(bp => bp.Project)
+                  .WithMany(p => p.BackerProject)
+                  .HasForeignKey(bp => bp.ProjectId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            // configures One-to-Many relationship
+      modelBuilder.Entity<BackerProject>()
+                  .HasOne<Reward>(s => s.Reward)
+                  .WithMany(g => g.BackerProjects)
+                  .HasForeignKey(s => s.RewardId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+        }
   }
 }
