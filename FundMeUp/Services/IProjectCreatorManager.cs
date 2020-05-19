@@ -15,7 +15,10 @@ namespace FundMeUp.Services
         bool DeleteProjectCreatorById(int id);
         bool SoftDeleteProjectCreatorById(int id);
         List<ProjectCreator> GetAllProjectCreators();
-        
+        ProjectCreator IncreaseTrustPoint(int id);
+        ProjectCreator DecreaseTrustPoint(int id);
+
+
 
     }
 

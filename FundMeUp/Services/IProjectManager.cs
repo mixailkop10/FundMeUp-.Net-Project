@@ -8,11 +8,11 @@ namespace FundMeUp.Services
 {
     interface IProjectManager
     {
-        public Project CreateProject(ProjectOption projOption);
-        public Project FindProjectById(int id);
-        public List<Project> GetAll();
-        public List<Project> FindProjectByNameAndCategory(string name, Category category);
-        public bool DeleteProjectById(int id);
-        public bool SoftDeleteProjectById(int id);
+        Project CreateProject(ProjectOption projOption);
+        Project FindProjectById(int id);
+        List<Project> GetAll();
+        List<Project> FindProjectByNameAndCategory(string name, Category category);
+        bool DeleteProjectById(int id);
+        bool SoftDeleteProjectById(int id);
     }
 }

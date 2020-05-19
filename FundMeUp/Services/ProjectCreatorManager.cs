@@ -105,6 +105,26 @@ namespace FundMeUp.Services
         {
             return _db.ProjectCreators.ToList();
         }
+        
+        public ProjectCreator IncreaseTrustPoint(int id)
+        {
+            ProjectCreator projectCreator = _db.ProjectCreators.Find(id);
+            if (projectCreator != null)
+               {projectCreator.TrustPoints += 50; }
+
+            _db.SaveChanges();
+            return projectCreator;           
+        }
+
+        public ProjectCreator DecreaseTrustPoint(int id)
+        {
+            ProjectCreator projectCreator = _db.ProjectCreators.Find(id);
+            if (projectCreator != null)
+            { projectCreator.TrustPoints -= 30; }
+
+            _db.SaveChanges();
+            return projectCreator;
+       }
 
     }
 
