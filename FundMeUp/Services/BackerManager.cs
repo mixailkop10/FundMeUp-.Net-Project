@@ -46,11 +46,12 @@ namespace FundMeUp.Services
       return db.Backers.Find(backerId);
     }
 
-    public Backer FindBackerByName(BackerOption BackerOpt)
+    public List<Backer> FindBackerByName(BackerOption BackerOpt)
     {
-      return null;/* db.Backers
+      return db.Backers // LAMPROS AM CONFIRMED
         .Where(b => b.FirstName == BackerOpt.FirstName)
-        .Where(b => b.LastName == BackerOpt.LastName).ToList();*/
+        .Where(b => b.LastName == BackerOpt.LastName)
+        .ToList();
 
     }
 
