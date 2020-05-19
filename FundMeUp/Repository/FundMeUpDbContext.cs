@@ -13,6 +13,7 @@ namespace FundMeUp.Repository
     public DbSet<Project> Projects { get; set; }
     public DbSet<BackerProject> BackerProjects { get; set; }
     public DbSet<Reward> Rewards { get; set; }
+    public DbSet<ProjectCreator> ProjectCreators { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
