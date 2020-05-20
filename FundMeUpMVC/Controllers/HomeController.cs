@@ -28,7 +28,19 @@ namespace FundMeUpMVC.Controllers
       return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    [HttpPost]
+    public IActionResult CreateProject()
+    {
+        var viewModel = new CreateProjectViewModel()
+        {
+            Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
+        };
+
+        return View(viewModel);
+    }
+    
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
       return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

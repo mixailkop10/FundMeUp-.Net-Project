@@ -36,7 +36,7 @@ namespace FundMeUp.Models
         public List<BackerProject> BackerProject { get; set; }
         public DateTime DoΑ { get; set; }
         public List<Reward> Reward { get; set; }
-        public Category Category { get; set; }
+        public string Category { get; set; }
         public ProjectCreator ProjectCreator { get; set; }
         public bool Available { get; set; }
         public bool Funded { get; set; }

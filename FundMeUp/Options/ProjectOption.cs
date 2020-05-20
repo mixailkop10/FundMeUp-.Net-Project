@@ -10,11 +10,12 @@ namespace FundMeUp.Options
     //public int Id { get; set; } νομιζω δεν χρειαζεται
     public string Name { get; set; }
     public string Description { get; set; }
-    public Category Category { get; set; } // τωρα με το using ολα κομπλε 
+    public string Category { get; set; } // τωρα με το using ολα κομπλε 
     public decimal BudgetGoal { get; set; }
     public decimal BalanceGoal { get; set; }
     public DateTime DoA { get; set; }
-    public Reward Reward { get; set; }
-    public ProjectCreator ProjectCreator { get; set; }
+    
+
+
   }
 }

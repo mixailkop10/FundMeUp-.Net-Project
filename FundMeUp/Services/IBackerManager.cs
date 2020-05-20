@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FundMeUp.Services
 {
-    interface IBackerManager
+     public interface IBackerManager
     {
         Backer CreateBacker(BackerOption backerOption);
         Backer FindBackerById(int backerId);
@@ -15,4 +15,4 @@ namespace FundMeUp.Services
 
     }
 }
-}
+

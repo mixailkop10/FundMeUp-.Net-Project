@@ -45,15 +45,15 @@ namespace FundMeUp.Services
         }
 
         //Search Results
-        public List<Project> FindProjectByNameAndCategory(string name, Category category)
-        {
-            return _db.Projects
-                .Where(p =>
-                  (String.IsNullOrEmpty(name) || p.Name.Contains(name)) &&
-                  (category.Equals(Category.None) || p.Category.Equals(category))
-                 ).ToList();
+        //public List<Project> FindProjectByNameAndCategory(string name, Category category)
+        //{
+        //    return _db.Projects
+        //        .Where(p =>
+        //          (String.IsNullOrEmpty(name) || p.Name.Contains(name)) &&
+        //          (category.Equals(Category.None) || p.Category.Equals(category))
+        //         ).ToList();
 
-        }
+        //}
 
         public List<Project> GetAll()
         {
