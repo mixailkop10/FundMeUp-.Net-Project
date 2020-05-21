@@ -7,6 +7,7 @@ function submitToServer() {
     actionUrl = "/Home/CreateProject"
     x = $('#BugdetGoal').val()
     var x = parseFloat(x)
+    //var x = $('#BugdetGoal').val().parseFloat(x)
 
 
     sendData = {
