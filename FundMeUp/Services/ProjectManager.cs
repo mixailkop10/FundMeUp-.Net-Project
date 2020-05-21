@@ -11,11 +11,11 @@ namespace FundMeUp.Services
 {
     public class ProjectManager : IProjectManager
     {
-        private FundMeUpDbContext _db;
+        private FundMeUpDbContext db;
 
         public ProjectManager(FundMeUpDbContext db)
         {
-            _db = db;
+            this.db = db;
         }
 
         //CRUD
@@ -33,40 +33,58 @@ namespace FundMeUp.Services
 
             };
 
-            _db.Projects.Add(project);
-            _db.SaveChanges();
+            db.Projects.Add(project);
+            db.SaveChanges();
 
             return project;
         }
 
-        public Project FindProjectById(int id)
+        //Search Results
+        public Project FindProjectById(int projectId)
         {
-            return _db.Projects.Find(id);
+            return db.Projects.Find(projectId);
         }
 
-        //Search Results
-        public List<Project> FindProjectByNameAndCategory(string name, Category category)
+        public List<Project> FindProjectByName(ProjectOption projectOption)
         {
-            return _db.Projects
-                .Where(p =>
-                  (String.IsNullOrEmpty(name) || p.Name.Contains(name)) &&
-                  (category.Equals(Category.None) || p.Category.Equals(category))
-                 ).ToList();
+            return db.Projects
+                .Where(p => p.Name == projectOption.Name)
+                .ToList();
+        }
 
+        public List<Project> FindProjectByCategory(ProjectOption projectOption)
+        {
+            return db.Projects
+                .Where(p => p.Category == projectOption.Category)
+                .ToList();
+        }
+
+
+        public List<Project> FindProjectByNameAndCategory(ProjectOption projectOption) //string name , Category category
+        {
+            //return db.Projects
+            //    .Where(p =>
+            //      (String.IsNullOrEmpty(name) || p.Name.Contains(name)) &&
+            //      (category.Equals(Category.None) || p.Category.Equals(category))
+            //     ).ToList();
+            return db.Projects
+                .Where(p => p.Name == projectOption.Name)
+                .Where(p => p.Category == projectOption.Category)
+                .ToList();
         }
 
         public List<Project> GetAll()
         {
-            return _db.Projects.ToList();
+            return db.Projects.ToList();
         }
 
         public bool DeleteProjectById(int id)
         {
-            Project project = _db.Projects.Find(id);
+            Project project = db.Projects.Find(id);
             if (project != null)
             {
-                _db.Projects.Remove(project);
-                _db.SaveChanges();
+                db.Projects.Remove(project);
+                db.SaveChanges();
                 return true;
             }
             return false;
@@ -74,11 +92,11 @@ namespace FundMeUp.Services
 
         public bool SoftDeleteProjectById(int id)
         {
-            Project project = _db.Projects.Find(id);
+            Project project = db.Projects.Find(id);
             if (project != null)
             {
                 project.Available = false;
-                _db.SaveChanges();
+                db.SaveChanges();
                 return true;
             }
             return false;

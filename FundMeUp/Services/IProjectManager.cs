@@ -6,13 +6,15 @@ using System.Text;
 
 namespace FundMeUp.Services
 {
-    interface IProjectManager
+    public interface IProjectManager
     {
         Project CreateProject(ProjectOption projOption);
-        Project FindProjectById(int id);
-        List<Project> GetAll();
-        List<Project> FindProjectByNameAndCategory(string name, Category category);
+        Project FindProjectById(int projectId);
+        List<Project> FindProjectByName(ProjectOption projectOption);
+        List<Project> FindProjectByCategory(ProjectOption projectOption);
+        List<Project> FindProjectByNameAndCategory(ProjectOption projectOption);
         bool DeleteProjectById(int id);
         bool SoftDeleteProjectById(int id);
+        List<Project> GetAll();
     }
 }
