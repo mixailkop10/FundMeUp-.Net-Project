@@ -27,7 +27,11 @@ namespace FundMeUp.Repository
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
-      optionsBuilder.UseSqlServer(ConnectionString);
+
+      //optionsBuilder.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+      optionsBuilder.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+
+      //optionsBuilder.UseSqlServer(ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
