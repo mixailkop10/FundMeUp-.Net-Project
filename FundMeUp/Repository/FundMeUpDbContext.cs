@@ -8,12 +8,17 @@ namespace FundMeUp.Repository
 {
   public class FundMeUpDbContext : DbContext
   {
+        public DbSet<Backer> Backers { get; set; }
+        public DbSet<BackerProject> BackerProjects { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectCreator> ProjectCreators { get; set; }
+        public DbSet<Reward> Rewards { get; set; }
 
-    public DbSet<Backer> Backers { get; set; }
-    public DbSet<Project> Projects { get; set; }
-    public DbSet<BackerProject> BackerProjects { get; set; }
-    public DbSet<Reward> Rewards { get; set; }
-    public DbSet<ProjectCreator> ProjectCreators { get; set; }
+        //εμενα δουλευει μονο τοπικα 
+        public readonly static string ConnectionString =
+            "Data Source = localhost;" +
+            "Initial Catalog = FundMeUp; " +
+            "Integrated Security = True;";
 
 
     public FundMeUpDbContext(DbContextOptions<FundMeUpDbContext> options)
@@ -22,8 +27,7 @@ namespace FundMeUp.Repository
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
-
-      optionsBuilder.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+      optionsBuilder.UseSqlServer(ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

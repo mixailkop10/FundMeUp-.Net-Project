@@ -11,10 +11,9 @@ namespace FundMeUp.Services
         Backer CreateBacker(BackerOption backerOption);
 
         Backer FindBackerById(int backerId);
-
-        List<Backer> FindBackerByName(BackerOption BackerOpt);
-        
-
+        List<Backer> FindBackerByName(BackerOption backerOption);
+        Backer UpdateBacker(BackerOption backerOption, int backerId);
+        bool DeleteBackerById(int backerId);
+        List<Backer> GetBackers();
     }
 }
-

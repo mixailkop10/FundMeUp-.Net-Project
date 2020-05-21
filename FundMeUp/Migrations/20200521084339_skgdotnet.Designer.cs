@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FundMeUp.Migrations
 {
     [DbContext(typeof(FundMeUpDbContext))]
-    [Migration("20200519091956_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200521084339_skgdotnet")]
+    partial class skgdotnet
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

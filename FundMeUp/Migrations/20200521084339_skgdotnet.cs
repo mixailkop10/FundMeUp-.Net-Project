@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FundMeUp.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class skgdotnet : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

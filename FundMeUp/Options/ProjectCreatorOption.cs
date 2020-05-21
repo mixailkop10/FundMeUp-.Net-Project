@@ -11,8 +11,5 @@ namespace FundMeUp.Options
     public string Password { get; set; }
     public string Address { get; set; }
     public string Email { get; set; }
-    //public bool Active { get; set; } //For activate/deactivate reasons
-    //public List<Project> Project { get; set; }
-    //public int TrustPoints { get; set; }
   }
 }

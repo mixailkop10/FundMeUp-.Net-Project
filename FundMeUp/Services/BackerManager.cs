@@ -17,11 +17,7 @@ namespace FundMeUp.Services
 
     //CRUD
 
-    /// <summary>
     /// Creating a new Backer (User) for the platform
-    /// </summary>
-    /// <param name="backerOption"></param>
-    /// <returns></returns>
     public Backer CreateBacker(BackerOption backerOption)
     {
       Backer backer = new Backer
@@ -56,5 +52,40 @@ namespace FundMeUp.Services
 
     }
 
-  }
+        public Backer UpdateBacker(BackerOption backerOption, int backerId)
+        {
+            Backer backer = db.Backers.Find(backerId);
+            if (backerOption.FirstName != null)
+                backer.FirstName = backerOption.FirstName;
+            if (backerOption.LastName != null)
+                backer.LastName = backerOption.LastName;
+            if (backerOption.Profession != null)
+                backer.Profession = backerOption.Profession;
+            if (backerOption.Address != null)
+                backer.Address = backerOption.Address;
+            if (backerOption.Email != null)
+                backer.Email = backerOption.Email;
+            if (backerOption.Password != null)
+                backer.Password = backerOption.Password;
+            db.SaveChanges();
+            return backer;
+        }
+
+        public bool DeleteBackerById(int backerId)
+        {
+            Backer backer = db.Backers.Find(backerId);
+            if (backer != null)
+            {
+                db.Backers.Remove(backer);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public List<Backer> GetBackers()
+        {
+            return db.Backers.ToList();
+        }
+
+    }
 }

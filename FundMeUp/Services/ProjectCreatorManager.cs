@@ -11,17 +11,13 @@ namespace FundMeUp.Services
 {
     public class ProjectCreatorManager : IProjectCreatorManager
     {
-        private FundMeUpDbContext _db;
+        private FundMeUpDbContext db;
 
         public ProjectCreatorManager(FundMeUpDbContext db)
         {
-            _db = db;
+            this.db = db;
         }
-
-
-
         //CRUD
-
         public ProjectCreator CreateProjectCreator(ProjectCreatorOption PCrOption)
         {
             ProjectCreator projectCreator = new ProjectCreator
@@ -36,20 +32,20 @@ namespace FundMeUp.Services
 
             };
 
-            _db.ProjectCreators.Add(projectCreator);
-            _db.SaveChanges();
+            db.ProjectCreators.Add(projectCreator);
+            db.SaveChanges();
             return projectCreator;
         }
 
         public ProjectCreator FindProjectCreatorById(int projectCreatorId)
         {
 
-            return _db.ProjectCreators.Find(projectCreatorId);
+            return db.ProjectCreators.Find(projectCreatorId);
         }
 
         public List<ProjectCreator> FindProjectCreatorByName(ProjectCreatorOption PCrOption)
         {
-            return _db.ProjectCreators
+            return db.ProjectCreators
                 .Where(cust => cust.LastName == PCrOption.LastName)
                 .Where(cust => cust.FirstName == PCrOption.FirstName)
                 .ToList();
@@ -59,7 +55,7 @@ namespace FundMeUp.Services
         public ProjectCreator Update(ProjectCreatorOption PCrOption, int projectCreatorId)
         {
 
-            ProjectCreator projectCreator = _db.ProjectCreators.Find(projectCreatorId);
+            ProjectCreator projectCreator = db.ProjectCreators.Find(projectCreatorId);
 
             if (PCrOption.FirstName != null)
                 projectCreator.FirstName = PCrOption.FirstName;
@@ -72,18 +68,17 @@ namespace FundMeUp.Services
             if (PCrOption.Address != null)
                 projectCreator.Address = PCrOption.Address;
            
-
-            _db.SaveChanges();
+            db.SaveChanges();
             return projectCreator;
         }
 
         public bool DeleteProjectCreatorById(int id)
         {
-            ProjectCreator projectCreator= _db.ProjectCreators.Find(id);
+            ProjectCreator projectCreator= db.ProjectCreators.Find(id);
             if (projectCreator != null)
             {
-                _db.ProjectCreators.Remove(projectCreator);
-                _db.SaveChanges();
+                db.ProjectCreators.Remove(projectCreator);
+                db.SaveChanges();
                 return true;
             }
             return false;
@@ -91,11 +86,11 @@ namespace FundMeUp.Services
 
         public bool SoftDeleteProjectCreatorById(int id)
         {
-            ProjectCreator projectCreator = _db.ProjectCreators.Find(id);
+            ProjectCreator projectCreator = db.ProjectCreators.Find(id);
             if (projectCreator != null)
             {
                 projectCreator.Active = false;
-                _db.SaveChanges();
+                db.SaveChanges();
                 return true;
             }
             return false;
@@ -103,26 +98,25 @@ namespace FundMeUp.Services
 
         public List<ProjectCreator> GetAllProjectCreators()
         {
-            return _db.ProjectCreators.ToList();
+            return db.ProjectCreators.ToList();
         }
         
         public ProjectCreator IncreaseTrustPoint(int id)
         {
-            ProjectCreator projectCreator = _db.ProjectCreators.Find(id);
+            ProjectCreator projectCreator = db.ProjectCreators.Find(id);
             if (projectCreator != null)
                {projectCreator.TrustPoints += 50; }
-
-            _db.SaveChanges();
+            db.SaveChanges();
             return projectCreator;           
         }
 
         public ProjectCreator DecreaseTrustPoint(int id)
         {
-            ProjectCreator projectCreator = _db.ProjectCreators.Find(id);
+            ProjectCreator projectCreator = db.ProjectCreators.Find(id);
             if (projectCreator != null)
             { projectCreator.TrustPoints -= 30; }
 
-            _db.SaveChanges();
+            db.SaveChanges();
             return projectCreator;
        }
 
