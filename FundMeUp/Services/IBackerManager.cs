@@ -9,7 +9,9 @@ namespace FundMeUp.Services
      public interface IBackerManager
     {
         Backer CreateBacker(BackerOption backerOption);
+
         Backer FindBackerById(int backerId);
+
         List<Backer> FindBackerByName(BackerOption BackerOpt);
         
 

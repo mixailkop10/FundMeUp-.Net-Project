@@ -5,26 +5,26 @@ using System.Text;
 
 namespace FundMeUp.Models
 {
-    public enum Category
-    {
-        [Display(Name = "-- Select category --")]
-        None = 0,
-        [Display(Name = "Arts")]
-        Art,
-        [Display(Name = "Robotics")]
-        Robotic,
-        [Display(Name = "Technology")]
-        Tech,
-        [Display(Name = "Social Entrepreneurship")]
-        Social,
-        [Display(Name = "Education")]
-        Education,
-        [Display(Name = "Media & Communications")]
-        Media,
-        [Display(Name = "Health & Fitness")]
-        Health
+    //public enum Category
+    //{
+    //    [Display(Name = "-- Select category --")]
+    //    None = 0,
+    //    [Display(Name = "Arts")]
+    //    Art,
+    //    [Display(Name = "Robotics")]
+    //    Robotic,
+    //    [Display(Name = "Technology")]
+    //    Tech,
+    //    [Display(Name = "Social Entrepreneurship")]
+    //    Social,
+    //    [Display(Name = "Education")]
+    //    Education,
+    //    [Display(Name = "Media & Communications")]
+    //    Media,
+    //    [Display(Name = "Health & Fitness")]
+    //    Health
 
-    }
+    //}
     public class Project
     {
         public int Id { get; set; }

@@ -10,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using FundMeUp.Services;
 using FundMeUp.Repository;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using FundMeUp.Options;
 
 namespace FundMeUpMVC
@@ -28,7 +27,7 @@ namespace FundMeUpMVC
     public void ConfigureServices(IServiceCollection services)
     {
             services.AddDbContext<FundMeUpDbContext>(options =>
-                options.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
+                options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
 
 
             services.AddTransient<IProjectManager, ProjectManager>();
@@ -50,7 +49,7 @@ namespace FundMeUpMVC
         app.UseExceptionHandler("/Home/Error");
       }
       app.UseStaticFiles();
-
+      
       app.UseRouting();
 
       app.UseAuthorization();
