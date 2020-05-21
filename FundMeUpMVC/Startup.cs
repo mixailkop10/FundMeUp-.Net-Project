@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using FundMeUp.Services;
+using FundMeUp.Repository;
+using FundMeUp.Options;
 
 namespace FundMeUpMVC
 {
@@ -22,7 +26,15 @@ namespace FundMeUpMVC
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddControllersWithViews();
+            services.AddDbContext<FundMeUpDbContext>(options =>
+                options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
+
+
+            services.AddTransient<IProjectManager, ProjectManager>();
+            services.AddTransient<IBackerManager, BackerManager>();
+            
+
+            services.AddControllersWithViews();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +49,7 @@ namespace FundMeUpMVC
         app.UseExceptionHandler("/Home/Error");
       }
       app.UseStaticFiles();
-
+      
       app.UseRouting();
 
       app.UseAuthorization();

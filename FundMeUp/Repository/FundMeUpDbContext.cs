@@ -20,7 +20,11 @@ namespace FundMeUp.Repository
             "Initial Catalog = FundMeUp; " +
             "Integrated Security = True;";
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+    public FundMeUpDbContext(DbContextOptions<FundMeUpDbContext> options)
+                : base(options)
+    { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
       optionsBuilder.UseSqlServer(ConnectionString);

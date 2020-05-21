@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FundMeUp.Services
 {
-    public interface IProjectCreatorManager
+     public interface IProjectCreatorManager
     {
         ProjectCreator CreateProjectCreator(ProjectCreatorOption PCrOption);
         ProjectCreator FindProjectCreatorById(int projectCreatorId);
@@ -24,4 +24,3 @@ namespace FundMeUp.Services
 
 
 }
-

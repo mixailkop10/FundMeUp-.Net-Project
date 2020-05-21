@@ -6,9 +6,10 @@ using System.Text;
 
 namespace FundMeUp.Services
 {
-    public interface IBackerManager
+     public interface IBackerManager
     {
         Backer CreateBacker(BackerOption backerOption);
+
         Backer FindBackerById(int backerId);
         List<Backer> FindBackerByName(BackerOption backerOption);
         Backer UpdateBacker(BackerOption backerOption, int backerId);

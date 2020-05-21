@@ -8,8 +8,8 @@ namespace FundMeUp
   {
     static void Main()
     {
-      var dbContext = new FundMeUpDbContext();
-      dbContext.Database.EnsureCreated();
+      //var dbContext = new FundMeUpDbContext();
+      //dbContext.Database.EnsureCreated();
     }
   }
 }
