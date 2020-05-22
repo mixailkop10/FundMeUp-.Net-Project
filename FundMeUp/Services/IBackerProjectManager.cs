@@ -12,5 +12,7 @@ namespace FundMeUp.Services
         BackerProject CreateFunding(BackerProjectOption backProj);
         List<BackerProject> GetProjectFundings(int projectId);
         List<BackerProject> GetBackerFundings(int backerId);
+        bool CancelFundingByBacker(int? backProjId);
+        bool StatusUpdate(int backProjId, bool accept = false);
     }
 }

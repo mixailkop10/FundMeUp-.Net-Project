@@ -4,14 +4,16 @@ using FundMeUp.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FundMeUp.Migrations
 {
     [DbContext(typeof(FundMeUpDbContext))]
-    partial class FundMeUpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200522224309_AddBackerProjectStatusProperty")]
+    partial class AddBackerProjectStatusProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

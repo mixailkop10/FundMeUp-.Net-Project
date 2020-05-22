@@ -34,9 +34,11 @@ namespace FundMeUp.Services
             BackerProject backerProject = new BackerProject
             {
                 Backer = _db.Backers.Find(backProj.BackerId),
+                Reward = _db.Rewards.Find(backProj.RewardId),
                 Project = project,
                 Fund = backProj.Fund,
-                DoF = DateTime.Now
+                DoF = DateTime.Now,
+                Status = Status.Pending
             };
 
             _db.BackerProjects.Add(backerProject);
@@ -60,6 +62,43 @@ namespace FundMeUp.Services
                 .Include(bp => bp.Backer)
                 .Where(bp => bp.BackerId == backerId)
                 .ToList();
+        }
+
+        public bool CancelFundingByBacker(int? backProjId)
+        {
+            BackerProject backProj = _db.BackerProjects.Find(backProjId);
+
+            if (backProjId != null)
+            {
+                if (backProj.Status == Status.Pending)
+                {
+                    backProj.Status = Status.Canceled;
+                    _db.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool StatusUpdate(int backProjId, bool accept = false)
+        {
+            if (accept)
+            {
+                BackerProject backerProject = _db.BackerProjects
+                    .Include(bp => bp.Project)
+                    .Include(bp => bp.Backer)
+                    .Where(bp => bp.Id == backProjId)
+                    .FirstOrDefault();
+
+                if (backerProject != null)
+                {
+                    backerProject.Status = Status.Accepted;
+                    _db.Entry(backerProject).State = EntityState.Modified;
+                    _db.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
