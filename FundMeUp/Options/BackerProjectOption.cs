@@ -9,5 +9,6 @@ namespace FundMeUp.Options
   {
     public int BackerId { get; set; }
     public int ProjectId { get; set; }
+    public decimal Fund { get; set; }
   }
 }
