@@ -15,15 +15,15 @@ namespace FundMeUpMVC.Controllers
   public class HomeController : Controller
   {
         private readonly ILogger<HomeController> _logger;
-        private IProjectManager projManager;
+       
 
-        public HomeController(ILogger<HomeController> logger, IProjectManager _projManager)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            projManager = _projManager;
+   
         }
 
-        public IActionResult Index()
+    public IActionResult Index()
     {
       return View();
     }
@@ -33,21 +33,12 @@ namespace FundMeUpMVC.Controllers
       return View();
     }
 
-    [HttpPost]
-    public Project CreateProject ([FromBody] ProjectOption projOpt)
+    public IActionResult Projects()
     {
-            return projManager.CreateProject(projOpt);
+        return View();
     }
 
-    public IActionResult CreateProject()
-    {
-        var viewModel = new CreateProjectViewModel()
-        {
-            Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
-        };
-
-        return View(viewModel);
-    }
+    
     
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 function submitToServer() {
     actionMethod = "POST"
-    actionUrl = "/Home/CreateProject"
+    actionUrl = "/Project/CreateProject"
     x = $('#BugdetGoal').val()
     var x = parseFloat(x)
     //var x = $('#BugdetGoal').val().parseFloat(x)
