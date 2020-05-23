@@ -9,7 +9,7 @@ using System.Text;
 
 namespace FundMeUp.Services
 {
-    class BackerProjectManager : IBackerProjectManager
+    public class BackerProjectManager : IBackerProjectManager
     {
         private FundMeUpDbContext _db;
 
