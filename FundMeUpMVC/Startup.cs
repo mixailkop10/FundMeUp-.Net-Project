@@ -27,32 +27,32 @@ namespace FundMeUpMVC
     public void ConfigureServices(IServiceCollection services)
     {
             services.AddDbContext<FundMeUpDbContext>(options =>
-                options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
-
-
+                options.UseSqlServer("Data Source = localhost;" + "Initial Catalog = FundMeUp; " + "Integrated Security = True;"));
+            //"Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"
             services.AddTransient<IProjectManager, ProjectManager>();
             services.AddTransient<IBackerManager, BackerManager>();
-            
 
             services.AddControllersWithViews();
-    }
+            services.AddLogging();
+        }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-      if (env.IsDevelopment())
-      {
-        app.UseDeveloperExceptionPage();
-      }
-      else
-      {
-        app.UseExceptionHandler("/Home/Error");
-      }
-      app.UseStaticFiles();
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+              if (env.IsDevelopment())
+              {
+                app.UseDeveloperExceptionPage();
+              }
+              else
+              {
+                app.UseExceptionHandler("/Home/Error");
+              }
+              app.UseStaticFiles();
       
-      app.UseRouting();
+              app.UseRouting();
 
-      app.UseAuthorization();
+            app.UseAuthorization();
+            //app.UseCors();
 
       app.UseEndpoints(endpoints =>
       {

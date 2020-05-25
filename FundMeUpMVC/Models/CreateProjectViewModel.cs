@@ -1,4 +1,5 @@
-﻿using FundMeUp.Options;
+﻿using FundMeUp.Models;
+using FundMeUp.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,7 @@ namespace FundMeUpMVC.Models
     public class CreateProjectViewModel
     {
         public ProjectOption projectOption { get; set; }
-
         public List<string> Categories { get; set; }
-
+        //public Project Project { get; set; }
     }
 }

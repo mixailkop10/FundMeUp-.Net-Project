@@ -1,19 +1,14 @@
 ﻿// Write your JavaScript code.
 function submitToServer() {
     actionMethod = "POST"
-    actionUrl = "/Home/CreateProject"
-    y = $('#BudgetGoal').val()
-    console.log(y)
-    x = parseFloat(y)
-    console.log(x)
-
-
+    actionUrl = "/ApiBacker/CreateBacker"
     sendData = {
-        "Name": $('#Name').val(),
-        "Description": $('#Description').val(),
-        "DoA": $('#DoA').val(),
-        "BugdetGoal": x,
-        "Category": $('#Category').val()
+        "FirstName": $('#FirstName').val(),
+        "LastName": $('#LastName').val(),
+        "Profession": $('Profession').val(),
+        "Address": $('#Address').val(),
+        "Email": $('#Email').val(),
+        "Password": $('Password').val()
     }
 
     alert(JSON.stringify(sendData))
