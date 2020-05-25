@@ -23,20 +23,20 @@ namespace FundMeUpMVC.Controllers
    
         }
 
-    public IActionResult Index()
-    {
-      return View();
-    }
+        public IActionResult Index()
+        {
+          return View();
+        }
 
-    public IActionResult Privacy()
-    {
-      return View();
-    }
+        public IActionResult Privacy()
+        {
+          return View();
+        }
 
-    public IActionResult Projects()
-    {
-        return View();
-    }
+        public IActionResult Projects()
+        {
+            return View();
+        }
 
     
     

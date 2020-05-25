@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace FundMeUpMVC.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
+{   
+
+    
 
     public class ProjectController : Controller
     {
@@ -24,10 +24,10 @@ namespace FundMeUpMVC.Controllers
             projManager = _projManager;
             _logger = logger;
         }
-
+       
         public IActionResult CreateProject()
         {
-            var viewModel = new CreateProjectViewModel()
+            var viewModel = new ProjectViewModel()
             {
                 Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
             };
@@ -35,11 +35,23 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
 
-        [HttpPost("CreateProject")]
-        public Project CreateProject([FromBody] ProjectOption projOpt)
+        public IActionResult AllProjects()
         {
-            return projManager.CreateProject(projOpt);
-        }
+           
+            return View();
 
+        }
+        
+        
+        public IActionResult ProjectPage()
+        {
+            var viewModel = new ProjectViewModel()
+            {
+                Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
+            };
+
+            return View(viewModel);
+
+        }
     }
 }

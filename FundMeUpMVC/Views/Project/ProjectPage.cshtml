@@ -1,0 +1,64 @@
+﻿@model ProjectViewModel
+@{
+    ViewData["Title"] = "ProjectPage";
+}
+
+<h1 id="NameAhead"></h1>
+
+<form class="needs-validation" novalidate>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="Name">Project's Name</label>
+            <input type="text" class="form-control" id="Name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="BudgetGoal">BudgetGoal</label>
+            <input type="text" class="form-control" id="BudgetGoal"  required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="Description">Description</label>
+            <input type="text" class="form-control" id="Description"  required>
+            <div class="invalid-feedback">
+                Please provide a valid description.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="Category">Category</label>
+            <select class="custom-select" id="Category" value="" required>
+                @foreach (var Category in Model.Categories)
+                {
+                    <option id="Cat"value="@Category">@Category</option>
+                }
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid state.
+            </div>
+        </div>
+        
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="StatusUpdate">StatusUpdate</label>
+            <input type="text" class="form-control" id="StatusUpdate" value="" required>
+            <div class="invalid-feedback">
+                Please provide a valid Status Update
+            </div>
+        </div>
+    </div>
+
+        <button class="btn btn-primary" type="submit" onclick="submitToServer()">Update Project</button>
+
+</form>
+
+
+<script src="~/js/UpdateProject.js"></script>
+
+

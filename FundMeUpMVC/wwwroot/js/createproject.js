@@ -4,17 +4,19 @@
 // Write your JavaScript code.
 function submitToServer() {
     actionMethod = "POST"
-    actionUrl = "/Project/CreateProject"
-    x = $('#BugdetGoal').val()
-    var x = parseFloat(x)
-    //var x = $('#BugdetGoal').val().parseFloat(x)
+    actionUrl = "/ApiProject/CreateProject"
+    y = $('#BudgetGoal').val()
+    console.log(y)
+    x = parseFloat(y)
+    console.log(x)
+    
 
 
     sendData = {
         "Name": $('#Name').val(),
         "Description": $('#Description').val(),
         "DoA": $('#DoA').val(),
-        "BugdetGoal": x,
+        "BudgetGoal": x,
         "Category": $('#Category').val()
     }
 

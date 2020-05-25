@@ -24,6 +24,11 @@ namespace FundMeUp.Repository
     public FundMeUpDbContext(DbContextOptions<FundMeUpDbContext> options)
                 : base(options)
     { }
+
+        public FundMeUpDbContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
