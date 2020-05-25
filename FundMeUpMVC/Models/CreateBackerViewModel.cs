@@ -1,4 +1,5 @@
-﻿using FundMeUp.Options;
+﻿using FundMeUp.Models;
+using FundMeUp.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace FundMeUpMVC.Models
     public class CreateBackerViewModel
     {
         public BackerOption backerOption { get; set; }
+        public List<Backer> Backers { get; set; }
     }
 }

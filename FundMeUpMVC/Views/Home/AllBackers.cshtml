@@ -1,14 +1,10 @@
-﻿@model FundMeUpMVC.Models.BackerModel
+﻿@model CreateBackerViewModel
 @{
     ViewData["Title"] = "AllBackers";
 }
 
-<h2>
-    A list of All Backer's
-</h2>
-
+<h2> A list of All Backer's </h2>
 <br />
-
 <table id="resultTable" border="1"
        style="color: black;background-color: goldenrod "
        cellpadding="1" cellspacing="1">
@@ -19,6 +15,7 @@
         <th>Διεύθυνση</th>
         <th>Email</th>
     </tr>
+    //δεν παιρνει τον Backer στην λιστα οποτε στην κατω γραμμη χτυπαει οτι το Model.Backers ειναι null//
     @{ foreach (var backer in Model.Backers)
                     {
         <tr>

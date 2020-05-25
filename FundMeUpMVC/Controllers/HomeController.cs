@@ -56,7 +56,8 @@ namespace FundMeUpMVC.Controllers
 
         public IActionResult CreateBacker()
         {
-            return View();
+            var viewModel = new CreateBackerViewModel();
+            return View(viewModel);
         }
 
         public IActionResult AllBackers()

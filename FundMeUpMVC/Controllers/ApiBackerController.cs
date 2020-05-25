@@ -38,16 +38,10 @@ namespace FundMeUpMVC.Controllers
         }
 
         [HttpGet("Backer/{id}")]
-        public Backer GetProject(int id)
+        public Backer GetBacker(int id)
         {
             return backerManager.FindBackerById(id);
         }
-
-        //public IActionResult CreateBacker()
-        //{
-        //    var viewModel = new CreateBackerViewModel();
-        //    return View(viewModel);
-        //}
 
         public IActionResult Index()
         {
