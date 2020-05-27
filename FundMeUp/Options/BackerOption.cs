@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace FundMeUp.Options
@@ -12,5 +13,6 @@ namespace FundMeUp.Options
     public string Address { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
+        public bool Active { get; set; }
   }
 }

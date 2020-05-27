@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FundMeUp.Migrations
 {
     [DbContext(typeof(FundMeUpDbContext))]
-    [Migration("20200521084339_skgdotnet")]
+    [Migration("20200527132620_skgdotnet")]
     partial class skgdotnet
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,13 +65,16 @@ namespace FundMeUp.Migrations
                     b.Property<DateTime>("DoF")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Fund")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Fund")
+                        .HasColumnType("real");
 
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<int>("RewardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("BackerId", "ProjectId");
@@ -93,14 +96,14 @@ namespace FundMeUp.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Balance")
+                        .HasColumnType("real");
 
-                    b.Property<decimal>("BudgetGoal")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("BudgetGoal")
+                        .HasColumnType("real");
 
-                    b.Property<int>("Category")
-                        .HasColumnType("int");
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -173,8 +176,8 @@ namespace FundMeUp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");

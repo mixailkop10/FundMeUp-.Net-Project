@@ -101,5 +101,24 @@ namespace FundMeUp.Services
             }
             return false;
         }
+
+        public Project Update(ProjectOption projOption, int projectId)
+        {
+            Project project = db.Projects.Find(projectId);
+
+            if (projOption.Name != null)
+                project.Name = projOption.Name;
+            if (projOption.Description != null)
+                project.Description = projOption.Description;
+            if (projOption.StatusUpdate != null)
+                project.StatusUpdate = projOption.StatusUpdate;
+            if (projOption.BudgetGoal != 0.0)
+                project.BudgetGoal = projOption.BudgetGoal;
+            if (projOption.Category != null)
+                project.Category = projOption.Category;
+
+            db.SaveChanges();
+            return project;
+        }
     }
 }

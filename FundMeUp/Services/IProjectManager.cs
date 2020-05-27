@@ -16,5 +16,6 @@ namespace FundMeUp.Services
         bool DeleteProjectById(int id);
         bool SoftDeleteProjectById(int id);
         List<Project> GetAll();
+        Project Update(ProjectOption projOption, int projectId);
     }
 }

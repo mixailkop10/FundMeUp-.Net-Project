@@ -1,4 +1,4 @@
-﻿@model CreateBackerViewModel
+﻿@model FundMeUpMVC.Models.BackerModel
 @{
     ViewData["Title"] = "AllBackers";
 }
@@ -15,14 +15,18 @@
         <th>Διεύθυνση</th>
         <th>Email</th>
     </tr>
-    //δεν παιρνει τον Backer στην λιστα οποτε στην κατω γραμμη χτυπαει οτι το Model.Backers ειναι null//
     @{ foreach (var backer in Model.Backers)
-                    {
-        <tr>
-            <td> @backer.FirstName</td>
-            <td> @backer.LastName</td>
-            <td> @backer.Profession</td>
-            <td> @backer.Address</td>
-            <td> @backer.Email</td>
-        </tr> } }
+        {
+            <tr id="cusTable@(backer.Id)">
+                <td> @backer.FirstName</td>
+                <td> @backer.LastName</td>
+                <td> @backer.Profession</td>
+                <td> @backer.Address</td>
+                <td> @backer.Email</td>
+                <td> <a href="#" onclick="deleteBacker(@backer.Id)"> Delete</a></td>
+            </tr> 
+            } 
+        }
 </table>
+
+<script src="~/js/all-backers.js"></script>

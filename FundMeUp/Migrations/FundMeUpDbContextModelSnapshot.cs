@@ -63,8 +63,8 @@ namespace FundMeUp.Migrations
                     b.Property<DateTime>("DoF")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Fund")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Fund")
+                        .HasColumnType("real");
 
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -94,11 +94,11 @@ namespace FundMeUp.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Balance")
+                        .HasColumnType("real");
 
-                    b.Property<decimal>("BudgetGoal")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("BudgetGoal")
+                        .HasColumnType("real");
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
@@ -174,8 +174,8 @@ namespace FundMeUp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");

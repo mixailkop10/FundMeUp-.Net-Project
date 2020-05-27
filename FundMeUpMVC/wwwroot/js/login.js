@@ -1,5 +1,6 @@
 ﻿$('#loginButton').click(
     function () {
+
         actionMethod = "POST"
         actionUrl = "/ApiBacker/Login"
         sendData = {
@@ -21,10 +22,11 @@
                     backerId = data["id"]
                     window.open("/Home/CreateProject")
                 }
+
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
             }
         })
     }
-);
+    );

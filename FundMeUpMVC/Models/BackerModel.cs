@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace FundMeUpMVC.Models
 {
-    public class CreateBackerViewModel
+    public class BackerModel
     {
-        public BackerOption backerOption { get; set; }
         public List<Backer> Backers { get; set; }
+        public BackerOption backerOption { get; set; }
     }
 }
