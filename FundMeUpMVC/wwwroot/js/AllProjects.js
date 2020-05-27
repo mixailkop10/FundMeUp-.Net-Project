@@ -23,7 +23,7 @@ function loadProjects() {
 				tr.append("<td>" + data[i]["statusUpdate"] + "</td>");
 				tr.append("<td>" + data[i]["available"] + "</td>");
 				tr.append("<td>" + data[i]["funded"] + "</td>");
-				tr.append("<td>" + "<a href='/Project/ProjectPage/" + data[i]["id"]+"' >Edit</a>" + "</td>");
+				tr.append("<td>" + "<a href='/Project/Project/" + data[i]["id"] + "' >View</a>  <a href='/Project/ProjectPage/" + data[i]["id"] + "' >Edit</a>"+ "</td>");
 				tr.append('</tr>');
 				$('#resultTable').append(tr);
 				console.log(i,len,data)

@@ -53,5 +53,10 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
 
         }
+
+        public IActionResult Project()
+        {
+            return View();
+        }
     }
 }
