@@ -49,5 +49,11 @@ namespace FundMeUpMVC.Controllers
 
             return projManager.Update(projOpt, id);
         }
+
+        [HttpDelete("DeleteProject/{id}")]
+        public bool DeleteProject( int id)
+        {
+            return projManager.DeleteProjectById(id);
+        }
     }
 }

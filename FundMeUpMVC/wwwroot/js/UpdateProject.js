@@ -15,44 +15,56 @@ function Project() {
 			document.getElementById("Name").value = data["name"]
 			document.getElementById("Description").value=data["description"]
 			document.getElementById("Cat").value=data["category"]
-			document.getElementById("BudgetGoal").value=data["budgetGoal"]
+			document.getElementById("BudgetGoal").value = data["budgetGoal"]
+			document.getElementById("StatusUpdate").value = data["statusUpdate"]
+			//document.getElementById("DelButton").value = data["id"]
 		
-			//tr.append("<td>" + data[i]["name"] + "</td>");
-			//tr.append("<td>" + data[i]["description"] + "</td>");
-			//tr.append("<td>" + data[i]["category"] + "</td>");
-			//tr.append("<td>" + data[i]["budgetGoal"] + "</td>");
-			//tr.append("<td>" + data[i]["balance"] + "</td>");
-			//tr.append("<td>" + data[i]["statusUpdate"] + "</td>");
-			//tr.append("<td>" + data[i]["available"] + "</td>");
-			//tr.append("<td>" + data[i]["funded"] + "</td>");
-			//tr.append("<td>" + "<a href='/Project/ProjectPage/" + data[i]["id"] + "' >Edit</a>" + "</td>");
-			//tr.append('</tr>');
-			//$('#resultTable').append(tr);
+			
 			console.log( data)
 			
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			document.getElementById("test").innerHTML = "egine malakia"
+			document.getElementById("responseDiv").innerHTML = "egine lathos"
 		}
 	});
 
 }
 
+function Delete() {
+	
+	actionMethod = "DELETE"
+	actionUrl = `/ApiProject/DeleteProject/${x}`
+	console.log(actionUrl)
+	sendData = {
+		"Id": x
+    }
 
-	function ready(callback) {
-        // in case the document is already rendered
-        if (document.readyState != 'loading') callback();
-        // modern browsers
-        else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
-        // IE <= 8
-        else document.attachEvent('onreadystatechange', function () {
-            if (document.readyState == 'complete') callback();
-        });
+	$.ajax({
+		url: actionUrl,
+		dataType: 'json',
+		type: actionMethod,
+		data: JSON.stringify(sendData),
+
+
+		contentType: 'application/json',
+		processData: false,
+		success: function (data, textStatus, jQxhr) {
+			console.log(data)
+			console.log("fwefcacaa")
+			window.open("/Project/AllProjects", "_self")
+		},
+
+		error: function (jqXhr, textStatus, errorThrown) {
+			console.log(errorThrown);
+			document.getElementById("responseDiv").innerHTML = "egine lathos"
+		}
+	});
 }
+	
 
-function submitToServer() {
+function Update() {
 	actionMethod = "PUT"
 	actionUrl = `/ApiProject/Project/${x}`
 	y = $('#BudgetGoal').val()
@@ -72,6 +84,7 @@ function submitToServer() {
 	}
 
 	alert(JSON.stringify(sendData))
+	//alert(JSON.stringify(actionUrl))
 
 
 	$.ajax({
@@ -87,9 +100,21 @@ function submitToServer() {
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
+			$('#responseDiv').html("lathos ");
 		}
 	});
 
+}
+
+function ready(callback) {
+	// in case the document is already rendered
+	if (document.readyState != 'loading') callback();
+	// modern browsers
+	else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+	// IE <= 8
+	else document.attachEvent('onreadystatechange', function () {
+		if (document.readyState == 'complete') callback();
+	});
 }
 
 	let url = window.location.href;

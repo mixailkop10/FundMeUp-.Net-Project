@@ -6,7 +6,7 @@
     <h2>New Project</h2> <br /> <br /> 
 
 
-    <form class="needs-validation"  novalidate>
+    <form class="needs-validation" novalidate>
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="Name">Project's Name</label>
@@ -25,8 +25,8 @@
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="Description">Description</label>
-                <input type="text" class="form-control" id="Description" required>
+                <label for="StatusUpdate">Status Update</label>
+                <input type="text" class="form-control" id="StatusUpdate" required>
                 <div class="invalid-feedback">
                     Please provide a valid description.
                 </div>
@@ -48,6 +48,16 @@
                 <input type="date" class="form-control" id="DoA" required>
                 <div class="invalid-feedback">
                     Please select a date.
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="Description">Description</label>
+                @*<input type="text" class="form-control" id="StatusUpdate" required>*@
+                <textarea rows="4" class="form-control" id="Description" cols="50" required></textarea>
+                <div class="invalid-feedback">
+                    Please provide a valid description.
                 </div>
             </div>
         </div>

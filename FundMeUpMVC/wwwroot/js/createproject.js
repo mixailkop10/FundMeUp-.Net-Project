@@ -17,7 +17,8 @@ function submitToServer() {
         "Description": $('#Description').val(),
         "DoA": $('#DoA').val(),
         "BudgetGoal": x,
-        "Category": $('#Category').val()
+        "Category": $('#Category').val(),
+        "StatusUpdate": $('#StatusUpdate').val()
     }
 
     alert(JSON.stringify(sendData))

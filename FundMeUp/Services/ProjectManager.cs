@@ -29,6 +29,7 @@ namespace FundMeUp.Services
                 BudgetGoal = projOption.BudgetGoal,
                 DoΑ = projOption.DoA,
                 Category = projOption.Category,
+                StatusUpdate=projOption.StatusUpdate,
                 Available = true
 
             };
