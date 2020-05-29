@@ -5,7 +5,8 @@ function ProjectsByCategory(category) {
 	actionMethod = "GET"
 	actionUrl = "/ApiProject/Category"
 	sendData = { "Category": category }
-	alert("prin to ajax")
+	alert(sendData)
+	console.log("prin to ajax")
 
 	$.ajax({
 		url: actionUrl,
@@ -21,6 +22,7 @@ function ProjectsByCategory(category) {
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
+			console.log("lathos")
 			document.getElementById("test").innerHTML = "egine malakia"
 		}
 	});
