@@ -14,7 +14,7 @@ namespace FundMeUp.Models
     public Project Project { get; set; }
     public int ProjectId { get; set; }
     public DateTime DoF { get; set; }
-    public decimal Fund { get; set; }
+    public float Fund { get; set; }
     public Status Status { get; set; }
     public Reward Reward { get; set;}
     public int RewardId { get; set; }

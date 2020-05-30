@@ -54,19 +54,21 @@ namespace FundMeUp.Migrations
 
             modelBuilder.Entity("FundMeUp.Models.BackerProject", b =>
                 {
-                    b.Property<int>("BackerId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("BackerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DoF")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Fund")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Fund")
+                        .HasColumnType("real");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("RewardId")
@@ -75,7 +77,9 @@ namespace FundMeUp.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.HasKey("BackerId", "ProjectId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("BackerId");
 
                     b.HasIndex("ProjectId");
 
@@ -94,11 +98,11 @@ namespace FundMeUp.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Balance")
+                        .HasColumnType("real");
 
-                    b.Property<decimal>("BudgetGoal")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("BudgetGoal")
+                        .HasColumnType("real");
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
@@ -174,8 +178,8 @@ namespace FundMeUp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
