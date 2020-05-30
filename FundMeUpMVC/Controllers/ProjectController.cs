@@ -29,7 +29,7 @@ namespace FundMeUpMVC.Controllers
         {
             var viewModel = new ProjectViewModel()
             {
-                Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
+                Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming","Health","Sports","Food" }
             };
 
             return View(viewModel);
@@ -47,7 +47,7 @@ namespace FundMeUpMVC.Controllers
         {
             var viewModel = new ProjectViewModel()
             {
-                Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
+                Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming", "Health", "Sports", "Food" }
             };
 
             return View(viewModel);
