@@ -56,9 +56,13 @@ namespace FundMeUpMVC.Controllers
             return projManager.DeleteProjectById(id);
         }
 
-        [HttpGet("Category")]
-        public List<Project> GetByCategory([FromBody]ProjectOption projOpt)
+        [HttpGet("Category/{category}")]
+        public List<Project> GetByCategory([FromRoute] string category)
         {
+            ProjectOption projOpt = new ProjectOption
+            {
+                Category = category
+            };
             return projManager.FindProjectByCategory(projOpt);
         }
 

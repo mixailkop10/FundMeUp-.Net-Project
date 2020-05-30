@@ -16,4 +16,9 @@ namespace FundMeUpMVC.Models
         public Project Project { get; set; }
 
     }
+
+    public class CategoryOption
+    {
+        public string Category { get; set; }
+    }
 }

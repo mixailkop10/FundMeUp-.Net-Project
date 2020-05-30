@@ -21,7 +21,7 @@ function submitToServer() {
         "StatusUpdate": $('#StatusUpdate').val()
     }
 
-    alert(JSON.stringify(sendData))
+    //alert(JSON.stringify(sendData))
 
 
     $.ajax({
@@ -33,7 +33,8 @@ function submitToServer() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
+            console.log(data)
+           // window.location("/Project/ProjectPage/")
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
