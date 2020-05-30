@@ -4,21 +4,24 @@
 // Write your JavaScript code.
 function submitToServer() {
     actionMethod = "POST"
-    actionUrl = "/Home/CreateProject"
-    x = $('#BugdetGoal').val()
-    var x = parseFloat(x)
-    //var x = $('#BugdetGoal').val().parseFloat(x)
+    actionUrl = "/ApiProject/CreateProject"
+    y = $('#BudgetGoal').val()
+    console.log(y)
+    x = parseFloat(y)
+    console.log(x)
+    
 
 
     sendData = {
         "Name": $('#Name').val(),
         "Description": $('#Description').val(),
         "DoA": $('#DoA').val(),
-        "BugdetGoal": x,
-        "Category": $('#Category').val()
+        "BudgetGoal": x,
+        "Category": $('#Category').val(),
+        "StatusUpdate": $('#StatusUpdate').val()
     }
 
-    alert(JSON.stringify(sendData))
+    //alert(JSON.stringify(sendData))
 
 
     $.ajax({
@@ -30,7 +33,8 @@ function submitToServer() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
+            console.log(data)
+           // window.location("/Project/ProjectPage/")
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);

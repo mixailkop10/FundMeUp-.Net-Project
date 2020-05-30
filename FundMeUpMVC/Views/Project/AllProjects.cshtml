@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "AllProjects";
+}
+
+<h1>AllProjects</h1>
+
+<table id="resultTable" border="1">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            BudgetGoal
+        </th>
+        <th>
+            Balance
+        </th>
+        <th>
+            StatusUpdate
+        </th>
+        <th>
+            Available
+        </th>
+        <th>
+            Funded
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }*@
+
+</table>
+
+<script src="~/js/AllProjects.js"></script>
+
+
+

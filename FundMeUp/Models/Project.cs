@@ -31,8 +31,8 @@ namespace FundMeUp.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string StatusUpdate { get; set; }
-        public decimal BudgetGoal { get; set; }
-        public decimal Balance { get; set; }
+        public float BudgetGoal { get; set; }
+        public float Balance { get; set; }
         public List<BackerProject> BackerProject { get; set; }
         public DateTime DoΑ { get; set; }
         public List<Reward> Reward { get; set; }

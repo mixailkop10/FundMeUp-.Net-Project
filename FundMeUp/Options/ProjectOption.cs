@@ -10,8 +10,9 @@ namespace FundMeUp.Options
     public string Name { get; set; }
     public string Description { get; set; }
     public string Category { get; set; } // τωρα με το using ολα κομπλε 
-    public decimal BudgetGoal { get; set; }
-    public decimal BalanceGoal { get; set; }
+    public float BudgetGoal { get; set; }
+    public float Balance { get; set; }
     public DateTime DoA { get; set; }
+    public string StatusUpdate { get; set; }
   }
 }

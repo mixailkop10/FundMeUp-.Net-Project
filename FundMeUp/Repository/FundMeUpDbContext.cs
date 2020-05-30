@@ -15,21 +15,26 @@ namespace FundMeUp.Repository
         public DbSet<Reward> Rewards { get; set; }
 
         //εμενα δουλευει μονο τοπικα 
-        public readonly static string ConnectionString =
-            "Data Source = localhost;" +
-            "Initial Catalog = FundMeUp; " +
-            "Integrated Security = True;";
+        //public readonly static string ConnectionString =
+        //    "Data Source = localhost;" +
+        //    "Initial Catalog = FundMeUp; " +
+        //    "Integrated Security = True;";
 
 
     public FundMeUpDbContext(DbContextOptions<FundMeUpDbContext> options)
                 : base(options)
     { }
+
+        public FundMeUpDbContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
 
-      //optionsBuilder.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
-      optionsBuilder.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+      optionsBuilder.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+      //optionsBuilder.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
 
       //optionsBuilder.UseSqlServer(ConnectionString);
     }

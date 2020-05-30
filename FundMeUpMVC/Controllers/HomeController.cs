@@ -12,43 +12,56 @@ using FundMeUp.Services;
 
 namespace FundMeUpMVC.Controllers
 {
-  public class HomeController : Controller
-  {
+    [Route("[controller]")]
+    public class HomeController : Controller
+    {
         private readonly ILogger<HomeController> _logger;
-        private IProjectManager projManager;
 
-        public HomeController(ILogger<HomeController> logger, IProjectManager _projManager)
+      
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            projManager = _projManager;
+
+        }
+        [HttpGet("Index")]
+        public IActionResult Index()
+        {
+            return View();
         }
 
-        public IActionResult Index()
-    {
-      return View();
-    }
-
-    public IActionResult Privacy()
-    {
-      return View();
-    }
-
-    [HttpPost]
-    public Project CreateProject ([FromBody] ProjectOption projOpt)
-    {
-            return projManager.CreateProject(projOpt);
-    }
-
-    public IActionResult CreateProject()
-    {
-        var viewModel = new CreateProjectViewModel()
+        [HttpGet("")]
+        public IActionResult Home()
         {
-            Categories = new List<string>() { "Techology", "Enviroment", "Art", "Music", "Gaming" }
-        };
+            return View("Index");
+        }
 
-        return View(viewModel);
-    }
-    
+        
+
+        [HttpGet("Privacy22")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+       
+        [HttpGet("Categories")]
+        public IActionResult Categories()
+        {
+            return View();
+        }
+
+        [HttpGet("Category/{category}")]
+        public IActionResult Category([FromRoute] string category)
+        {
+            CategoryOption catOpt = new CategoryOption
+            {
+                Category = category
+            };
+            return View(catOpt);
+        }
+
+        
+
+        [HttpGet("Error")]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
