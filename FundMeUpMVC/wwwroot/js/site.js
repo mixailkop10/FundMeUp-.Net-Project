@@ -34,22 +34,21 @@ function ProjectsByCategory(mycategory) {
 
 
 
-//function ready(callback) {
-//	// in case the document is already rendered
-//	if (document.readyState != 'loading') callback();
-//	// modern browsers
-//	else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
-//	// IE <= 8
-//	else document.attachEvent('onreadystatechange', function () {
-//		if (document.readyState == 'complete') callback();
-//	});
-//}
+function ready(callback) {
+	// in case the document is already rendered
+	if (document.readystate != 'loading') callback();
+	// modern browsers
+	else if (document.addeventlistener) document.addeventlistener('domcontentloaded', callback);
+	// ie <= 8
+	else document.attachevent('onreadystatechange', function () {
+		if (document.readystate == 'complete') callback();
+	});
+}
 
 
 x = document.getElementById("cat").innerHTML
-ProjectsByCategory(x)
 
-//ready(function () {
-//	// do something
-	
-//});
+ready(function () {
+	// do something
+	ProjectsByCategory(x)
+});
