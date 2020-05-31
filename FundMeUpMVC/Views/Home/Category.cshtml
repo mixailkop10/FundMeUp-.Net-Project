@@ -1,11 +1,43 @@
-﻿@model FundMeUpMVC.Models.CategoryOption;
+﻿
+@model FundMeUpMVC.Models.CategoryOption;
+
 @{
     ViewData["Title"] = "Category";
 }
 
 <h1 id="cat">@Model.Category</h1>
 
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th scope="col">Namet</th>
+            <th scope="col">BudgetGoal</th>
+            <th scope="col">StatusUpdate</th>
+            <th scope="col">Project Creator</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            //razor syntax
+            foreach (var project in Model.Projects)
+            {
+                <tr id="@project.Id">
+                    <td> </td>
+                    <td> @project.Name</td>
+                    <td> @project.BudgetGoal </td>
+                    <td> @project.StatusUpdate</td>
+                    <td> @project.ProjectCreator</td>
+                </tr>
+             };
+        }
+     </tbody>
+</table>
+
+
+
+
 <div id="test"></div>
 
 
-<script src="~/js/site.js"></script>
