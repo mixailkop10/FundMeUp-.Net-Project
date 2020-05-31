@@ -1,0 +1,30 @@
+﻿@model FundMeUpMVC.Models.ProjectCreatorModel
+@{
+    ViewData["Title"] = "AllProjectCreators";
+}
+
+<h2> A list of All ProjectCreators' </h2>
+<br />
+<table id="resultTable" border="1"
+       style="color: black;background-color: goldenrod "
+       cellpadding="1" cellspacing="1">
+    <tr>
+        <th>Όνομα	</th>
+        <th>Επώνυμο</th>
+        <th>Διεύθυνση</th>
+        <th>Email</th>
+    </tr>
+    @{ foreach (var projectCreator in Model.ProjectCreators)
+        {
+            <tr id="cusTable@(projectCreator.Id)">
+                <td> @projectCreator.FirstName</td>
+                <td> @projectCreator.LastName</td>
+                <td> @projectCreator.Address</td>
+                <td> @projectCreator.Email</td>
+                <td> <a href="#" onclick="deleteProjectCreator(@projectCreator.Id)"> Delete</a></td>
+            </tr> 
+            } 
+        }
+</table>
+
+<script src="~/js/all-projectCreators.js"></script>

@@ -97,18 +97,19 @@ namespace FundMeUp.Services
             return backer;
         }
 
+        //public Backer FindBackerByEmail(BackerOption backerOption)
+        //{
+        //    return db.Backers.Find(backerOption.Email);
+        //}
         public Backer FindBackerByEmail(BackerOption backerOption)
         {
-            return db.Backers.Find(backerOption);
-        }
-        //public Customer FindCustomerByEmail(CustomerOption custOption)
-        //{
-        //    if (custOption == null) return null;
-        //    if (custOption.Email == null) return null;
+            if (backerOption == null) return null;
+            if (backerOption.Email == null) return null;
 
-        //    return db.Customers
-        //        .Where(cust => cust.Email == custOption.Email)
-        //        .FirstOrDefault();
-        //}
+            return db.Backers
+                .Where(b => b.Email == backerOption.Email)
+                .Where(b => b.Password == backerOption.Password)
+                .FirstOrDefault();
+        }
     }
 }

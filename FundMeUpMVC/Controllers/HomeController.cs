@@ -19,13 +19,16 @@ namespace FundMeUpMVC.Controllers
         private FundMeUpDbContext db;
         private IProjectManager projManager;
         private IBackerManager backerManager;
+        private IProjectCreatorManager projectCreatorManager;
 
-        public HomeController(ILogger<HomeController> logger, FundMeUpDbContext db, IProjectManager _projManager, IBackerManager backerManager)
+        public HomeController(ILogger<HomeController> logger, FundMeUpDbContext db, IProjectManager _projManager, IBackerManager backerManager ,
+                               IProjectCreatorManager projectCreatorManager)
         {
             _logger = logger;
             this.db = db;
             projManager = _projManager;
             this.backerManager = backerManager;
+            this.projectCreatorManager = projectCreatorManager;
         }
 
         public IActionResult Index()
@@ -60,15 +63,39 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
 
+        public IActionResult CreateProjectCreator()
+        {
+            var viewModel = new ProjectCreatorModel();
+            return View(viewModel);
+        }
+
         public IActionResult AllBackers()
         {
-            BackerModel viewModel = new BackerModel();
+            var viewModel = new BackerModel();
             viewModel.Backers = backerManager.GetBackers();
+            return View(viewModel);
+        }
+
+        public IActionResult AllProjectCreators()
+        {
+            var viewModel = new ProjectCreatorModel();
+            viewModel.ProjectCreators = projectCreatorManager.GetAllProjectCreators();
             return View(viewModel);
         }
 
         [HttpGet("Login")]
         public IActionResult Login()
+        {
+            return View();
+        }
+        //Δεν ξερω ποσο σιγουρα ειναι αυτα 
+        [HttpGet("LoginBacker")]
+        public IActionResult LoginBacker()
+        {
+            return View();
+        }
+        [HttpGet("LoginProjectCreator")]
+        public IActionResult LoginProjectCreator()
         {
             return View();
         }

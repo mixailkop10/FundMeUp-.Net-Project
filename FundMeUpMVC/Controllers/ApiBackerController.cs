@@ -68,7 +68,7 @@ namespace FundMeUpMVC.Controllers
             return backerManager.ChangeActivityStatus(backerId);
         }
 
-        [HttpPost("Login")]
+        [HttpPost("LoginBacker")]
         public Backer LoginBacker([FromBody] BackerOption backerOption)
         {
             return backerManager.FindBackerByEmail(backerOption);

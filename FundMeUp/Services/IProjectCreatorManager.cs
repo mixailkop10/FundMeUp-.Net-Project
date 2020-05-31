@@ -17,9 +17,7 @@ namespace FundMeUp.Services
         List<ProjectCreator> GetAllProjectCreators();
         ProjectCreator IncreaseTrustPoint(int id);
         ProjectCreator DecreaseTrustPoint(int id);
-
-
-
+        ProjectCreator FindProjectCreatorByEmail(ProjectCreatorOption projectCreatorOption);
     }
 
 

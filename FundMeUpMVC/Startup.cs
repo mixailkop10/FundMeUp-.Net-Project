@@ -31,6 +31,7 @@ namespace FundMeUpMVC
             //"Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"
             services.AddScoped<IProjectManager, ProjectManager>();
             services.AddScoped<IBackerManager, BackerManager>();
+            services.AddScoped<IProjectCreatorManager, ProjectCreatorManager>();
 
             services.AddControllersWithViews();
             services.AddLogging();

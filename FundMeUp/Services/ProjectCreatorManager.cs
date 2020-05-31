@@ -118,7 +118,18 @@ namespace FundMeUp.Services
 
             db.SaveChanges();
             return projectCreator;
-       }
+        }
+
+        public ProjectCreator FindProjectCreatorByEmail(ProjectCreatorOption projectCreatorOption)
+        {
+            if (projectCreatorOption == null) return null;
+            if (projectCreatorOption.Email == null) return null;
+
+            return db.ProjectCreators
+                .Where(pc => pc.Email == projectCreatorOption.Email)
+                .Where(pc => pc.Password == projectCreatorOption.Password)
+                .FirstOrDefault();
+        }
 
     }
 
