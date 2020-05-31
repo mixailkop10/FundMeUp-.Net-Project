@@ -54,10 +54,10 @@ namespace FundMeUp.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     StatusUpdate = table.Column<string>(nullable: true),
-                    BudgetGoal = table.Column<decimal>(nullable: false),
-                    Balance = table.Column<decimal>(nullable: false),
+                    BudgetGoal = table.Column<float>(nullable: false),
+                    Balance = table.Column<float>(nullable: false),
                     DoΑ = table.Column<DateTime>(nullable: false),
-                    Category = table.Column<int>(nullable: false),
+                    Category = table.Column<string>(nullable: true),
                     ProjectCreatorId = table.Column<int>(nullable: true),
                     Available = table.Column<bool>(nullable: false),
                     Funded = table.Column<bool>(nullable: false)
@@ -82,7 +82,7 @@ namespace FundMeUp.Migrations
                     Name = table.Column<string>(nullable: true),
                     ProjectId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false)
+                    Price = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,16 +99,18 @@ namespace FundMeUp.Migrations
                 name: "BackerProject",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BackerId = table.Column<int>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
                     DoF = table.Column<DateTime>(nullable: false),
-                    Fund = table.Column<decimal>(nullable: false),
+                    Fund = table.Column<float>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
                     RewardId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BackerProject", x => new { x.BackerId, x.ProjectId });
+                    table.PrimaryKey("PK_BackerProject", x => x.Id);
                     table.ForeignKey(
                         name: "FK_BackerProject_Backer_BackerId",
                         column: x => x.BackerId,
@@ -128,6 +130,11 @@ namespace FundMeUp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BackerProject_BackerId",
+                table: "BackerProject",
+                column: "BackerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BackerProject_ProjectId",
