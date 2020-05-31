@@ -27,10 +27,11 @@ namespace FundMeUpMVC
     public void ConfigureServices(IServiceCollection services)
     {
             services.AddDbContext<FundMeUpDbContext>(options =>
-                options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
+                //options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
+                options.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
 
 
-            services.AddTransient<IProjectManager, ProjectManager>();
+      services.AddTransient<IProjectManager, ProjectManager>();
             services.AddTransient<IBackerManager, BackerManager>();
             
 
