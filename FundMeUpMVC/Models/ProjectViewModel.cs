@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FundMeUp.Services;
 
 namespace FundMeUpMVC.Models
 {
@@ -14,11 +15,19 @@ namespace FundMeUpMVC.Models
         public List<string> Categories { get; set; }
 
         public Project Project { get; set; }
+        
 
     }
 
     public class CategoryOption
     {
         public string Category { get; set; }
+
+        public List<Project> Projects { get; set; }
+    }
+
+    public class RewardsByProject
+    {
+        public List<Reward> Rewards { get; set; }
     }
 }

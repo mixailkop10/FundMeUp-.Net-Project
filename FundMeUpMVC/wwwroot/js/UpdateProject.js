@@ -2,7 +2,7 @@
 function Project() {
 
 	actionMethod = "GET"
-	actionUrl = `/ApiProject/Project/${x}`
+	actionUrl = `/ApiProject/Project/${id}`
 
 	$.ajax({
 		url: actionUrl,
@@ -35,10 +35,10 @@ function Project() {
 function Delete() {
 	
 	actionMethod = "DELETE"
-	actionUrl = `/ApiProject/DeleteProject/${x}`
+	actionUrl = `/ApiProject/DeleteProject/${id}`
 	console.log(actionUrl)
 	sendData = {
-		"Id": x
+		"Id": id
     }
 	alert (sendData)
 	$.ajax({
@@ -66,11 +66,11 @@ function Delete() {
 
 function Update() {
 	actionMethod = "PUT"
-	actionUrl = `/ApiProject/Project/${x}`
+	actionUrl = `/ApiProject/Project/${id}`
 	y = $('#BudgetGoal').val()
 	console.log(y)
-	x = parseFloat(y)
-	console.log(x)
+	w = parseFloat(y)
+	console.log(w)
 
 
 
@@ -78,7 +78,7 @@ function Update() {
 		"Name": $('#Name').val(),
 		"Description": $('#Description').val(),
 		"DoA": $('#DoA').val(),
-		"BudgetGoal": x,
+		"BudgetGoal": w,
 		"Category": $('#Category').val(),
 		"StatusUpdate": $('#StatusUpdate').val()
 	}
@@ -106,6 +106,58 @@ function Update() {
 
 }
 
+function CreatePackage()
+{
+	actionMethod = "POST"
+	actionUrl = `/ApiReward/AddReward`
+	y = $('#Price').val()
+	console.log(y)
+	x = parseFloat(y)
+	console.log(x)
+	ProjId = parseInt(id)
+
+
+	sendData = {
+		"Name":"den exei" ,
+		"Description": $('#RewardDescription').val(),
+		"ProjectId": ProjId,
+		"Price": x,
+	
+	}
+
+	alert(JSON.stringify(sendData))
+	
+
+
+	$.ajax({
+		url: actionUrl,
+		dataType: 'json',
+		type: actionMethod,
+		data: JSON.stringify(sendData),
+
+		contentType: 'application/json',
+		processData: false,
+		success: function (data, textStatus, jQxhr) {
+			$('#responseDiv').html(JSON.stringify(data));
+			window.open(`/Project/Project/${id}`, "_self")
+		},
+		error: function (jqXhr, textStatus, errorThrown) {
+			console.log("lathos");
+			$('#responseDiv').html("lathos ");
+		}
+	});
+}
+
+//$('#exampleModal_2').on('show.bs.modal', function (event) {
+//	var button = $(event.relatedTarget) // Button that triggered the modal
+//	var recipient = button.data('whatever') // Extract info from data-* attributes
+//	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+//	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+//	var modal = $(this)
+//	modal.find('.modal-title').text('New message to ' + recipient)
+//	modal.find('.modal-body input').val(recipient)
+//})
+
 function ready(callback) {
 	// in case the document is already rendered
 	if (document.readyState != 'loading') callback();
@@ -119,7 +171,9 @@ function ready(callback) {
 
 	let url = window.location.href;
 	let params = url.split('/');
-	let x = params[params.length - 1]
+let id = params[params.length - 1]
+console.log(typeof(id))
+
 
     ready(function () {
 		// do something

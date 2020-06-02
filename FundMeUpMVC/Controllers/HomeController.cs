@@ -15,14 +15,15 @@ namespace FundMeUpMVC.Controllers
     [Route("[controller]")]
     public class HomeController : Controller
     {
+        private IProjectManager projManager;
         private readonly ILogger<HomeController> _logger;
 
-      
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProjectManager _projManager)
         {
+            projManager = _projManager;
             _logger = logger;
-
         }
+
         [HttpGet("Index")]
         public IActionResult Index()
         {
@@ -52,11 +53,18 @@ namespace FundMeUpMVC.Controllers
         [HttpGet("Category/{category}")]
         public IActionResult Category([FromRoute] string category)
         {
-            CategoryOption catOpt = new CategoryOption
+            ProjectOption projOpt = new ProjectOption
             {
                 Category = category
             };
-            return View(catOpt);
+            CategoryOption catOpt = new CategoryOption
+            {
+                Category = category,
+                Projects = projManager.FindProjectByCategory(projOpt)
+
+            };
+            
+             return View(catOpt);
         }
 
         
