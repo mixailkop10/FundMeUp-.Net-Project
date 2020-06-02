@@ -10,21 +10,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace FundMeUpMVC.Controllers
-{   
+{
 
-    
 
+    [Route("[controller]")]
     public class ProjectController : Controller
     {
         private IProjectManager projManager;
+        private IRewardManager rewardManager;
         private readonly ILogger<ProjectController> _logger;
 
-        public ProjectController(ILogger<ProjectController> logger,IProjectManager _projManager)
+        public ProjectController(ILogger<ProjectController> logger,IProjectManager _projManager, IRewardManager _rewardManager)
         {
+            rewardManager = _rewardManager;
             projManager = _projManager;
             _logger = logger;
         }
-       
+
+        [HttpGet("CreateProject")]
         public IActionResult CreateProject()
         {
             var viewModel = new ProjectViewModel()
@@ -35,14 +38,15 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
 
+        [HttpGet("AllProject")]
         public IActionResult AllProjects()
         {
            
             return View();
 
         }
-        
-        
+
+        [HttpGet("ProjectPage/{id}")]
         public IActionResult ProjectPage()
         {
             var viewModel = new ProjectViewModel()
@@ -54,9 +58,15 @@ namespace FundMeUpMVC.Controllers
 
         }
 
-        public IActionResult Project()
+        [HttpGet("Project/{id}")]
+        public IActionResult Project([FromRoute] int id)
         {
-            return View();
+            
+            RewardsByProject rewards = new RewardsByProject
+            {
+                Rewards = rewardManager.GetRewards(id)
+            };
+            return View(rewards);
         }
     }
 }
