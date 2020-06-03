@@ -1,6 +1,7 @@
 ﻿using FundMeUp.Models;
 using FundMeUp.Options;
 using FundMeUp.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -60,7 +61,6 @@ namespace FundMeUp.Services
                 .ToList();
         }
 
-
         public List<Project> FindProjectByNameAndCategory(ProjectOption projectOption) //string name , Category category
         {
             //return db.Projects
@@ -72,6 +72,14 @@ namespace FundMeUp.Services
                 .Where(p => p.Name == projectOption.Name)
                 .Where(p => p.Category == projectOption.Category)
                 .ToList();
+        }
+
+        public Project FindProjectByProjectCreator(int pcid)
+        {
+            return db.Projects
+                .Include(p => p.ProjectCreator)
+                .Where(p => p.ProjectCreator.Id == pcid)
+                .FirstOrDefault();
         }
 
         public List<Project> GetAll()

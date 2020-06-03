@@ -55,6 +55,23 @@ namespace FundMeUp.Services
                 .ToList();
         }
 
+        public IQueryable<BackerProject> GetPendingProjectFundings(int projectId)
+        {
+            return _db.BackerProjects
+                .Include(bp => bp.Project)
+                .Include(bp => bp.Backer)
+                .Where(bp => bp.ProjectId == projectId && bp.Status == Status.Pending);
+        }
+
+        public IQueryable<BackerProject> GetAcceptedProjectFundings(int projectId)
+        {
+            return _db.BackerProjects
+                .Include(bp => bp.Project)
+                .Include(bp => bp.Backer)
+                .Where(bp => bp.ProjectId == projectId && bp.Status == Status.Accepted)
+                .OrderByDescending(bp => bp.DoF);
+        }
+
         public List<BackerProject> GetBackerFundings(int backerId)
         {
             return _db.BackerProjects

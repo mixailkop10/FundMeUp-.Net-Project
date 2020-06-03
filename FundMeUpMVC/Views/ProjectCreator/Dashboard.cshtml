@@ -1,0 +1,256 @@
+﻿@model FundMeUpMVC.Models.PCDashboardViewModel
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Bootstrap4.Core
+@using X.PagedList;
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    .dh-card {
+        border: 2px solid #cbcbcb;
+        color: #a8a1a1;
+        background-color: #2f2f2f;
+        padding: 2em;
+        margin-top: 20px;
+    }
+
+    .actions-card {
+        border: 2px solid #cbcbcb;
+        color: #a8a1a1;
+        background-color: #ebebeb;
+    }
+
+    .dh-uimg {
+        max-height: 50px;
+        max-width: 50px;
+        float: left;
+    }
+
+    .carousel-inner {
+        width: 100%;
+        height: 100%;
+    }
+
+    .pending h5 {
+        color: #d46d24;
+    }
+
+    .accepted h5 {
+        color: #189c43;
+    }
+</style>
+<div id="content">
+    <div class="pending">
+        <h5>Pending Fundings</h5>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-heading">
+                    @Model.PendingBackerProjects.Count Requests
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model.PendingBackerProjects)
+                    {
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="https://www.flightonmobile.com/assets/images/user.png" alt="user image" class="img-responsive img-rounded dh-uimg">
+                                </div>
+                                <div class="col-md-8">
+                                    <p>
+                                        <a href="#">
+                                            @item.Backer.FirstName  @item.Backer.LastName
+                                        </a>
+                                        <small class="text-muted pull-right">@item.DoF<span><i class="fa fa-clock"></i></span></small>
+                                    </p>
+                                    <p>Comments:</p>
+                                    <p>Sample: It will be our pleasure to support this project</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-lg btn-link" href="/Funding/StatusUpdate/@item.Id">
+                                        <span><i class="fa fa-arrow-right"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.attachment -->
+                        </div>
+                        <hr>
+                    }
+                </div>
+            </div>
+            <div class="accepted" style="margin-top:30px;">
+                <h5>Accepted Fundings</h5>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="form-inline">
+                        <div class="input-group-prepend mb-2">
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateFrom" name="datefrom">
+                        <div class="input-group-prepend mb-2">
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateTo" name="dateto">
+                        <button type="submit" id="btnCheckDates" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/ProjectCreator/Dashboard'">Clear<i class="fa fa-eraser"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-light" style="margin-top:10px">
+                <div class="card-heading">
+                    @Model.AcceptedBackerProjects.Count Requests
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model.AcceptedBackerProjects)
+                    {
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="https://www.flightonmobile.com/assets/images/user.png" alt="user image" class="img-responsive img-rounded dh-uimg">
+                                </div>
+                                <div class="col-md-8">
+                                    <p>
+                                        <a href="#">
+                                            @item.Backer.FirstName  @item.Backer.LastName
+                                        </a>
+                                        <small class="text-muted pull-right">@item.DoF<span><i class="fa fa-clock"></i></span></small>
+                                        Funding @item.Id
+                                    </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="btn btn-sm btn-success">
+                                        <span><i class="fa fa-check"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /.attachment -->
+                        </div>
+                        <hr>
+                    }
+                </div>
+            </div>
+            <br />
+            @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("Dashboard",
+                new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+
+        <div class="col-md-5">
+            <div class="card actions-card text-center">
+                <div class="card-header">
+                    <a class="btn btn-secondary text-light" href="/Project/ProjectPage/@Model.ProjectId">
+                        <span>Edit Project</span>
+                    </a>
+                    <a class="btn btn-dark text-light">
+                        <span>Switch Project</span>
+                    </a>
+                    <a class="btn btn-primary" href="/Project/CreateProject">
+                        <span>New Project</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="demo" class="carousel slide" data-ride="carousel" style="margin-top: 20px">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/images/projectsample1.jpg" alt="cοwork & cafe" width="450" height="300">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/projectsample2.jpg" alt="cοwork & cafe interior" width="450" height="300">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/projectsample3.jpg" alt="cοwork & cafe" width="450" height="300">
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+            </div>
+
+            <div class="card dh-card">
+                <div class="card-heading">
+                    <h3>Project Summary</h3>
+                    <b>Fantastic Job!</b><br />
+                    Guests love what you're doing.<br />
+                    Keep up the good work.
+                </div>
+                <div class="card-body">
+                    @DateTime.Now.ToString("MMMM") earnings
+                    30-day views<br />
+                    <a href="#">Details</a><br />
+                    Overall Amount
+                    Total Funding<br />
+                    <a href="#">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+
+    <script>
+        // .click() vs .on('click')
+
+        /* -------- Issue - Click doesn’t work after AJAX load -------------
+         * Delegated events have the advantage that they can process events
+         * from descendant elements that are added to the document at a later time
+         */
+        $(document).on('click', "#btnCheckDates", function () {
+            var dateTo = $('#dateTo').val();
+            var dateFrom = $('#dateFrom').val();
+
+            if (dateFrom >= dateTo) {
+                alert("Oop! dateTo must be later than dateFrom.");
+            }
+            else {
+                //location.href = '/ProjectCreator/Dashboard';
+                actionMethod = "POST"
+                actionUrl = "/ProjectCreator/Dashboard"
+                sendData = {
+                    "SearchStartDate": dateFrom,
+                    "SearchEndDate": dateTo
+                }
+                alert(JSON.stringify(sendData))
+                $.ajax({
+                    url: actionUrl,
+                    //dataType: 'json',
+                    type: actionMethod,
+                    data: JSON.stringify(sendData),
+
+                    contentType: 'application/json; charset=utf-8',
+                    processData: false,
+                    async: true,
+                    success: function (data, textStatus, jQxhr) {
+                        //var newTarget = $("#acceptedBP").html(data)
+                        $("#content").html(data);
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            }
+        });
+    </script>
+
+} 

@@ -32,6 +32,7 @@ namespace FundMeUpMVC
             services.AddScoped<IProjectManager, ProjectManager>();
             services.AddScoped<IBackerManager, BackerManager>();
             services.AddScoped<IProjectCreatorManager, ProjectCreatorManager>();
+            services.AddScoped<IBackerProjectManager, BackerProjectManager>();
             services.AddScoped<IRewardManager, RewardManager>();
 
             services.AddControllersWithViews();
