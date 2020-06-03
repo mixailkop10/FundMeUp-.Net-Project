@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+    <h1>WELCOME USER</h1>
+
+<form id="LoginButton">
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label>ARE YOU A PROJECT CREATOR</label>
+            <br />
+            <input type="button" id="button1" class="button" onclick="location.href='LoginProjectCreator';" value="YES" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label>ARE YOU A BACKER</label>
+            <br />
+            <input type="button" id="button2" class="button" onclick="location.href = 'LoginBacker';" value="YES" />
+        </div>
+    </div>
+</form>
+
+<div id="responseDiv">   </div>

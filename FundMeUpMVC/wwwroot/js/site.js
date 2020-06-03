@@ -1,56 +1,73 @@
-﻿
+﻿function loginButton() {
 
+    var buttons = document.getElementsByClassName("button");
+    for (let i = 0, l = buttons.length; i < l; i++) {
+        if (i == 1) {
+            buttons[i].addEventListener('click', function loginButtonB() {
 
-function ProjectsByCategory(mycategory) {
-	
-	
-	actionMethod = "GET"
-	actionUrl = "/ApiProject/Category/"+mycategory
-	
+                actionMethod = "POST"
+                actionUrl = "/ApiBacker/Login"
+                sendData = {
+                    "Email": $('#Email').val(),
+                    "Password": $('#Password').val()
+                }
+                $.ajax({
+                    url: actionUrl,
+                    dataType: 'json',
+                    type: actionMethod,
+                    data: JSON.stringify(sendData),
 
+                    contentType: 'application/json',
+                    processData: false,
+                    success: function (data, textStatus, jQxhr) {
+                        if (data == null) {
+                            $('#responseDiv').html("There is no such backer");
+                        }
+                        else {
+                            backerId = data["id"]
+                            window.open("/Home/CreateProject")
+                            //μεχρι να γινει το fundProject
+                        }
 
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                })
+            });
+        }
+        else if (i == 2){
+            buttons[i].addEventListener('click', function loginButtonPC() {
 
+                actionMethod = "POST"
+                actionUrl = "/ApiProjectCreator/Login"
+                sendData = {
+                    "Email": $('#Email').val(),
+                    "Password": $('#Password').val()
+                }
+                $.ajax({
+                    url: actionUrl,
+                    dataType: 'json',
+                    type: actionMethod,
+                    data: JSON.stringify(sendData),
 
-	console.log("prin to ajax")
+                    contentType: 'application/json',
+                    processData: false,
+                    success: function (data, textStatus, jQxhr) {
+                        if (data == null) {
+                            $('#responseDiv').html("There is no such projectCreator");
+                        }
+                        else {
+                            projectCreatorId = data["id"]
+                            window.open("/Home/CreateProject")
+                        }
 
-	$.ajax({
-		url: actionUrl,
-		//dataType: 'json',
-		type: actionMethod,
-		//data: JSON.stringify(sendData),
-		contentType: 'application/json',
-		processData: false,
-		success: function (data, textStatus, jQxhr) {
-			document.getElementById("test").innerHTML = "ola kala"
-			console.log("ola kala")
-			console.log(data)
-
-		},
-		error: function (jqXhr, textStatus, errorThrown) {
-			console.log(errorThrown);
-			console.log("lathos")
-			document.getElementById("test").innerHTML = "egine malakia"
-		}
-	});
+                    },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                })
+            });
+        }      
+    }
 }
-
-
-
-function ready(callback) {
-	// in case the document is already rendered
-	if (document.readystate != 'loading') callback();
-	// modern browsers
-	else if (document.addeventlistener) document.addeventlistener('domcontentloaded', callback);
-	// ie <= 8
-	else document.attachevent('onreadystatechange', function () {
-		if (document.readystate == 'complete') callback();
-	});
-}
-
-
-x = document.getElementById("cat").innerHTML
-
-ready(function () {
-	// do something
-	ProjectsByCategory(x)
-});

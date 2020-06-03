@@ -20,25 +20,32 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                  <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="CreateProject">Create Project</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="Browse all Projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categories">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-
-
-                  </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="CreateProject">Create Project</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="AllProjects">Browse all Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categories">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Backer" asp-action="CreateBacker">Create Backer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProjectCreator" asp-action="CreateProjectCreator">Create PC</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -57,10 +64,6 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
-    @*<script src="~/js/AllProjects.js" ></script>*@
-    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>

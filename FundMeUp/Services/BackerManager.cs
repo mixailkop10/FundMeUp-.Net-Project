@@ -15,10 +15,10 @@ namespace FundMeUp.Services
       db = _db;
     }
 
-    //CRUD
+        //CRUD
 
-    /// Creating a new Backer (User) for the platform
-    public Backer CreateBacker(BackerOption backerOption)
+        /// Creating a new Backer (User) for the platform
+        public Backer CreateBacker(BackerOption backerOption)
     {
       Backer backer = new Backer
       {
@@ -45,7 +45,7 @@ namespace FundMeUp.Services
 
     public List<Backer> FindBackerByName(BackerOption BackerOpt)
     {
-      return db.Backers // LAMPROS AM CONFIRMED
+      return db.Backers
         .Where(b => b.FirstName == BackerOpt.FirstName)
         .Where(b => b.LastName == BackerOpt.LastName)
         .ToList();
@@ -87,5 +87,29 @@ namespace FundMeUp.Services
             return db.Backers.ToList();
         }
 
+        public Backer ChangeActivityStatus(int backerId)
+        {
+            Backer backer = db.Backers.Find(backerId);
+            if (backer.Active == true)
+                backer.Active = false;
+            else
+                backer.Active = true;
+            return backer;
+        }
+
+        //public Backer FindBackerByEmail(BackerOption backerOption)
+        //{
+        //    return db.Backers.Find(backerOption.Email);
+        //}
+        public Backer FindBackerByEmail(BackerOption backerOption)
+        {
+            if (backerOption == null) return null;
+            if (backerOption.Email == null) return null;
+
+            return db.Backers
+                .Where(b => b.Email == backerOption.Email)
+                .Where(b => b.Password == backerOption.Password)
+                .FirstOrDefault();
+        }
     }
 }

@@ -15,5 +15,7 @@ namespace FundMeUp.Services
         Backer UpdateBacker(BackerOption backerOption, int backerId);
         bool DeleteBackerById(int backerId);
         List<Backer> GetBackers();
+        Backer ChangeActivityStatus(int backerId);
+        Backer FindBackerByEmail(BackerOption backerOption);
     }
 }

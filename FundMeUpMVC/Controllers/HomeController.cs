@@ -36,14 +36,12 @@ namespace FundMeUpMVC.Controllers
             return View("Index");
         }
 
-        
-
         [HttpGet("Privacy22")]
         public IActionResult Privacy()
         {
             return View();
         }
-       
+
         [HttpGet("Categories")]
         public IActionResult Categories()
         {
@@ -63,18 +61,33 @@ namespace FundMeUpMVC.Controllers
                 Projects = projManager.FindProjectByCategory(projOpt)
 
             };
-            
-             return View(catOpt);
+
+            return View(catOpt);
         }
 
-        
+        [HttpGet("Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        //Δεν ξερω ποσο σιγουρα ειναι αυτα 
+        [HttpGet("LoginBacker")]
+        public IActionResult LoginBacker()
+        {
+            return View();
+        }
+        [HttpGet("LoginProjectCreator")]
+        public IActionResult LoginProjectCreator()
+        {
+            return View();
+        }
 
         [HttpGet("Error")]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-      return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
-  }
 }
