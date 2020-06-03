@@ -11,8 +11,8 @@ namespace FundMeUp.Options
     public string Description { get; set; }
     public string Category { get; set; } 
     public float BudgetGoal { get; set; }
-    public float BalanceGoal { get; set; }
+    public float Balance { get; set; }
     public DateTime DoA { get; set; }
-        public string StatusUpdate { get; set; }
+    public string StatusUpdate { get; set; }
   }
 }

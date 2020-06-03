@@ -20,10 +20,8 @@
                 }
                 else {
                     backerId = data["id"]
-                    window.open("/Home/CreateProject")
-                    //μεχρι να γινει το fundProject
+                    window.open("/Project/AllProject")
                 }
-
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
@@ -53,9 +51,8 @@
                 }
                 else {
                     projectCreatorId = data["id"]
-                    window.open("/Home/CreateProject")
+                    window.open("/Project/CreateProject")
                 }
-
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);

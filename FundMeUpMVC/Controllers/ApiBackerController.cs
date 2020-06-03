@@ -73,9 +73,5 @@ namespace FundMeUpMVC.Controllers
         {
             return backerManager.FindBackerByEmail(backerOption);
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }
