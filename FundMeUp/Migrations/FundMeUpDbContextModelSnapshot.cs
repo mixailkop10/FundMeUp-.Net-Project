@@ -54,10 +54,12 @@ namespace FundMeUp.Migrations
 
             modelBuilder.Entity("FundMeUp.Models.BackerProject", b =>
                 {
-                    b.Property<int>("BackerId")
-                        .HasColumnType("int");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("BackerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DoF")
@@ -66,7 +68,7 @@ namespace FundMeUp.Migrations
                     b.Property<float>("Fund")
                         .HasColumnType("real");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("RewardId")
@@ -75,7 +77,9 @@ namespace FundMeUp.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.HasKey("BackerId", "ProjectId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("BackerId");
 
                     b.HasIndex("ProjectId");
 

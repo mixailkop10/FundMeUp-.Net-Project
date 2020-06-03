@@ -1,0 +1,148 @@
+﻿@model ProjectViewModel
+@{
+    ViewData["Title"] = "ProjectPage";
+}
+
+
+<h1 id="NameAhead" style="text-align:center; color:brown;"></h1> <br>
+
+<form class="needs-validation" novalidate>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="Name">Project's Name</label>
+            <input type="text" class="form-control" id="Name" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="BudgetGoal">BudgetGoal</label>
+            <input type="text" class="form-control" id="BudgetGoal" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="StatusUpdate">StatusUpdate</label>
+            <input type="text" class="form-control" id="StatusUpdate" required>
+            <div class="invalid-feedback">
+                Please provide a valid description.
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="Category">Category</label>
+            <select class="custom-select" id="Category" value="" required>
+                @foreach (var Category in Model.Categories)
+                {
+                    <option id="Cat" value="@Category">@Category</option>
+                }
+            </select>
+            <div class="invalid-feedback">
+                Please select a valid state.
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="Description">Description</label>
+            @*<input type="text" class="form-control" id="StatusUpdate" value="" required>*@
+            <textarea rows="4" class="form-control" id="Description" cols="50" required></textarea>
+            <div class="invalid-feedback">
+                Please provide a valid Status Update
+            </div>
+        </div>
+    </div>
+    <span>
+        <input type="button" class="btn btn-primary" value="Update Project" onclick="Update()" />
+        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Delete Project" />
+        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_2"  value="Package" />
+    </span>
+
+</form>
+<br />
+
+
+
+
+
+<!-- Modal for Delete Project-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this Project?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="DelButton" value="" onclick="Delete()">Delete</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<form>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+    </form>*@
+
+<div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">Choose file</label>
+</div>
+
+
+
+
+
+<!-- Modal  for package creating-->
+
+
+
+<div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Package</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Price" class="col-form-label">Price:</label>
+                        <input type="text" class="form-control" id="Price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="RewardDescription" class="col-form-label">Describe Reward:</label>
+                        <textarea class="form-control" id="RewardDescription" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="CreatePackage()">Add Package</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="responseDiv"></div>
+<script src="~/js/UpdateProject.js"></script>
+
+
+

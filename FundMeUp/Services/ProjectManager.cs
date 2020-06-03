@@ -29,6 +29,7 @@ namespace FundMeUp.Services
                 BudgetGoal = projOption.BudgetGoal,
                 DoΑ = projOption.DoA,
                 Category = projOption.Category,
+                StatusUpdate=projOption.StatusUpdate,
                 Available = true
 
             };
@@ -104,6 +105,7 @@ namespace FundMeUp.Services
 
         public Project Update(ProjectOption projOption, int projectId)
         {
+
             Project project = db.Projects.Find(projectId);
 
             if (projOption.Name != null)

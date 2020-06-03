@@ -1,0 +1,61 @@
+﻿@model FundMeUpMVC.Models.RewardsByProject;
+@{
+    ViewData["Title"] = "Project";
+}
+
+
+<style>
+
+    #head {
+        font-weight: bold;
+        margin-bottom: unset;
+    }
+
+    #hd {
+        margin: 2em;
+    }
+</style>
+<h1 id="Name" value="" style="text-align:center"></h1>
+
+
+
+<div id="hd">
+    <h5 id="head">Description</h5>
+    <hr>
+    <p id="Description" value=""></p>
+</div>
+
+<div id="hd">
+    <h5 id="head" class="Date">Status Update</h5>
+    <hr>
+    <p id="StatusUpdate" value=""></p>
+</div>
+
+<div id="hd">
+    <h5 id="head">Funding Details</h5>
+    <hr>
+    <p id="details"> </p>
+</div>
+
+
+
+
+
+
+<h5 style="font-weight:bold">Packages</h5>
+<div class="card-deck">
+    @{ foreach (var reward in Model.Rewards)
+        {
+            <div class="card" style="width: 100px;">
+                <div class="card-body">
+                    <h5 class="card-title">@reward.Price$</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Reward</h6>
+                    <p class="card-text">@reward.Description</p>
+                    <button type="button" class="btn btn-primary" href="/Project/AllProjects">Fund Me Up</button>
+
+                </div>
+            </div>
+        } }
+ </div>
+
+    <script src="~/js/Project.js"></script>
