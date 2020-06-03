@@ -71,7 +71,7 @@
                                     <p>Sample: It will be our pleasure to support this project</p>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-lg btn-link" href="/Funding/StatusUpdate/@item.Id">
+                                    <a class="btn btn-sm btn-info" href="/BackerProject/StatusUpdate/@item.Id">
                                         <span><i class="fa fa-arrow-right"></i></span>
                                     </a>
                                 </div>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card bg-light" style="margin-top:10px">
+            <div class="card bg-light" style="margin-top:10px" id="acceptedBP">
                 <div class="card-heading">
                     @Model.AcceptedBackerProjects.Count Requests
                 </div>
@@ -123,7 +123,7 @@
                                     </p>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-sm btn-success">
+                                    <a class="btn btn-sm btn-secondary text-light">
                                         <span><i class="fa fa-check"></i></span>
                                     </a>
                                 </div>
@@ -133,10 +133,12 @@
                         <hr>
                     }
                 </div>
+                <div class="card-footer">
+                    @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("Dashboard",
+                        new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </div>
             </div>
             <br />
-            @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("Dashboard",
-                new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
         </div>
 
         <div class="col-md-5">
@@ -208,49 +210,5 @@
 
 @section Scripts
 {
-
-    <script>
-        // .click() vs .on('click')
-
-        /* -------- Issue - Click doesn’t work after AJAX load -------------
-         * Delegated events have the advantage that they can process events
-         * from descendant elements that are added to the document at a later time
-         */
-        $(document).on('click', "#btnCheckDates", function () {
-            var dateTo = $('#dateTo').val();
-            var dateFrom = $('#dateFrom').val();
-
-            if (dateFrom >= dateTo) {
-                alert("Oop! dateTo must be later than dateFrom.");
-            }
-            else {
-                //location.href = '/ProjectCreator/Dashboard';
-                actionMethod = "POST"
-                actionUrl = "/ProjectCreator/Dashboard"
-                sendData = {
-                    "SearchStartDate": dateFrom,
-                    "SearchEndDate": dateTo
-                }
-                alert(JSON.stringify(sendData))
-                $.ajax({
-                    url: actionUrl,
-                    //dataType: 'json',
-                    type: actionMethod,
-                    data: JSON.stringify(sendData),
-
-                    contentType: 'application/json; charset=utf-8',
-                    processData: false,
-                    async: true,
-                    success: function (data, textStatus, jQxhr) {
-                        //var newTarget = $("#acceptedBP").html(data)
-                        $("#content").html(data);
-                    },
-                    error: function (jqXhr, textStatus, errorThrown) {
-                        console.log(errorThrown);
-                    }
-                });
-            }
-        });
-    </script>
-
+    <script src="~/js/pcdashboard-search.js"></script>
 } 

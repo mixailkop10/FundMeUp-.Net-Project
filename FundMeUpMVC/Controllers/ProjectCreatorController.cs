@@ -49,7 +49,7 @@ namespace FundMeUpMVC.Controllers
 
             PCDashboardViewModel pcdash = new PCDashboardViewModel()
             {
-                PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToPagedList(pageNumber, pageSize), //Project - Startup
+                PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
                 AcceptedBackerProjects = backerprojectMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
                 ProjectId = projectId
             };
@@ -66,7 +66,7 @@ namespace FundMeUpMVC.Controllers
 
             PCDashboardViewModel pcdash = new PCDashboardViewModel()
             {
-                PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
+                PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToList(),
                 AcceptedBackerProjects = backerprojectMng.GetAcceptedProjectFundings(projectId)
                                 .Where(f => f.DoF >= pcdashboard.SearchStartDate && f.DoF <= pcdashboard.SearchEndDate).ToPagedList(pageNumber, pageSize),
                 ProjectId = projectId,

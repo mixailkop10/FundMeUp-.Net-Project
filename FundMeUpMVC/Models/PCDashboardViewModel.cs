@@ -9,7 +9,7 @@ namespace FundMeUpMVC.Models
 {
     public class PCDashboardViewModel
     {
-        public IPagedList<BackerProject> PendingBackerProjects { get; set; }
+        public List<BackerProject> PendingBackerProjects { get; set; }
         public IPagedList<BackerProject> AcceptedBackerProjects { get; set; }
         public int ProjectId { get; set; }
         public DateTime SearchStartDate { get; set; }
