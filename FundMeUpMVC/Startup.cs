@@ -33,7 +33,8 @@ namespace FundMeUpMVC
 
       services.AddTransient<IProjectManager, ProjectManager>();
             services.AddTransient<IBackerManager, BackerManager>();
-            
+            services.AddTransient<IRewardManager, RewardManager>();
+
 
             services.AddControllersWithViews();
     }

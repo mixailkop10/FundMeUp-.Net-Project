@@ -9,6 +9,8 @@ function ProjectsByCategory(mycategory) {
 	
 
 
+
+
 	console.log("prin to ajax")
 
 	$.ajax({

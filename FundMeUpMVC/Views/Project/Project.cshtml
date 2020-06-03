@@ -1,4 +1,4 @@
-﻿
+﻿@model FundMeUpMVC.Models.RewardsByProject;
 @{
     ViewData["Title"] = "Project";
 }
@@ -41,18 +41,21 @@
 
 
 
-<div id="hd">
-    <h5 style="font-weight:bold">Packages</h5>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">150$</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Reward</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button type="button" class="btn btn-primary"  href="/Project/AllProjects">Fund Me Up</button>
+<h5 style="font-weight:bold">Packages</h5>
+<div class="card-deck">
+    @{ foreach (var reward in Model.Rewards)
+        {
+            <div class="card" style="width: 100px;">
+                <div class="card-body">
+                    <h5 class="card-title">@reward.Price$</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Reward</h6>
+                    <p class="card-text">@reward.Description</p>
+                    <button type="button" class="btn btn-primary" href="/Project/AllProjects">Fund Me Up</button>
 
-        </div>
-    </div>
-</div>
+                </div>
+            </div>
+        } }
+ </div>
 
-<script src="~/js/Project.js"></script>
+    <script src="~/js/Project.js"></script>
