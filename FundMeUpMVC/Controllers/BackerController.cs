@@ -6,6 +6,7 @@ using FundMeUp.Services;
 using FundMeUpMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using X.PagedList;
 
 namespace FundMeUpMVC.Controllers
 {
@@ -13,11 +14,13 @@ namespace FundMeUpMVC.Controllers
     {
         private readonly ILogger<ProjectController> logger;
         private IBackerManager backerManager;
+        private IBackerProjectManager backerprojectMng;
 
-        public BackerController(ILogger<ProjectController> logger, IBackerManager backerManager)
+        public BackerController(ILogger<ProjectController> logger, IBackerManager backerManager, IBackerProjectManager backerprojectMng)
         {
             this.logger = logger;
             this.backerManager = backerManager;
+            this.backerprojectMng = backerprojectMng;
         }
         public IActionResult Index()
         {
@@ -33,6 +36,18 @@ namespace FundMeUpMVC.Controllers
             var viewModel = new BackerModel();
             viewModel.Backers = backerManager.GetBackers();
             return View(viewModel);
+        }
+
+        public IActionResult Dashboard(int? page)
+        {
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+
+            BDashboardViewModel bdash = new BDashboardViewModel()
+            {
+                BackerProjects = backerprojectMng.GetBackerFundings(1).ToPagedList(pageNumber, pageSize)
+            };
+            return View(bdash);
         }
     }
 }

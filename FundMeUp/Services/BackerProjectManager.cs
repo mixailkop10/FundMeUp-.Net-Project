@@ -78,6 +78,7 @@ namespace FundMeUp.Services
             return _db.BackerProjects
                 .Include(bp => bp.Project)
                 .Include(bp => bp.Backer)
+                .Include(bp => bp.Reward)
                 .Where(bp => bp.BackerId == backerId)
                 .ToList();
         }
