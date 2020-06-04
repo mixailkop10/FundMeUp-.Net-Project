@@ -1,0 +1,89 @@
+﻿@model FundMeUpMVC.Models.BackerModel
+@{
+    ViewData["Title"] = "BackerPage";
+}
+
+<h3 id="NameAhead" style="text-align:center; color:brown;"></h3>
+
+<br />
+<form class="needs-validation" novalidate>
+    <div class="form-row">
+
+        <div class="col-md-6 mb-3">
+            <label for="FirstName">FirstName</label>
+            <input type="text" class="form-control" id="FirstName" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="LastName">LastName</label>
+            <input type="text" class="form-control" id="LastName" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="Profession">Profession</label>
+            <input type="text" class="form-control" id="Profession" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+
+        <div class="col-md-6 mb-3">
+            <label for="Address">Address</label>
+            <input type="text" class="form-control" id="Address" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid Address.
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid email.
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="Password">Give a Strong Password</label>
+            <input type="password" class="form-control" id="Password" required>
+            <div class="valid-feedback">
+                Totally Safe Now!
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <div class="form-group">
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">
+                Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+                You must agree before submitting.
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary" type="submit" onclick="Update()"> Update </button>
+
+</form>
+
+<script src="~/js/update-backer.js"></script>

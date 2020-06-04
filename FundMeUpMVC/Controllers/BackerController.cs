@@ -10,6 +10,7 @@ using X.PagedList;
 
 namespace FundMeUpMVC.Controllers
 {
+    [Route("[controller]")]
     public class BackerController : Controller
     {
         private readonly ILogger<ProjectController> logger;
@@ -22,15 +23,18 @@ namespace FundMeUpMVC.Controllers
             this.backerManager = backerManager;
             this.backerprojectMng = backerprojectMng;
         }
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet("CreateBacker")]
         public IActionResult CreateBacker()
         {
             var viewModel = new BackerModel();
             return View(viewModel);
         }
+        [HttpGet("AllBackers")]
         public IActionResult AllBackers()
         {
             var viewModel = new BackerModel();
@@ -38,6 +42,12 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
 
+        [HttpGet("BackerPage/{id}")]
+        public IActionResult BackerPage()
+        {
+            return View();
+        }
+        [HttpGet("Dashboard")]
         public IActionResult Dashboard(int? page)
         {
             int pageSize = 2;
