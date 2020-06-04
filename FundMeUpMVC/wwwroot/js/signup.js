@@ -1,5 +1,5 @@
 ﻿// Write your JavaScript code.
-function submitToServer() {
+function submitToServerBacker() {
     actionMethod = "POST"
     actionUrl = "/ApiBacker/CreateBacker"
     sendData = {
@@ -23,7 +23,7 @@ function submitToServer() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            $('#responseDiv').html(JSON.stringify(data));
+            window.open("/Project/AllProject","_self");
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -31,7 +31,38 @@ function submitToServer() {
     });
 
 }
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+
+function submitToServerCreator() {
+    actionMethod = "POST"
+    actionUrl = "/ApiProjectCreator/CreateProjectCreator"
+    sendData = {
+        "FirstName": $('#FirstNameC').val(),
+        "LastName": $('#LastNameC').val(),
+        "Address": $('#AddressC').val(),
+        "Email": $('#EmailC').val(),
+        "Password": $('#PasswordC').val()
+    }
+    alert(JSON.stringify(sendData))
+
+    $.ajax({
+        url: actionUrl,
+        dataType: 'json',
+        type: actionMethod,
+        data: JSON.stringify(sendData),
+
+        contentType: 'application/json',
+        processData: false,
+        success: function (data, textStatus, jQxhr) {
+            window.open("/Project/CreateProject", "_self");
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+
+}
+
+
 (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -44,11 +75,21 @@ function submitToServer() {
                     event.preventDefault();
                     event.stopPropagation();
                 }
-                else { submitToServer(); }
+                else {
+                    if (user == "Backer") { submitToServerBacker(); }
+                    if (user== "Creator") {  submitToServerCreator(); }
+                }
                 form.classList.add('was-validated');
-                //submitToServer();
+               
             }, false);
         });
     }, false);
 })();
-//submitToServer();
+
+function GetUser(id) {
+    user = id
+    console.log(user)
+}
+
+let user="Backer"
+

@@ -15,10 +15,7 @@
 			document.getElementById("StatusUpdate").innerHTML = data["statusUpdate"]
 			document.getElementById("details").innerHTML = `BudgetGoal:${data["budgetGoal"]} , Total Fund:${data["balance"]} , Backers:`
 			
-			//document.getElementById("DelButton").value = data["id"]
-			//document.getElementById("Cat").innerHTML = data["category"]
-
-
+			
 			console.log(data)
 
 		},

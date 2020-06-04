@@ -65,6 +65,13 @@ namespace FundMeUpMVC.Controllers
             return View(catOpt);
         }
 
+        [HttpGet("SignUp")]
+        public IActionResult SignUp()
+        {
+            var viewModel = new BackerModel();
+            return View(viewModel);
+        }
+
         [HttpGet("Login")]
         public IActionResult Login()
         {

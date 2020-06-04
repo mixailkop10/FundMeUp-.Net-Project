@@ -23,11 +23,7 @@ namespace FundMeUpMVC.Controllers
         {
             return View();
         }
-        public IActionResult CreateProjectCreator()
-        {
-            var viewModel = new ProjectCreatorModel();
-            return View(viewModel);
-        }
+        
         public IActionResult AllProjectCreators()
         {
             var viewModel = new ProjectCreatorModel();

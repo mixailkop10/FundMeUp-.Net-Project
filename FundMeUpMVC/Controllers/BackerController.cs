@@ -19,15 +19,7 @@ namespace FundMeUpMVC.Controllers
             this.logger = logger;
             this.backerManager = backerManager;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult CreateBacker()
-        {
-            var viewModel = new BackerModel();
-            return View(viewModel);
-        }
+        
         public IActionResult AllBackers()
         {
             var viewModel = new BackerModel();
