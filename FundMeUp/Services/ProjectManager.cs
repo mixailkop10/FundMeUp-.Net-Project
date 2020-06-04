@@ -1,6 +1,8 @@
 ﻿using FundMeUp.Models;
 using FundMeUp.Options;
 using FundMeUp.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -60,7 +62,6 @@ namespace FundMeUp.Services
                 .ToList();
         }
 
-
         public List<Project> FindProjectByNameAndCategory(ProjectOption projectOption) //string name , Category category
         {
             //return db.Projects
@@ -74,9 +75,47 @@ namespace FundMeUp.Services
                 .ToList();
         }
 
+        public Project FindProjectByProjectCreator(int pcid)
+        {
+            return db.Projects
+                .Include(p => p.ProjectCreator)
+                .Where(p => p.ProjectCreator.Id == pcid)
+                .FirstOrDefault();
+        }
+
         public List<Project> GetAll()
         {
             return db.Projects.ToList();
+        }
+
+        public List<Project> GetRecentProjects()
+        {
+            //Projects for the week
+            return db.Projects.Where(p=>p.DoΑ.AddDays(-(int)p.DoΑ.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek)).ToList();
+        }
+
+        public List<Project> GetFamousProjects() 
+        {
+            //projects approaching target - BudgetGoal 
+            var filterBalances =  db.Projects.OrderBy(p => p.BudgetGoal - p.Balance).Take(10).Select(p=>p.Id).ToList();
+
+            //projects with most fundings
+            var mostFundings = from project in db.Projects
+                                from backerproject in db.BackerProjects
+                                    .Where(bp => bp.ProjectId == project.Id)
+                                    .GroupBy(bp => bp.ProjectId)
+                                    .Select(bp => new { Total = bp.Count() })
+                                    .OrderByDescending(bp => bp.Total).Take(10)
+                               select new
+                               {
+                                    project.Id,
+                               };
+
+            var filterFundings = mostFundings.Select(x => x.Id).ToList();
+
+            var projects = db.Projects.Where(p => filterBalances.Contains(p.Id) || filterFundings.Contains(p.Id)).ToList();
+
+            return projects;
         }
 
         public bool DeleteProjectById(int id)

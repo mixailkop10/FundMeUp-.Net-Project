@@ -44,9 +44,9 @@ namespace FundMeUpMVC.Controllers
         }
 
         [HttpPut("EditBacker/{id}")]
-        public Backer EditBacker([FromBody] BackerOption backerOption, int backerId)
+        public Backer EditBacker([FromBody] BackerOption backerOption, int id)
         {
-            return backerManager.UpdateBacker(backerOption, backerId);
+            return backerManager.UpdateBacker(backerOption, id);
         }
 
         //[HttpDelete("DeleteBacker/{id}")]
