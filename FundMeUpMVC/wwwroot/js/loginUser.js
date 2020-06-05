@@ -20,7 +20,10 @@
                 }
                 else {
                     backerId = data["id"]
-                    window.open("/Backer/Dashboard")
+                    ln=data["lastname"]
+                    localStorage.setItem("userId", backerId)
+                    document.getElementById("userlog").value= `${ln}(LogOut)`;
+                    window.open(`/Backer/Dashboard/${backerId}`,"_self")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {

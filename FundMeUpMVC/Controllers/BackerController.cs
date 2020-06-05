@@ -37,15 +37,15 @@ namespace FundMeUpMVC.Controllers
         {
             return View();
         }
-        [HttpGet("Dashboard")]
-        public IActionResult Dashboard(int? page)
+        [HttpGet("Dashboard/{id}")]
+        public IActionResult Dashboard(int? page,int id)
         {
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
             BDashboardViewModel bdash = new BDashboardViewModel()
             {
-                BackerProjects = backerprojectMng.GetBackerFundings(1).ToPagedList(pageNumber, pageSize)
+                BackerProjects = backerprojectMng.GetBackerFundings(id).ToPagedList(pageNumber, pageSize)
             };
             return View(bdash);
         }
