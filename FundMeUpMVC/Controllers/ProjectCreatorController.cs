@@ -41,7 +41,7 @@ namespace FundMeUpMVC.Controllers
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
-            var projectId = projectMng.FindProjectByProjectCreator(1).Id;
+            var projectId = projectMng.FindProjectByProjectCreator(1004).Id;
 
             PCDashboardViewModel pcdash = new PCDashboardViewModel()
             {

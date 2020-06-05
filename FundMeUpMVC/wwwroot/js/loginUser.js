@@ -51,7 +51,7 @@
                 }
                 else {
                     projectCreatorId = data["id"]
-                    window.open("/Project/CreateProject")
+                    window.open("/ProjectCreator/Dashboard")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
