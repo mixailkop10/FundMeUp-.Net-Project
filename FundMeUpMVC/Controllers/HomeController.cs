@@ -75,6 +75,7 @@ namespace FundMeUpMVC.Controllers
         [HttpGet("Login")]
         public IActionResult Login()
         {
+            //var viewModel = new BackerModel();
             return View();
         }
 

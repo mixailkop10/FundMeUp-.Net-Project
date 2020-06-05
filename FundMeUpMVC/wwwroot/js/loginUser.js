@@ -3,6 +3,7 @@
         actionMethod = "POST"
         actionUrl = "/ApiBacker/LoginBacker"
         sendData = {
+            "Id": $('#UserId').val(),
             "Email": $('#Email').val(),
             "Password": $('#Password').val()
         }
@@ -19,8 +20,8 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    backerId = data["id"]
-                    window.open("/Backer/DashBoard")
+                    localStorage.setItem("Id", "UserId");
+                    window.open("/Backer/AllBackers");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -34,8 +35,9 @@
         actionMethod = "POST"
         actionUrl = "/ApiProjectCreator/LoginProjectCreator"
         sendData = {
-            "Email": $('#Email').val(),
-            "Password": $('#Password').val()
+            "Id": $('UserIdC').val(),
+            "Email": $('#EmailC').val(),
+            "Password": $('#PasswordC').val()
         }
         $.ajax({
             url: actionUrl,
@@ -50,12 +52,42 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    projectCreatorId = data["id"]
-                    window.open("/ProjectCreator/Dashboard")
+                    localStorage.setItem("Id", "UserIdC");
+                    window.open("/ProjectCreator/AllProjectCreators");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
             }
         })
-    };
+};
+
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                else {
+                    if (user == "Backer") { loginButtonB(); }
+                    if (user == "Creator") { loginButtonPC(); }
+                }
+                form.classList.add('was-validated');
+
+            }, false);
+        });
+    }, false);
+})();
+
+function GetUser(id) {
+    user = id
+    console.log(user)
+}
+
+let user = "Backer"

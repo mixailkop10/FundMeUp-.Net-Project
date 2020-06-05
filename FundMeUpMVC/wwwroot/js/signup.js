@@ -1,5 +1,4 @@
-﻿// Write your JavaScript code.
-function submitToServerBacker() {
+﻿function submitToServerBacker() {
     actionMethod = "POST"
     actionUrl = "/ApiBacker/CreateBacker"
     sendData = {
@@ -69,9 +68,7 @@ function submitToServerCreator() {
             console.log(errorThrown);
         }
     });
-
 }
-
 
 (function () {
     'use strict';
