@@ -1,24 +1,74 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Log in";
 }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <h1>WELCOME USER</h1>
-
-<form id="LoginButton">
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label>ARE YOU A PROJECT CREATOR</label>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center text-success">Log In</h1>
             <br />
-            <input type="button" id="button1" class="button" onclick="location.href='LoginProjectCreator';" value="YES" />
+            <div class="col-sm-12">
+                <ul class="nav nav-pills">
+                    <li class="" style="width:50%">
+                        <a class="btn btn-lg btn-default"
+                           data-toggle="tab" href="#home" id="Backer" onclick="GetUser(this.id)">Backer</a>
+                    </li>
+                    <li class=" " style="width:48%">
+                        <a class=" btn btn-lg btn-default"
+                           data-toggle="tab" href="#home" id="Creator" onclick="GetUser(this.id)">Project Creator</a>
+                    </li>
+                </ul>
+                <br />
+                <br />
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <form class="needs-validation" novalidate>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Email">Email</label>
+                                    <input type="email" class="form-control" id="Email" vrequired>
+                                </div> 
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" id="Password" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <br />
+                            <button class="btn btn-primary" id="Backer" type="button" onclick="loginButtonB()" value="Backer"> Enter </button>
+                        </form>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+
+                        <form class="needs-validation" novalidate>
+
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Email">Email</label>
+                                    <input type="email" class="form-control" id="Email2" required>
+                                </div>      
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" id="Password2" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <br />
+                            <button class="btn btn-primary" id="Creator" type="button" onclick="loginButtonPC()" value="Creator"> Enter </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label>ARE YOU A BACKER</label>
-            <br />
-            <input type="button" id="button2" class="button" onclick="location.href = 'LoginBacker';" value="YES" />
-        </div>
-    </div>
-</form>
+</div>
 
-<div id="responseDiv">   </div>
+<script src="~/js/loginUser.js"></script>

@@ -13,23 +13,15 @@
 
             <h1 class="text-center text-success"> Sign Up</h1>
             <br />
-
             <div class="col-sm-12">
-
                 <ul class="nav nav-pills">
-
-
-
-                    <li class="" style="width:50%"><a class="btn btn-lg btn-default" data-toggle="tab" href="#home" id="Backer" onclick="GetUser(this.id)">Backer</a></li>
-
-                    <li class=" " style="width:48%"><a class=" btn btn-lg btn-default" data-toggle="tab" href="#menu1" id="Creator" onclick="GetUser(this.id)">Project Creator</a></li>
-
-
-
+                    <li class="" style="width:50%"><a class="btn btn-lg btn-default" data-toggle="tab"
+                                                      href="#home" id="Backer" onclick="GetUser(this.id)">Backer</a></li>
+                    <li class=" " style="width:48%"><a class=" btn btn-lg btn-default" data-toggle="tab" 
+                                                       href="#menu1" id="Creator" onclick="GetUser(this.id)">Project Creator</a></li>
                 </ul>
-
-                <br /><br />
-
+                <br />
+                <br />
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active" >
 
@@ -83,35 +75,28 @@
                                         Please provide a valid email.
                                     </div>
                                 </div>
-
-                                <div class="col-md-4 mb-3">
-                                    <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="Password" placeholder="Write a Password"  autocomplete="off" required>
-                                    <div class="valid-feedback">
-                                        Totally Safe Now!
-                                    </div>
-                                </div>
                             </div>
-
+                            <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="Password">Password</label>
+                                        <input type="password" class="form-control" id="Password" placeholder="Write a Password" autocomplete="off" required>
+                                        <div class="valid-feedback">
+                                            Totally Safe Now!
+                                        </div>
+                                    </div>
+                            </div>
+                            
                             <br />
-
-
-
-
-
-
                             <button class="btn btn-primary" id="Backer" type="submit" value="Backer" > Create </button>
 
                         </form>
 
                         <br />
-                        <a href="#" class="pull-right btn btn-block btn-danger"> Already Register ?   </a>
+                        <button class="badge-danger" type="button" onclick="location.href = 'Login'"> Already Registered ?? </button>
 
                     </div>
 
                     <div id="menu1" class="tab-pane fade">
-
-
 
                         <form class="needs-validation" novalidate>
 
@@ -167,15 +152,13 @@
                                     </div>
                                 </div>
                             </div>
-
                             <br />
-
 
                             <button class="btn btn-primary" id="Creator" type="submit" value="Creator" > Create </button>
 
                         </form>
                         <br />
-                        <a href="#" class="pull-right btn btn-block btn-success"> Already Register ?   </a>
+                        <button class="badge-danger" type="button" onclick="location.href = 'Login'"> Already Registered?? </button>
 
                     </div>
                 </div>

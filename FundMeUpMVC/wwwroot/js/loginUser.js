@@ -20,7 +20,7 @@
                 }
                 else {
                     backerId = data["id"]
-                    window.open("/Backer/Dashboard")
+                    window.open("/Backer/DashBoard")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {

@@ -23,7 +23,12 @@ function submitToServerBacker() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            window.open("/Project/AllProject","_self");
+            if (data == null) {
+                $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+            }
+            else {
+                window.open("/Project/AllProject", "_self");
+            }            
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -53,7 +58,12 @@ function submitToServerCreator() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            window.open("/Project/CreateProject", "_self");
+            if (data == null) {
+                $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+            }
+            else {
+                window.open("/Project/AllProject", "_self");
+            }
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
