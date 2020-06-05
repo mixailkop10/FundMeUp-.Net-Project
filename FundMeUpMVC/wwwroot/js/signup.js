@@ -23,7 +23,8 @@ function submitToServerBacker() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            window.open("/Project/AllProject","_self");
+            alert("fwfw")
+            window.open("/Project/AllProjects", "_self")
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -53,13 +54,14 @@ function submitToServerCreator() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            window.open("/Project/CreateProject", "_self");
+            console.log(data)
+            
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
         }
     });
-
+    window.open("/Project/AllProjects", "_self")
 }
 
 
@@ -77,10 +79,10 @@ function submitToServerCreator() {
                 }
                 else {
                     if (user == "Backer") { submitToServerBacker(); }
-                    if (user== "Creator") {  submitToServerCreator(); }
+                    else /*(user == "Creator") */{ submitToServerCreator(); }
                 }
                 form.classList.add('was-validated');
-               
+                
             }, false);
         });
     }, false);
@@ -91,5 +93,5 @@ function GetUser(id) {
     console.log(user)
 }
 
-let user="Backer"
-
+let user = "Backer";
+let x;

@@ -20,7 +20,7 @@
                 }
                 else {
                     backerId = data["id"]
-                    window.open("/Project/AllProject")
+                    window.open("/Project/AllProjects","_self")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -34,8 +34,8 @@
         actionMethod = "POST"
         actionUrl = "/ApiProjectCreator/LoginProjectCreator"
         sendData = {
-            "Email": $('#Email').val(),
-            "Password": $('#Password').val()
+            "Email": $('#EmailC').val(),
+            "Password": $('#PasswordC').val()
         }
         $.ajax({
             url: actionUrl,
@@ -51,7 +51,7 @@
                 }
                 else {
                     projectCreatorId = data["id"]
-                    window.open("/Project/CreateProject")
+                    window.open("/Project/CreateProject","_self")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {

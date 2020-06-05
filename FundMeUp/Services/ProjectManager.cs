@@ -22,6 +22,11 @@ namespace FundMeUp.Services
         // create read update delete
         public Project CreateProject(ProjectOption projOption)
         {
+            if (projOption.Name == null) return null;
+            if (projOption.Description == null) return null;
+            if (projOption.DoA == null) return null;
+            if (projOption.StatusUpdate == null) return null;
+
             Project project = new Project
             {
                 Name = projOption.Name,

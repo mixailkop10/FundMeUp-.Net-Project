@@ -38,7 +38,7 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
 
-        [HttpGet("AllProject")]
+        [HttpGet("AllProjects")]
         public IActionResult AllProjects()
         {
            
