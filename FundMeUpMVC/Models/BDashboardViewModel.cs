@@ -9,6 +9,7 @@ namespace FundMeUpMVC.Models
 {
     public class BDashboardViewModel
     {
+        public Backer Backer { get; set; }
         public IPagedList<BackerProject> BackerProjects { get; set; }
     }
 }
