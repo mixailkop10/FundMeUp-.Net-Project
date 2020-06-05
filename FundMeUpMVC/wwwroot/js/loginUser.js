@@ -20,7 +20,7 @@
                 }
                 else {
                     backerId = data["id"]
-                    window.open("/Project/AllProjects","_self")
+                    window.open("/Backer/Dashboard")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -51,7 +51,7 @@
                 }
                 else {
                     projectCreatorId = data["id"]
-                    window.open("/Project/CreateProject","_self")
+                    window.open("/Project/CreateProject")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
