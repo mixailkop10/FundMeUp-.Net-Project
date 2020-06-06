@@ -20,6 +20,7 @@
                 }
                 else {
                     //user = JSON.parse(localStorage.getItem('backer'));
+                    //dummy comment
 
                     backerId = data["id"]
                     backer=JSON.stringify(data)
