@@ -19,22 +19,18 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    backer = JSON.stringify(data)
-                    ln = data["lastname"];
-                    localStorage.setItem("Backer", backer);
-                    document.getElementById("userlog").value = `${ln}(LogOut)`;
+                    //backer = JSON.stringify(data)
+                    //ln = data["lastname"];
+                    //localStorage.setItem("Backer", backer);
+                    //document.getElementById("userlog").value = `${ln}(LogOut)`;
                     //user = JSON.parse(localStorage.getItem('backer'));
                     //dummy comment
 
-                    //backerId = data["id"]
-                    //backer = JSON.stringify(data)
-                    //ln = data["lastname"]
-                    //localStorage.setItem("backerId", backerId)
-                    //localStorage.setItem("backer", backer)
-                    //document.getElementById("userlog").value = `${ln}(LogOut)`;
-                    //window.open(`/Backer/Dashboard/${backerId}`, "_self")
+                    backerId = data["id"]
+                    localStorage.setItem("backerId", backerId)
+                    window.open(`/Backer/Dashboard/${backerId}`, "_self")
 
-                    window.open(`/Backer/Dashboard/${data.id}`, "_self");
+                   // window.open(`/Backer/Dashboard/${data.id}`, "_self");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -64,13 +60,18 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    creator = JSON.stringify(data)
-                    ln = data["lastname"];
-                    localStorage.setItem("Creator", creator);
-                    document.getElementById("userlog").value = `${ln}(LogOut)`;
-                    //user = JSON.parse(localStorage.getItem('creator'));
+                    //creator = JSON.stringify(data)
+                    //ln = data["lastname"];
+                    //localStorage.setItem("Creator", creator);
+                    //document.getElementById("userlog").value = `${ln}(LogOut)`;
+                    ////user = JSON.parse(localStorage.getItem('creator'));
 
-                    window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
+                    //window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
+
+
+                    creatorId = data["id"]
+                    localStorage.setItem("creatorId", creatorId)
+                    window.open(`/ProjectCreator/Dashboard/${creatorId}`, "_self")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
