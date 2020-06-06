@@ -77,8 +77,17 @@ namespace FundMeUpMVC.Controllers
         {
             return View();
         }
-        //Δεν ξερω ποσο σιγουρα ειναι αυτα 
-        
+
+        [HttpGet("LoginBacker")]
+        public IActionResult LoginBacker()
+        {
+            return View();
+        }
+        [HttpGet("LoginProjectCreator")]
+        public IActionResult LoginProjectCreator()
+        {
+            return View();
+        }
 
         [HttpGet("Error")]
 

@@ -30,4 +30,10 @@ namespace FundMeUpMVC.Models
     {
         public List<Reward> Rewards { get; set; }
     }
-}
+
+    public class ProjectModel
+    {
+        public int ProjectId { get; set; }
+    }
+}   
+

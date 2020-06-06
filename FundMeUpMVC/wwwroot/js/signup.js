@@ -1,5 +1,4 @@
-﻿// Write your JavaScript code.
-function submitToServerBacker() {
+﻿function submitToServerBacker() {
     actionMethod = "POST"
     actionUrl = "/ApiBacker/CreateBacker"
     sendData = {
@@ -23,8 +22,12 @@ function submitToServerBacker() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            alert("fwfw")
-            window.open("/Project/AllProjects", "_self")
+            if (data == null) {
+                $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+            }
+            else {
+                window.open("/Project/AllProject", "_self");
+            }            
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -54,16 +57,18 @@ function submitToServerCreator() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            console.log(data)
-            
+            if (data == null) {
+                $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+            }
+            else {
+                window.open("/Project/AllProject", "_self");
+            }
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
         }
     });
-    window.open("/Project/AllProjects", "_self")
 }
-
 
 (function () {
     'use strict';
@@ -79,10 +84,10 @@ function submitToServerCreator() {
                 }
                 else {
                     if (user == "Backer") { submitToServerBacker(); }
-                    else /*(user == "Creator") */{ submitToServerCreator(); }
+                    if (user== "Creator") {  submitToServerCreator(); }
                 }
                 form.classList.add('was-validated');
-                
+               
             }, false);
         });
     }, false);

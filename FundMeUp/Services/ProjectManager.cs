@@ -29,6 +29,9 @@ namespace FundMeUp.Services
             if (projOption.DoA == null) return null;
             if (projOption.StatusUpdate == null) return null;
 
+            //var projectcreator = db.ProjectCreators.Find(projOption.ProjectCreatorId);
+            //if (projectcreator == null) return null;
+
             Project project = new Project
             {
                 Name = projOption.Name,
@@ -37,7 +40,10 @@ namespace FundMeUp.Services
                 DoΑ = projOption.DoA,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
-                Available = true
+                Available = true,
+                ProjectCreatorId= projOption.ProjectCreatorId
+                
+              
 
             };
 

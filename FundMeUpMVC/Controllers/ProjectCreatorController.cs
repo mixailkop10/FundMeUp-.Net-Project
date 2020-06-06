@@ -10,6 +10,7 @@ using X.PagedList;
 
 namespace FundMeUpMVC.Controllers
 {
+    [Route("[controller]")]
     public class ProjectCreatorController : Controller
     {
         private readonly ILogger<ProjectController> logger;
@@ -25,10 +26,7 @@ namespace FundMeUpMVC.Controllers
             this.projectMng = projectMng;
             this.backerprojectMng = backerprojectMng;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
         
         public IActionResult AllProjectCreators()
         {
@@ -36,13 +34,15 @@ namespace FundMeUpMVC.Controllers
             viewModel.ProjectCreators = projectCreatorManager.GetAllProjectCreators();
             return View(viewModel);
         }
-        public IActionResult Dashboard(int? page)
+
+        [HttpGet("Dashboard/{id}")]
+        public IActionResult Dashboard( int? page, [FromRoute] int id)
         {
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
             int projectId=0;
-            var project = projectMng.FindProjectByProjectCreator(2);
+            var project = projectMng.FindProjectByProjectCreator(id);
             if (project != null)
             {
                 projectId = project.Id;
@@ -58,12 +58,12 @@ namespace FundMeUpMVC.Controllers
         }
 
         //Search for Accepted Fundings
-        [HttpPost]
-        public IActionResult Dashboard([FromBody] PCDashboardViewModel pcdashboard, int? page)
+        [HttpPost("Dashboard /{pid}")]
+        public IActionResult Dashboard([FromBody] PCDashboardViewModel pcdashboard, int? page,[FromRoute] int pid)
         {
             int pageSize = 2;
             int pageNumber = (page ?? 1);
-            int projectId = projectMng.FindProjectByProjectCreator(2).Id;
+            int projectId = projectMng.FindProjectByProjectCreator(pid).Id;
 
             PCDashboardViewModel pcdash = new PCDashboardViewModel()
             {
