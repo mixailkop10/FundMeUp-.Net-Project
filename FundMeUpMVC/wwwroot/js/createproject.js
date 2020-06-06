@@ -10,8 +10,9 @@ function CreateProjectJS() {
     console.log(y)
     x = parseFloat(y)
     console.log(x)
-    
 
+    creatorid = parseInt(localStorage.getItem("creatorId"));
+    console.log(creatorid, typeof (creatorid));
 
     sendData = {
         "Name": $('#Name').val(),
@@ -19,7 +20,8 @@ function CreateProjectJS() {
         "DoA": $('#DoA').val(),
         "BudgetGoal": x,
         "Category": $('#Category').val(),
-        "StatusUpdate": $('#StatusUpdate').val()
+        "StatusUpdate": $('#StatusUpdate').val(),
+        "ProjectCreatorId": creatorid
     }
 
     
@@ -36,7 +38,7 @@ function CreateProjectJS() {
         success: function (data, textStatus, jQxhr) {
             
                alert(JSON.stringify(data))
-               window.open('/Project/AllProjects', "_self")
+               window.open(`/ProjectCreator/Dashboard/${creatorid}`, "_self")
 
             
         },

@@ -19,9 +19,13 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
+                    //user = JSON.parse(localStorage.getItem('backer'));
+
                     backerId = data["id"]
+                    backer=JSON.stringify(data)
                     ln=data["lastname"]
-                    localStorage.setItem("userId", backerId)
+                    localStorage.setItem("backerId", backerId)
+                    localStorage.setItem("backer", backer)
                     document.getElementById("userlog").value= `${ln}(LogOut)`;
                     window.open(`/Backer/Dashboard/${backerId}`,"_self")
                 }
@@ -53,9 +57,9 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    creatorId = data["id"]
+                    creatorId = parseInt(data["id"])
                     ln = data["lastname"]
-                    localStorage.setItem("userId", creatorId)
+                    localStorage.setItem("creatorId", creatorId)
                     document.getElementById("userlog").value = `${ln}(LogOut)`;
                     window.open(`/ProjectCreator/Dashboard/${creatorId}`, "_self")
                 }
