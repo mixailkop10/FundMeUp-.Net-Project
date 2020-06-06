@@ -3,7 +3,6 @@
         actionMethod = "POST"
         actionUrl = "/ApiBacker/LoginBacker"
         sendData = {
-            "Id": $('#UserId').val(),
             "Email": $('#Email').val(),
             "Password": $('#Password').val()
         }
@@ -20,8 +19,13 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    localStorage.setItem("Id", "UserId");
-                    window.open("/Backer/AllBackers");
+                    backerId = data["Ιd"];
+                    localStorage.setItem("Id", backerId);                   
+                    //backerId = data["id"];
+                    //ln = data["lastname"];
+                    //localStorage.setItem("userId", backerId);
+                    //document.getElementById("userlog").value = `${ln}(LogOut)`;
+                    window.open("/Backer/Dashboard", "_self");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -53,7 +57,7 @@
                 }
                 else {
                     localStorage.setItem("Id", "UserIdC");
-                    window.open("/ProjectCreator/AllProjectCreators");
+                    window.open("/ProjectCreator/Dashboard", "_self");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -89,5 +93,3 @@ function GetUser(id) {
     user = id
     console.log(user)
 }
-
-let user = "Backer"
