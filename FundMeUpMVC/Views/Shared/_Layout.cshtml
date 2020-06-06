@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="~/lib/fontawesome/css/all.css">
     <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css" />
 
-
-
 </head>
 <body>
     <header>
@@ -41,7 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProjectCreator" asp-action="AllProjectCreators">ProjectCreators' List</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="userlog" href="/Home/Login" value="" onclick="localStorage.clear();">LogOut</a>
+                        </li>
                     </ul>
                 </div>
             </div>

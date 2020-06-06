@@ -3,6 +3,7 @@
         actionMethod = "POST"
         actionUrl = "/ApiBacker/LoginBacker"
         sendData = {
+            //"Id": $('#Id').val(),
             "Email": $('#Email').val(),
             "Password": $('#Password').val()
         }
@@ -19,13 +20,12 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    backerId = data["Ιd"];
-                    localStorage.setItem("Id", backerId);                   
-                    //backerId = data["id"];
-                    //ln = data["lastname"];
-                    //localStorage.setItem("userId", backerId);
-                    //document.getElementById("userlog").value = `${ln}(LogOut)`;
-                    window.open("/Backer/Dashboard", "_self");
+                    backer = JSON.stringify(data)
+                    ln = data["lastname"];
+                    localStorage.setItem("Backer", backer);
+                    document.getElementById("userlog").value = `${ln}(LogOut)`;
+
+                    window.open(`/Backer/Dashboard/${data.id}`, "_self");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -39,7 +39,7 @@
         actionMethod = "POST"
         actionUrl = "/ApiProjectCreator/LoginProjectCreator"
         sendData = {
-            "Id": $('UserIdC').val(),
+            //"Id": $('UserIdC').val(),
             "Email": $('#EmailC').val(),
             "Password": $('#PasswordC').val()
         }
@@ -56,8 +56,12 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    localStorage.setItem("Id", "UserIdC");
-                    window.open("/ProjectCreator/Dashboard", "_self");
+                    creator = JSON.stringify(data)
+                    ln = data["lastname"];
+                    localStorage.setItem("Creator", creator);
+                    document.getElementById("userlog").value = `${ln}(LogOut)`;
+
+                    window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
