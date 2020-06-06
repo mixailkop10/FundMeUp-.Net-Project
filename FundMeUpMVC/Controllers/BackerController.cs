@@ -45,8 +45,8 @@ namespace FundMeUpMVC.Controllers
 
             BDashboardViewModel bdash = new BDashboardViewModel()
             {
-                Backer = backerManager.FindBackerById(1),
-                BackerProjects = backerprojectMng.GetBackerFundings(1).ToPagedList(pageNumber, pageSize)
+                Backer = backerManager.FindBackerById(id),
+                BackerProjects = backerprojectMng.GetBackerFundings(id).ToPagedList(pageNumber, pageSize)
             };
             return View(bdash);
         }
