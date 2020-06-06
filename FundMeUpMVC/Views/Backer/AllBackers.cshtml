@@ -2,18 +2,15 @@
 @{
     ViewData["Title"] = "AllBackers";
 }
-
-<h2> A list of All Backer's </h2>
-<br />
-<table id="resultTable" border="1"
-       style="color: black;background-color: goldenrod "
-       cellpadding="1" cellspacing="1">
+    <h1 style="text-align:center; font-family:Georgia;">A list of All Backer's</h1>
+<br>
+<table id="resultTable" border="1" class="table table-sm" cellpadding="1" cellspacing="1">
     <tr>
-        <th>Όνομα	</th>
-        <th>Επώνυμο</th>
-        <th>Ιδιότητα</th>
-        <th>Διεύθυνση</th>
-        <th>Email</th>
+        <th >Όνομα	</th>
+        <th >Επώνυμο</th>
+        <th >Ιδιότητα</th>
+        <th >Διεύθυνση</th>
+        <th >Email</th>
     </tr>
     @{ foreach (var backer in Model.Backers)
         {
@@ -24,9 +21,9 @@
                 <td> @backer.Address</td>
                 <td> @backer.Email</td>
                 <td> <a href="#" onclick="deleteBacker(@backer.Id)"> Delete</a></td>
-            </tr> 
-            } 
+            </tr>
         }
+    }
 </table>
 
 <script src="~/js/all-backers.js"></script>
