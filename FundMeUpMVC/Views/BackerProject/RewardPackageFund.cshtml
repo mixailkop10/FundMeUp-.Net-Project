@@ -9,12 +9,14 @@
         border-color: #deb554;
         color: #e5a757;
     }
+
     .prpdet-card {
         border: 2px solid #a6cdff;
         color: #2f2f2f;
         background-color: rgba(105, 174, 178, 0.1);
         padding: 1em;
     }
+
     .rpdet-card {
         border: 2px solid #59bac9;
         background-color: #e9f3fc;
@@ -74,7 +76,7 @@
         <input id="fund" type="number" class="form-control">
         <div class="row" style="margin-top: 50px">
             <div class="col text-center">
-                <input type="button" id="fbtn" onclick="postFunding(StoreValue[0], @Model.BackerProjectOption.BackerId, @Model.BackerProjectOption.ProjectId)" value="Support" class="btn btn-funding btn-lg text-light" />
+                <input type="button" id="fbtn" onclick="postFunding(@Model.BackerProjectOption.BackerId, @Model.BackerProjectOption.ProjectId, @Model.Reward.Id)" value="Support" class="btn btn-funding btn-lg text-light" />
             </div>
         </div>
     </div>
@@ -82,23 +84,8 @@
 
 <div class="alert" id="responseDiv"></div>
 
-@section Scripts{
-
-    <script>
-        $(document).ready(function () {
-            $('#list-tab a:first-child').tab('show')
-        });
-
-        $('#list-tab a').on('click', function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-            StoreValue = []; //clear array
-            StoreValue.push($(this).attr("id")); //add id to array
-        })
-
-        @*$("#fbtn").click(function () {
-            postFunding(StoreValue[0], @Model.BackerProjectOption.BackerId, @Model.BackerProjectOption.ProjectId)
-        })*@
-    </script>
-
+@section Scripts
+{
+   <script src="~/js/create-funding.js"></script>
 }
+
