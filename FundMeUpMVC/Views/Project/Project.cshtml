@@ -51,7 +51,7 @@
                     <h5 class="card-title">@reward.Price$</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Reward</h6>
                     <p class="card-text">@reward.Description</p>
-                    <button type="button" class="btn btn-primary" href="/Project/AllProjects">Fund Me Up</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href = '/BackerProject/RewardPackageFund/@reward.Id/' + localStorage.getItem('backerId')">Fund Me Up</button>
 
                 </div>
             </div>

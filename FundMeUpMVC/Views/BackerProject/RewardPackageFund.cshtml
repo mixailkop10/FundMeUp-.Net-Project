@@ -1,0 +1,104 @@
+﻿@model FundMeUpMVC.Models.FundingViewModel
+@{
+    ViewData["Title"] = "CreateFund";
+}
+
+<style>
+    .list-group-item.active {
+        background-color: #fff;
+        border-color: #deb554;
+        color: #e5a757;
+    }
+    .prpdet-card {
+        border: 2px solid #a6cdff;
+        color: #2f2f2f;
+        background-color: rgba(105, 174, 178, 0.1);
+        padding: 1em;
+    }
+    .rpdet-card {
+        border: 2px solid #59bac9;
+        background-color: #e9f3fc;
+    }
+
+    .btn-funding {
+        background-color: #1a917a;
+        border-color: #145f51;
+    }
+</style>
+
+<h3>Add Your Contribution</h3>
+
+<div class="form-row">
+    <div class="col-md-6">
+        <div class="card bg-light">
+            <div class="card-body">
+                <p><b>Each Funding Package is accompanied by a reward to you!</b> <br />Choose one of the following packages:</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 offset-2">
+        <div class="card bg-light">
+            <div class="card-body">
+                <p> <b>It will be our pleasure to work with you!</b><br /> Leave your financial support here:</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-row" style="margin-top:20px">
+    <div class="col-md-6">
+        <div class="card prpdet-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="text-info"><h5>@Model.Reward.Project.Name</h5><br /></div>
+                        <label>Funding Progress</label>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card rpdet-card">
+                            <div class="card-body" id="@Model.Reward.Id">
+                                <label>Package Details</label>
+                                <div class="text-info"><h5>@Model.Reward.Price € or more</h5><br /></div>
+                                <label>@Model.Reward.Name</label>
+                                <div class="text-secondary">@Model.Reward.Description</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 offset-2">
+        <input id="fund" type="number" class="form-control">
+        <div class="row" style="margin-top: 50px">
+            <div class="col text-center">
+                <input type="button" id="fbtn" onclick="postFunding(StoreValue[0], @Model.BackerProjectOption.BackerId, @Model.BackerProjectOption.ProjectId)" value="Support" class="btn btn-funding btn-lg text-light" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert" id="responseDiv"></div>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#list-tab a:first-child').tab('show')
+        });
+
+        $('#list-tab a').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+            StoreValue = []; //clear array
+            StoreValue.push($(this).attr("id")); //add id to array
+        })
+
+        @*$("#fbtn").click(function () {
+            postFunding(StoreValue[0], @Model.BackerProjectOption.BackerId, @Model.BackerProjectOption.ProjectId)
+        })*@
+    </script>
+
+}
