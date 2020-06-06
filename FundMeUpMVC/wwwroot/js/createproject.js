@@ -22,7 +22,7 @@ function CreateProjectJS() {
         "StatusUpdate": $('#StatusUpdate').val()
     }
 
-    alert(JSON.stringify(sendData))
+    
 
 
     $.ajax({
@@ -34,18 +34,15 @@ function CreateProjectJS() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            if (data != null) {
-                
-                alert(JSON.stringify(data))
-               // window.open(`/Project/AllProjects`, "_self")
+            
+               alert(JSON.stringify(data))
+               window.open('/Project/AllProjects', "_self")
 
-            }
-            else {
-                $('#responseDiv').html("symplhrvse to kena");
-            }
+            
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
+            $('#responseDiv').html("Please complete all the fields");
         }
     });
     

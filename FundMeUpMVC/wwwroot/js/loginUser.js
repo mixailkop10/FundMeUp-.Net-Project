@@ -53,8 +53,11 @@
                     $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
                 }
                 else {
-                    projectCreatorId = data["id"]
-                    window.open("/ProjectCreator/Dashboard")
+                    creatorId = data["id"]
+                    ln = data["lastname"]
+                    localStorage.setItem("userId", creatorId)
+                    document.getElementById("userlog").value = `${ln}(LogOut)`;
+                    window.open(`/ProjectCreator/Dashboard/${creatorId}`, "_self")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
