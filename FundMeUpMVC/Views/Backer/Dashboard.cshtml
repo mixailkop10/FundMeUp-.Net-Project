@@ -128,10 +128,10 @@
             <div class="card bprof-card">
                 <img src="https://www.flightonmobile.com/assets/images/user.png" alt="user image" class="img-responsive img-rounded dh-uimg">
 
-                <p>@Model.BackerProjects.FirstOrDefault().Backer.FirstName @Model.BackerProjects.FirstOrDefault().Backer.LastName</p>
-                <p>@Model.BackerProjects.FirstOrDefault().Backer.Email</p>
+                <p>@Model.Backer.FirstName @Model.Backer.LastName</p>
+                <p>@Model.Backer.Email</p>
                 <p>Total Fundings: @Model.BackerProjects.Count</p>
-                <a class="btn btn-info" href="/Backer/BackerPage/@Model.BackerProjects.FirstOrDefault().Id"><span>Profile <i class="fa fa-edit"></i></span></a>
+                <a class="btn btn-info" href="/Backer/BackerPage/@Model.Backer.Id"><span>Profile <i class="fa fa-edit"></i></span></a>
 
             </div>
 
