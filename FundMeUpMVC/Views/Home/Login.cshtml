@@ -32,39 +32,45 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="Email">Email</label>
-                                    <input type="email" class="form-control" id="Email" name="Email" required>
-                                </div> 
-                            </div>
-                            <div class="form-row">
+                                    <input type="email" class="form-control" id="Email" name="Email" />
+                                    <br />
+                                </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="Password" name="Password" autocomplete="off" required>
+                                    <input type="password" class="form-control" id="Password" name="Password" />
+                                    <br />
+
                                 </div>
                             </div>
-                            <br />
-                            <button class="btn btn-primary" id="Backer" type="button" onclick="loginButtonB()" value="Backer"> Enter </button>
-                        </form>
+                            <input class="pull-right btn btn-block btn-success" type="button" onclick="loginButtonB()" value="ENTER">
+                        </form><br /><br />
+                        <a href="/Home/SignUp" class="pull-right btn btn-block btn-info">Sign Up  </a>
                     </div>
                     <div id="projectCreatorMenu" class="tab-pane fade">
 
                         <form class="needs-validation" novalidate>
 
-                            <div class="form-row">
+                            <<div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="Email">Email</label>
-                                    <input type="email" class="form-control" id="EmailC" required>
-                                </div>      
-                            </div>
-                            <div class="form-row">
+                                    <input type="email" class="form-control" id="EmailC" name="Email" />
+                                    <br />
+                                </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="PasswordC" autocomplete="off" required>
+                                    <input type="password" class="form-control" id="PasswordC" name="Password" />
+                                    <br />
                                 </div>
                             </div>
-                            <br />
-                            <button class="btn btn-primary" id="Creator" type="button" onclick="loginButtonPC()" value="Creator"> Enter </button>
+                            <input class="pull-right btn btn-block btn-success" type="button" onclick="loginButtonPC()" value="ENTER">
+                            @*<button class="btn btn-primary" id="Creator" type="button" onclick="loginButtonPC()" value="Creator"> Enter </button>*@
+                            
 
                         </form>
+                        <br /><br />
+                        <a href="/Home/SignUp" class="pull-right btn btn-block btn-info"> Sign Up  </a>
+
+
                     </div>
                 </div>
             </div>
