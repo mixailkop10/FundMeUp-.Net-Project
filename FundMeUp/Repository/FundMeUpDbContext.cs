@@ -15,10 +15,10 @@ namespace FundMeUp.Repository
         public DbSet<Reward> Rewards { get; set; }
 
         //εμενα δουλευει μονο τοπικα 
-        //public readonly static string ConnectionString =
-        //    "Data Source = localhost;" +
-        //    "Initial Catalog = fundmeup-db; " +
-        //    "Integrated Security = True;";
+        public readonly static string ConnectionString =
+            "Data Source = localhost;" +
+            "Initial Catalog = fundmeup-db; " +
+            "Integrated Security = True;";
 
 
         public FundMeUpDbContext(DbContextOptions<FundMeUpDbContext> options)

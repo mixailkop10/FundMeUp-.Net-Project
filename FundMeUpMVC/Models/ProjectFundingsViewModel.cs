@@ -9,18 +9,11 @@ namespace FundMeUpMVC.Models
 {
     public class ProjectFundingsViewModel
     {
-        
-       // public IPagedList<Project> Projects { get; set; }
+        public List<BackerProject> PendingBackerProjects { get; set; }
+        public IPagedList<BackerProject> AcceptedBackerProjects { get; set; }
         public int ProjectId { get; set; }
         public DateTime SearchStartDate { get; set; }
         public DateTime SearchEndDate { get; set; }
-
-        //fotis apo katw
-
-        public int ProjectCreatorId { get; set; }
-
-        public List<Project> Projects { get; set; }
-        public ProjectCreator ProjectCreator { get; set; }
 
 
     }
