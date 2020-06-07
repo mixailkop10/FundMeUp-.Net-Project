@@ -11,5 +11,6 @@ namespace FundMeUp.Services
         public Reward CreateReward(RewardOption rewardOpt);
         public bool DeleteAllRewards(int projectId);
         public List<Reward> GetRewards(int projectId);
+        Reward FindRewardById(int id);
     }
 }

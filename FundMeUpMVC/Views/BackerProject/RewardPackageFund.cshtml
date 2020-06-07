@@ -1,0 +1,130 @@
+﻿@model FundMeUpMVC.Models.FundingViewModel
+@{
+    ViewData["Title"] = "CreateFund";
+}
+
+<style>
+    .list-group-item.active {
+        background-color: #fff;
+        border-color: #deb554;
+        color: #e5a757;
+    }
+
+    .prpdet-card {
+        border: 2px solid #a6cdff;
+        color: #2f2f2f;
+        background-color: rgba(105, 174, 178, 0.1);
+        padding: 1em;
+    }
+
+    .rpdet-card {
+        border: 2px solid #59bac9;
+        background-color: #e9f3fc;
+    }
+
+    .btn-funding {
+        background-color: #1a917a;
+        border-color: #145f51;
+    }
+
+    progress {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Get rid of default border in Firefox. */
+        border: none;
+        /* Dimensions */
+        /*width: 250px;
+        height: 20px;*/
+        width: 85%;
+    }
+    .progress-outer {
+        border: 1px solid #28867e;
+        margin-top: 10px;
+    }
+
+    .progress-10 {
+        color: green;
+    }
+
+        .progress-10::-webkit-progress-value {
+            background-color: green;
+        }
+        .progress-10::-moz-progress-bar {
+            background-color: green;
+        }
+    .progress-20 {
+        color: #1f4688;
+    }
+        .progress-20::-webkit-progress-value {
+            background-color: #18768f;
+        }
+        .progress-20::-moz-progress-bar {
+            background-color: #18768f;
+        }
+</style>
+
+<h3>Add Your Contribution</h3>
+
+<div class="form-row">
+    <div class="col-md-6">
+        <div class="card bg-light">
+            <div class="card-body">
+                <p><b>Each Funding Package is accompanied by a reward to you!</b> <br />Choose one of the following packages:</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 offset-2">
+        <div class="card bg-light">
+            <div class="card-body">
+                <p> <b>It will be our pleasure to work with you!</b><br /> Leave your financial support here:</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-row" style="margin-top:20px">
+    <div class="col-md-6">
+        <div class="card prpdet-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="text-info"><h5>@Model.Reward.Project.Name</h5><br /></div>
+                        Funding Goal:
+                        <div class="text-info">@Model.Reward.Project.BudgetGoal $</div><br />
+                        Project Progress:
+                        <div class="text-info">@Model.ProjectProgressBar%</div>
+                        <div class="progress progress-outer">
+                            <progress class="progress-20" aria-valuenow="@(Model.ProjectProgressBar)" aria-valuemin="0" aria-valuemax="100"></progress>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card rpdet-card">
+                            <div class="card-body" id="@Model.Reward.Id">
+                                <label>Package Details</label>
+                                <div class="text-info"><h5>@Model.Reward.Price $ or more</h5><br /></div>
+                                <label>@Model.Reward.Name</label>
+                                <div class="text-secondary">@Model.Reward.Description</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 offset-2">
+        <input id="fund" type="number" class="form-control">
+        <div class="row" style="margin-top: 50px">
+            <div class="col text-center">
+                <input type="button" id="fbtn" onclick="postFunding(@Model.BackerProjectOption.BackerId, @Model.BackerProjectOption.ProjectId, @Model.Reward.Id)" value="Support" class="btn btn-funding btn-lg text-light" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert" id="responseDiv"></div>
+
+@section Scripts
+{
+   <script src="~/js/create-funding.js"></script>
+}
+

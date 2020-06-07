@@ -1,6 +1,7 @@
 ﻿using FundMeUp.Models;
 using FundMeUp.Options;
 using FundMeUp.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,9 @@ namespace FundMeUp.Services
             return rewards;
         }
 
-        
-
+        public Reward FindRewardById(int id)
+        {
+            return db.Rewards.Include(r => r.Project).Where(r => r.Id == id).FirstOrDefault();
+        }
     }
 }
