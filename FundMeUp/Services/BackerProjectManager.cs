@@ -28,16 +28,32 @@ namespace FundMeUp.Services
                 .FirstOrDefault();
         }
 
-        public BackerProject CreateFunding(BackerProjectOption backProj)
+        public BackerProject CreateFunding(BackerProjectOption backProjOption)
         {
-            Project project = _db.Projects.Find(backProj.ProjectId);
+            float tempfund = 0;
+            float finalfund = 0;
+            var reward = _db.Rewards.Find(backProjOption.RewardId);
+            var project = _db.Projects.Find(backProjOption.ProjectId);
+            
+            if (backProjOption.Fund == 0) tempfund = reward.Price;
+            else tempfund = backProjOption.Fund + reward.Price;
+
+            float tempTotalSum = tempfund + project.Balance;
+            if (tempTotalSum < project.BudgetGoal)
+                finalfund = tempfund;
+            else
+                finalfund = tempfund - (tempTotalSum - project.BudgetGoal);
+
 
             BackerProject backerProject = new BackerProject
             {
-                Backer = _db.Backers.Find(backProj.BackerId),
-                Reward = _db.Rewards.Find(backProj.RewardId),
+                BackerId = backProjOption.BackerId,
+                Backer = _db.Backers.Find(backProjOption.BackerId),
+                RewardId = backProjOption.RewardId,
+                Reward = reward,
+                ProjectId = backProjOption.ProjectId,
                 Project = project,
-                Fund = backProj.Fund,
+                Fund = finalfund,
                 DoF = DateTime.Now,
                 Status = Status.Pending
             };

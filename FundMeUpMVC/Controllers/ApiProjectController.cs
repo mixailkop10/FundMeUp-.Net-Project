@@ -23,11 +23,16 @@ namespace FundMeUpMVC.Controllers
             _logger = logger;
         }
 
-
         [HttpPost("CreateProject")]
         public Project CreateProject([FromBody] ProjectOption projOpt)
         {
             return projManager.CreateProject(projOpt);
+        }
+
+        [HttpPost("UpdateBalance")]
+        public bool UpdateBalance([FromBody] int id)
+        {
+            return projManager.UpdateBalance(id);
         }
 
         [HttpGet("AllProjects")]
