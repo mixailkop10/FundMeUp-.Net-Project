@@ -41,3 +41,11 @@ $(document).on('click', "#btnCheckDates", function () {
         });
     }
 });
+
+
+
+if (localStorage.length == 0) {
+    console.log("fortose")
+    location.href = "/Home/Index"
+}
+
