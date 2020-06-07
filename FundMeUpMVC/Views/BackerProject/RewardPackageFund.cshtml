@@ -26,6 +26,42 @@
         background-color: #1a917a;
         border-color: #145f51;
     }
+
+    progress {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Get rid of default border in Firefox. */
+        border: none;
+        /* Dimensions */
+        /*width: 250px;
+        height: 20px;*/
+        width: 85%;
+    }
+    .progress-outer {
+        border: 1px solid #28867e;
+        margin-top: 10px;
+    }
+
+    .progress-10 {
+        color: green;
+    }
+
+        .progress-10::-webkit-progress-value {
+            background-color: green;
+        }
+        .progress-10::-moz-progress-bar {
+            background-color: green;
+        }
+    .progress-20 {
+        color: #1f4688;
+    }
+        .progress-20::-webkit-progress-value {
+            background-color: #18768f;
+        }
+        .progress-20::-moz-progress-bar {
+            background-color: #18768f;
+        }
 </style>
 
 <h3>Add Your Contribution</h3>
@@ -53,16 +89,19 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="text-info"><h5>@Model.Reward.Project.Name</h5><br /></div>
-                        <label>Funding Progress</label>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        Funding Goal:
+                        <div class="text-info">@Model.Reward.Project.BudgetGoal $</div><br />
+                        Project Progress:
+                        <div class="text-info">@Model.ProjectProgressBar%</div>
+                        <div class="progress progress-outer">
+                            <progress class="progress-20" aria-valuenow="@(Model.ProjectProgressBar)" aria-valuemin="0" aria-valuemax="100"></progress>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="card rpdet-card">
                             <div class="card-body" id="@Model.Reward.Id">
                                 <label>Package Details</label>
-                                <div class="text-info"><h5>@Model.Reward.Price € or more</h5><br /></div>
+                                <div class="text-info"><h5>@Model.Reward.Price $ or more</h5><br /></div>
                                 <label>@Model.Reward.Name</label>
                                 <div class="text-secondary">@Model.Reward.Description</div>
                             </div>

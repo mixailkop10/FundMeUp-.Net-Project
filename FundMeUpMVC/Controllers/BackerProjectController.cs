@@ -13,15 +13,15 @@ namespace FundMeUpMVC.Controllers
 {
     public class BackerProjectController : Controller
     {
-        private readonly ILogger<ProjectController> logger;
         private IBackerProjectManager bpMng;
         private IRewardManager rMng;
+        private IProjectManager pMng;
 
-        public BackerProjectController(ILogger<ProjectController> logger, IBackerProjectManager bpMng, IRewardManager rMng)
+        public BackerProjectController(IBackerProjectManager bpMng, IRewardManager rMng, IProjectManager pMng)
         {
-            this.logger = logger;
             this.bpMng = bpMng;
             this.rMng = rMng;
+            this.pMng = pMng;
         }
 
         public IActionResult Index()
@@ -33,10 +33,14 @@ namespace FundMeUpMVC.Controllers
         public IActionResult RewardPackageFund([FromRoute] int rewardid, [FromRoute] int backerid)
         {
             var reward = rMng.FindRewardById(rewardid);
+            var project = pMng.FindProjectById(reward.ProjectId);
+            float percentage = project.Balance * 100 / project.BudgetGoal;
 
             FundingViewModel viewmodel = new FundingViewModel()
             {
-                Reward = reward
+                Reward = reward,
+                ProjectProgressBar = percentage,
+                //ProjectProgressBar = Convert.ToInt32((float)Math.Round(percentage, 0))
             };
 
             if (reward != null) 

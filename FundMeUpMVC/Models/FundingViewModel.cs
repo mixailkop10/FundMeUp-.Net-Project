@@ -15,5 +15,7 @@ namespace FundMeUpMVC.Models
         }
         public BackerProjectOption BackerProjectOption { get; set; }
         public Reward Reward { get; set; }
+        //public float ProjectProgressPercentage { get; set; }
+        public float ProjectProgressBar { get; set; }
     }
 }
