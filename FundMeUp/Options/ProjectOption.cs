@@ -14,5 +14,6 @@ namespace FundMeUp.Options
     public float Balance { get; set; }
     public DateTime DoA { get; set; }
     public string StatusUpdate { get; set; }
+    public int ProjectCreatorId { get; set; }
   }
 }

@@ -10,8 +10,9 @@ function CreateProjectJS() {
     console.log(y)
     x = parseFloat(y)
     console.log(x)
-    
 
+    creatorid = parseInt(localStorage.getItem("creatorId"));
+    console.log(creatorid, typeof (creatorid));
 
     sendData = {
         "Name": $('#Name').val(),
@@ -19,10 +20,11 @@ function CreateProjectJS() {
         "DoA": $('#DoA').val(),
         "BudgetGoal": x,
         "Category": $('#Category').val(),
-        "StatusUpdate": $('#StatusUpdate').val()
+        "StatusUpdate": $('#StatusUpdate').val(),
+        "ProjectCreatorId": creatorid
     }
 
-    alert(JSON.stringify(sendData))
+    
 
 
     $.ajax({
@@ -34,18 +36,15 @@ function CreateProjectJS() {
         contentType: 'application/json',
         processData: false,
         success: function (data, textStatus, jQxhr) {
-            if (data != null) {
-                
-                alert(JSON.stringify(data))
-               // window.open(`/Project/AllProjects`, "_self")
+            
+               alert(JSON.stringify(data))
+               window.open(`/ProjectCreator/Dashboard/${creatorid}`, "_self")
 
-            }
-            else {
-                $('#responseDiv').html("symplhrvse to kena");
-            }
+            
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
+            $('#responseDiv').html("Please complete all the fields");
         }
     });
     

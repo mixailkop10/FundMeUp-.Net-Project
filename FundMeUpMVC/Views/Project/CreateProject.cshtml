@@ -2,12 +2,12 @@
 @{
     ViewData["Title"] = "Create Project";
 }
-
 <h2>New Project</h2>
 <br />
 <br />
 
-
+<div id="responseDiv" style="text-align:center; font-family:Georgia; font-size:medium"></div>
+<br />
 <form id="createproject">
     <div class="form-row">
 
@@ -54,17 +54,21 @@
         </div>
     </div>
 
-    <button class="btn btn-primary" type="submit" onclick="CreateProjectJS()">Create Project</button>
+    
+        @*<button class="btn btn-primary" onclick="CreateProjectJS()">Create Project</button>*@
+        <input class="btn btn-primary" type="button" onclick="CreateProjectJS()" value="CreateProject">
 
+        
+    
 </form>
 
-<div id="responseDiv" style="text-align:center;"></div>
 
-<script src="~/js/createproject.js" ></script>
+
+<script src="~/js/createproject.js"></script>
 
 @*@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}*@
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }*@
 
 
 
