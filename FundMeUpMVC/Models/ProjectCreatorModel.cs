@@ -1,5 +1,6 @@
 ﻿using FundMeUp.Models;
 using FundMeUp.Options;
+using FundMeUp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace FundMeUpMVC.Models
     {
         public List<ProjectCreator> ProjectCreators { get; set; }
         public ProjectCreatorOption projectCreatorOption { get; set; }
+        public ProjectCreatorManager projectCreatorManager { get; set; }
     }
 }

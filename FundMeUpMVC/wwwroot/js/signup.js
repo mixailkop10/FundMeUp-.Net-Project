@@ -100,3 +100,15 @@ function GetUser(id) {
 
 let user = "Backer";
 let x;
+
+function LogB() {
+    if (FirstName != null & LastName != null & Profession != null
+        & Address != null & Email != null & Password != null)
+        window.open("Home/Login", "_self");
+}
+
+function LogPC() {
+    if (FirstName != null & LastName != null
+             & Address != null & Email != null & Password != null)
+        window.open("Home/Login", "_self");
+}

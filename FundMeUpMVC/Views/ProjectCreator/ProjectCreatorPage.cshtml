@@ -1,6 +1,6 @@
-﻿@model FundMeUpMVC.Models.BackerModel
+﻿@model FundMeUpMVC.Models.ProjectCreatorModel
 @{
-    ViewData["Title"] = "BackerPage";
+    ViewData["Title"] = "ProjectCreatorPage";
 }
 
 <h3 id="NameAhead" style="text-align:center; color:brown;"></h3>
@@ -11,7 +11,7 @@
 
         <div class="col-md-6 mb-3">
             <label for="FirstName">FirstName</label>
-            <input type="text" class="form-control" id="FirstName" required>
+            <input type="text" class="form-control" id="FirstName" value="" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -20,14 +20,6 @@
         <div class="col-md-6 mb-3">
             <label for="LastName">LastName</label>
             <input type="text" class="form-control" id="LastName" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-
-        <div class="col-md-6 mb-3">
-            <label for="Profession">Profession</label>
-            <input type="text" class="form-control" id="Profession" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -93,22 +85,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete Backer</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Delete ProjectCreator</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this Backer?
+                Are you sure you want to delete this ProjectCreator?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="button" class="btn btn-primary" id="DelButton" value="Delete" onclick="DeleteB()" />
+                <input type="button" class="btn btn-primary" id="DelButton" value="Delete" onclick="deleteProjectCreator(Id)"/>
             </div>
         </div>
     </div>
 </div>
 
 <div id="responseDiv"></div>
-<script src="~/js/update-backer.js"></script>
-<!-- αν θες να λειτουργει το κουμπι που βλεπεις στον πινακα αλλαζεις το script στην 113 σε all-backers και την onclick στην 106 σε deleteBacker(Id) -->
+<script src="~/js/all-projectCreators.js"></script>

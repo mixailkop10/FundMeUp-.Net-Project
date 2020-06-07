@@ -1,0 +1,93 @@
+﻿@model ProjectCreatorModel
+@{
+    ViewData["Title"] = "CreateBacker";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="site.css"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"> </div>
+        <div class="col-md-6">
+
+            <h1 class="text-center text-success">Lists' Page</h1>
+            <br />
+            <br />
+
+            <div class="btn-group" style="width:100%">
+                <ul class="nav nav-pills">
+                    <li class="" style="        width: 33.3%">
+                        <a class="btn btn-lg btn-default" data-toggle="tab"
+                           href="#projectMenu" id="Project" onclick="GetUser(this.id)">Projects</a>
+                    </li>
+                    <li class=" " style="width:33.3%">
+                        <a class=" btn btn-lg btn-default" data-toggle="tab"
+                           href="#backerMenu" id="Backer" onclick="GetUser(this.id)">Backers</a>
+                    </li>
+                    <li class=" " style="        width: 33.3%">
+                        <a class=" btn btn-lg btn-default" data-toggle="tab"
+                           href="#projectCreatorMenu" id="Creator" onclick="GetUser(this.id)">Project Creators</a>
+                    </li>
+                </ul>
+                <br />
+                <br />
+                <div class="tab-content">
+                    <div id="projectMenu" class="tab-pane fade in active">
+
+                        <h1 style="text-align:center; font-family:Georgia;">Projects</h1>
+                        <br>
+
+                        <table id="resultTable" border="1" class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Name
+                                    </th>
+                                    <th scope="col">
+                                        Description
+                                    </th>
+                                    <th scope="col">
+                                        Category
+                                    </th>
+                                    <th scope="col">
+                                        BudgetGoal
+                                    </th>
+                                    <th scope="col">
+                                        Balance
+                                    </th>
+                                    <th scope="col">
+                                        StatusUpdate
+                                    </th>
+                                    <th scope="col">
+                                        Available
+                                    </th>
+                                    <th scope="col">
+                                        Funded
+                                    </th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                    <div id="backerMenu" class="tab-pane fade">
+
+                    </div>
+
+                    <div id="projectCreatorMenu" class="tab-pane fade">
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/js/AllProjects.js"></script>
+<script src="~/js/all-projectCreators.js"></script>
+<script src="~/js/all-backers.js"></script>
+

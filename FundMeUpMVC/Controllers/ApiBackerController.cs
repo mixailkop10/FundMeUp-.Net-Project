@@ -49,18 +49,19 @@ namespace FundMeUpMVC.Controllers
             return backerManager.UpdateBacker(backerOption, id);
         }
 
-        //[HttpDelete("DeleteBacker/{id}")]
-        //public bool DeleteBacker(int backerId)
-        //{
-        //    return backerManager.DeleteBackerById(backerId);
-        //}
-        [HttpDelete("DeleteBacker")]
-        public bool DeleteBacker([FromBody] DeleteModel delModel)
+        [HttpDelete("DeleteBacker/{id}")]
+        public bool DeleteBacker(int backerId)
         {
-            if (delModel != null)
-                return backerManager.DeleteBackerById(delModel.Id);
-            else return false;
+            return backerManager.DeleteBackerById(backerId);
         }
+
+        //[HttpDelete("DeleteBacker")]
+        //public bool DeleteBacker([FromBody] DeleteModel delModel)
+        //{
+        //    if (delModel != null)
+        //        return backerManager.DeleteBackerById(delModel.Id);
+        //    else return false;
+        //}
 
         [HttpPut("EditActivityStatus")]
         public Backer EditActivityStatus([FromBody] int backerId)

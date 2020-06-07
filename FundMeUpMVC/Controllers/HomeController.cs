@@ -88,7 +88,11 @@ namespace FundMeUpMVC.Controllers
         {
             return View();
         }
-
+        [HttpGet("AllofLists")]
+        public IActionResult AllofLists()
+        {
+            return View();
+        }
         [HttpGet("Error")]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -49,11 +49,6 @@ namespace FundMeUpMVC.Controllers
             return projectCreatorManager.Update(projectCreatorOption, projectCreatorId);
         }
 
-        //[HttpDelete("DeleteBacker/{id}")]
-        //public bool DeleteBacker(int backerId)
-        //{
-        //    return backerManager.DeleteBackerById(backerId);
-        //}
         [HttpDelete("DeleteProjectCreator")]
         public bool DeleteProjectCreator([FromBody] DeleteModel delModel)
         {
@@ -61,6 +56,11 @@ namespace FundMeUpMVC.Controllers
                 return projectCreatorManager.DeleteProjectCreatorById(delModel.Id);
             else return false;
         }
+        //[HttpDelete("DeleteProjectCreator/{id}")]
+        //public bool DeleteProjectCreator(int id)
+        //{
+        //    return projectCreatorManager.DeleteProjectCreatorById(id);
+        //}
 
         [HttpPost("LoginProjectCreator")]
         public ProjectCreator LoginProjectCreator([FromBody] ProjectCreatorOption projectCreatorOption)
