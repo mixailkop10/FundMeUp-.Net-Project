@@ -1,4 +1,4 @@
-﻿@model FundMeUpMVC.Models.PCDashboardViewModel
+﻿@model FundMeUpMVC.Models.ProjectFundingsViewModel
 @using X.PagedList.Mvc.Core
 @using X.PagedList.Mvc.Bootstrap4.Core
 @using X.PagedList;
@@ -96,8 +96,8 @@
                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                         </div>
                         <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateTo" name="dateto">
-                        <button type="submit" id="btnCheckDates" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
-                        <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/ProjectCreator/Dashboard'">Clear<i class="fa fa-eraser"></i></button>
+                        <button type="submit" id="btnCheckDates" data-value="@Model.ProjectId" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/BackerProject/FundingsPerProject/'+ @Model.ProjectId">Clear<i class="fa fa-eraser"></i></button>
                     </div>
                 </div>
             </div>
@@ -134,8 +134,8 @@
                     }
                 </div>
                 <div class="card-footer">
-                    @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("Dashboard",
-                        new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+                    @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("ProjectFundings",
+                        new { page, Model.ProjectId }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
                 </div>
             </div>
             <br />
@@ -144,15 +144,15 @@
         <div class="col-md-5">
             <div class="card actions-card text-center">
                 <div class="card-header">
+                    <a class="btn btn-primary" href="/Project/Project/@Model.ProjectId">
+                        <span>View Project</span>
+                    </a>
                     <a class="btn btn-secondary text-light" href="/Project/ProjectPage/@Model.ProjectId">
                         <span>Edit Project</span>
                     </a>
-                    <a class="btn btn-dark text-light" href="/ProjectCreator/IndexDashboard/@Model.ProjectCreatorId">
-                        <span>Switch Project</span>
-                    </a>
-                    <a class="btn btn-primary" href="/Project/CreateProject">
-                        <span>New Project</span>
-                    </a>
+                    <button class="btn btn-dark text-light" onclick="location.href = '/ProjectCreator/IndexDashboard/' + localStorage.getItem('creatorId')">
+                        <span>Change Project</span>
+                    </button>
                 </div>
             </div>
 
@@ -210,5 +210,5 @@
 
 @section Scripts
 {
-    <script src="~/js/pcdashboard-search.js"></script>
+    <script src="~/js/project-fundings-search.js"></script>
 } 

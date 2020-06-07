@@ -7,7 +7,7 @@ using X.PagedList;
 
 namespace FundMeUpMVC.Models
 {
-    public class PCDashboardViewModel
+    public class ProjectFundingsViewModel
     {
         
        // public IPagedList<Project> Projects { get; set; }
