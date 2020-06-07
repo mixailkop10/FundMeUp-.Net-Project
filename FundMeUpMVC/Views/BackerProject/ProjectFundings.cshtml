@@ -144,15 +144,15 @@
         <div class="col-md-5">
             <div class="card actions-card text-center">
                 <div class="card-header">
+                    <a class="btn btn-primary" href="/Project/Project/@Model.ProjectId">
+                        <span>View Project</span>
+                    </a>
                     <a class="btn btn-secondary text-light" href="/Project/ProjectPage/@Model.ProjectId">
                         <span>Edit Project</span>
                     </a>
-                    <a class="btn btn-dark text-light">
-                        <span>Switch Project</span>
-                    </a>
-                    <a class="btn btn-primary" href="/Project/CreateProject">
-                        <span>New Project</span>
-                    </a>
+                    <button class="btn btn-dark text-light" onclick="location.href = '/ProjectCreator/IndexDashboard/' + localStorage.getItem('creatorId')">
+                        <span>Change Project</span>
+                    </button>
                 </div>
             </div>
 
