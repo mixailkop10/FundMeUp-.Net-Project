@@ -69,9 +69,9 @@
                     //window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
 
 
-                    creatorId = data["id"]
+                    creatorId = parseInt(data["id"])
                     localStorage.setItem("creatorId", creatorId)
-                    window.open(`/ProjectCreator/Dashboard/${creatorId}`, "_self")
+                    window.open(`/ProjectCreator/IndexDashboard/${creatorId}`, "_self")
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {

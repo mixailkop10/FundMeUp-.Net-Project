@@ -87,13 +87,14 @@ namespace FundMeUp.Services
                 .ToList();
         }
 
-        public Project FindProjectByProjectCreator(int pcid)
+        public List< Project> FindProjectsByProjectCreator(int pcid)
         {
             return db.Projects
                 .Include(p => p.ProjectCreator)
                 .Where(p => p.ProjectCreator.Id == pcid)
-                .FirstOrDefault();
-        }
+               // .FirstOrDefault();
+               .ToList();
+        } 
 
         public List<Project> GetAll()
         {

@@ -23,5 +23,14 @@ namespace FundMeUpMVC.Models
             }
         }
         */
+
+       public int ProjectCreatorId { get; set; }
+        
+       public List<Project> Projects { get; set; }
+       public ProjectCreator ProjectCreator { get; set; }
+
+        
     }
+
+
 }

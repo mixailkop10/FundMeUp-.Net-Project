@@ -1,0 +1,163 @@
+﻿@model FundMeUpMVC.Models.PCDashboardViewModel;
+@{
+    ViewData["Title"] = "IndexDashboard";
+}
+
+<
+<style>
+    .dh-card {
+        border: 2px solid #cbcbcb;
+        color: #a8a1a1;
+        background-color: #2f2f2f;
+        padding: 2em;
+        margin-top: 20px;
+    }
+
+    .bprof-card {
+        border: 2px solid #fff;
+        color: #2f2f2f;
+        background-color: rgba(105, 174, 178, 0.1);
+        padding: 2em;
+    }
+
+    .dh-uimg {
+        max-height: 50px;
+        max-width: 50px;
+        float: left;
+    }
+
+    .bdash-title {
+        color: #1d5797;
+        margin-top: 22px;
+    }
+</style>
+
+<h1>IndexDashboard</h1>
+
+
+<div id="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card bprof-card text-black-50">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <a href="/Home/Categories">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
+                                <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <h5>Explore Projects</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/Project/RecentProjects">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-external-link-square-alt fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <h5>Recent Projects</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/Project/TrendingProjects">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x text-warning"></i>
+                                <i class="fas fa-chart-area fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <h5>Famous Projects</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="bdash-title">
+                <h4>Your Projects</h4>
+            </div>
+            <div class="card" style="margin-top:22px">
+                <div class="card-header text-info">
+                    Projects : @Model.Projects.Count
+                </div>
+            </div>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            BudgetGoal
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Projects)
+                    {
+                        <tr>
+                            <td>
+                                <a href="/ProjectCreator/Dashboard/@Model.ProjectCreator.Id/@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BudgetGoal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Balance)
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @*@Html.PagedListPager(Model.BackerProjects, page => Url.Action("Dashboard",
+                new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)*@
+
+        </div>
+        <br />
+
+        <div class="col-md-4">
+            <div class="card bprof-card text-black-50">
+                <img src="https://www.flightonmobile.com/assets/images/user.png" alt="user image" class="img-responsive img-rounded dh-uimg">
+
+                <p>@Model.ProjectCreator.FirstName @Model.ProjectCreator.LastName</p>
+                <p>@Model.ProjectCreator.Email</p>
+                <p>Total Projects: @Model.Projects.Count Projects</p>
+                <a class="btn btn-info" href="/Project/ProjectCreatorPage/@Model.ProjectCreator.Id"><span>Profile <i class="fa fa-edit"></i></span></a>
+
+            </div>
+
+            <div class="card dh-card">
+                <div class="card-heading">
+                    <h3>Summary</h3>
+                    <b>Fantastic Job!</b><br />
+                    Identify high value “Super Backers“ – you’ve backed 5+ campaigns on FundMeUp.<br />
+                    Keep up the good work.
+                </div>
+                <div class="card-body">
+                    @DateTime.Now.ToString("MMMM") rewards
+                    <br />
+                    <a href="#">Details</a><br />
+                    Total Funding<br />
+                    <a href="#">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    if (localStorage.length == 0) {
+        console.log("fortose")
+        location.href = "/Home/Index"
+    }
+</script>
+
