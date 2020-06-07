@@ -1,6 +1,6 @@
 ﻿@model ProjectViewModel
 @{
-    ViewData["Title"] = "Create Project";
+  ViewData["Title"] = "Create Project";
 }
 <h2>New Project</h2>
 <br />
@@ -9,66 +9,79 @@
 <div id="responseDiv" style="text-align:center; font-family:Georgia; font-size:medium"></div>
 <br />
 <form id="createproject">
-    <div class="form-row">
+  <div class="form-row">
 
-        <div class="col-md-6 mb-3">
-            <label for="Name">Project's Name</label>
-            <input type="text" class="form-control" id="Name" value="" required>
-
-        </div>
-
-        <div class="col-md-6 mb-3">
-            <label for="BudgetGoal">Budget Goal</label>
-            <input type="number" class="form-control" id="BudgetGoal" value="0" required>
-
-        </div>
+    <div class="col-md-6 mb-3">
+      <label for="Name">Project's Name</label>
+      <input type="text" class="form-control" id="Name" value="" required>
 
     </div>
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="StatusUpdate">Status Update</label>
-            <input type="text" class="form-control" id="StatusUpdate" required>
 
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="Category">Category</label>
-            <select class="custom-select" id="Category" required>
-                @foreach (var Category in Model.Categories)
-                {
-                    <option value="@Category">@Category</option>
-                }
-            </select>
+    <div class="col-md-6 mb-3">
+      <label for="BudgetGoal">Budget Goal</label>
+      <input type="number" class="form-control" id="BudgetGoal" value="0" required>
 
-        </div>
-        <div class="col-md-3 mb-3">
-            <label for="DoA">Date</label>
-            <input type="date" class="form-control" id="DoA" required>
-
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="Description">Description</label>
-            @*<input type="text" class="form-control" id="StatusUpdate" required>*@
-            <textarea rows="4" class="form-control" id="Description" cols="50" required></textarea>
-        </div>
     </div>
 
-    
-        @*<button class="btn btn-primary" onclick="CreateProjectJS()">Create Project</button>*@
-        <input class="btn btn-primary" type="button" onclick="CreateProjectJS()" value="CreateProject">
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="StatusUpdate">Status Update</label>
+      <input type="text" class="form-control" id="StatusUpdate" required>
 
-        
-    
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="Category">Category</label>
+      <select class="custom-select" id="Category" required>
+        @foreach (var Category in Model.Categories)
+        {
+          <option value="@Category">@Category</option>
+        }
+      </select>
+
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="DoA">Date</label>
+      <input type="date" class="form-control" id="DoA" required>
+
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="Description">Description</label>
+      @*<input type="text" class="form-control" id="StatusUpdate" required>*@
+      <textarea rows="4" class="form-control" id="Description" cols="50" required></textarea>
+    </div>
+  </div>
+
+
+
+
+
+  <dl>
+    <dt>
+      <label for="FileUpload_FormFile">File</label>
+    </dt>
+    <dd>
+      <input id="FileUpload_FormFile" type="file"
+             name="FileUpload.FormFile" />
+    </dd>
+  </dl>
+
+  @*<button class="btn btn-primary" onclick="CreateProjectJS()">Create Project</button>*@
+  <input class="btn btn-primary" type="button" onclick="CreateProjectJS()" value="CreateProject">
 </form>
 
 
 
+
+
+<script src="~/js/UploadFile.js"></script>
 <script src="~/js/createproject.js"></script>
 
 @*@section Scripts {
-        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-    }*@
+      @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+  }*@
 
 
 

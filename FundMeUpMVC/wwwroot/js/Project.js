@@ -14,7 +14,7 @@
 			document.getElementById("Description").innerHTML = data["description"]
 			document.getElementById("StatusUpdate").innerHTML = data["statusUpdate"]
 			document.getElementById("details").innerHTML = `BudgetGoal:${data["budgetGoal"]} , Total Fund:${data["balance"]} , Backers:`
-			
+			document.getElementById("MyImage").src = data["fileName"]
 			
 			console.log(data)
 
