@@ -37,15 +37,15 @@ namespace FundMeUpMVC.Controllers
         }
 
         [HttpGet("RecentProjects")]
-        public List<Project> RecentProjects()
+        public IEnumerable<Project> RecentProjects()
         {
-            return projManager.GetRecentProjects();
+            return projManager.GetRecProjects();
         }
 
         [HttpGet("TrendingProjects")]
-        public List<Project> TrendingProjects()
+        public IEnumerable<Project> TrendingProjects()
         {
-            return projManager.GetFamousProjects();
+            return projManager.GetFamProjects();
         }
 
         [HttpGet("Project/{id}")]

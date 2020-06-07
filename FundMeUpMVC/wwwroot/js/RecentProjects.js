@@ -11,7 +11,7 @@ function loadRProjects() {
 		contentType: 'application/json',
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
-
+			console.log(JSON.stringify(data))
 			for (var i = 0, len = data.length; i < len; i++) {
 
 				tr = $('<tr  class="table-info">');
@@ -23,7 +23,8 @@ function loadRProjects() {
 				tr.append("<td>" + data[i]["statusUpdate"] + "</td>");
 				tr.append("<td>" + data[i]["available"] + "</td>");
 				tr.append("<td>" + data[i]["funded"] + "</td>");
-				tr.append("<td>" + data[i]["name"] + "</td>");
+				mydate = data[i]["doA"].substring(0, 10);
+				tr.append("<td>" + mydate + "</td>");
 				tr.append('</tr>');
 				$('#resultTable').append(tr);
 				console.log(i,len,data)

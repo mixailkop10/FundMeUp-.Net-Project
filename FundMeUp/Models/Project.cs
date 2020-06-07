@@ -34,7 +34,7 @@ namespace FundMeUp.Models
         public float BudgetGoal { get; set; }
         public float Balance { get; set; }
         public List<BackerProject> BackerProject { get; set; }
-        public DateTime DoΑ { get; set; }
+        public DateTime DoA { get; set; }
         public List<Reward> Reward { get; set; }
         public string Category { get; set; }
         public ProjectCreator ProjectCreator { get; set; }

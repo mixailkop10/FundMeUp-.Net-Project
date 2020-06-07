@@ -20,5 +20,7 @@ namespace FundMeUp.Services
         Project Update(ProjectOption projOption, int projectId);
         List<Project> GetRecentProjects();
         List<Project> GetFamousProjects();
+        IEnumerable<Project> GetRecProjects();
+        IEnumerable<Project> GetFamProjects();
     }
 }

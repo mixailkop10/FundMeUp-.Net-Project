@@ -64,13 +64,15 @@
                     //ln = data["lastname"];
                     //localStorage.setItem("Creator", creator);
                     //document.getElementById("userlog").value = `${ln}(LogOut)`;
-                    ////user = JSON.parse(localStorage.getItem('creator'));
+                    //user = JSON.parse(localStorage.getItem('creator'));
 
                     //window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
 
 
                     creatorId = data["id"]
+                    creatorName = data["FirstName"]
                     localStorage.setItem("creatorId", creatorId)
+                    localStorage.setItem("creatorName", creatorName)
                     window.open(`/ProjectCreator/Dashboard/${creatorId}`, "_self")
                 }
             },

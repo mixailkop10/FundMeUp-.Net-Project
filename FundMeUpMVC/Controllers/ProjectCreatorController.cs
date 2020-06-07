@@ -35,9 +35,10 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
         [HttpGet("ProjectCreatorPage/{id}")]
-        public IActionResult ProjectCreatorPage()
+        public IActionResult ProjectCreatorPage([FromRoute] int id)
         {
-            return View();
+            var viewModel = projectCreatorManager.FindProjectCreatorById(id);
+            return View(viewModel);
         }
 
         [HttpGet("Dashboard/{id}")]

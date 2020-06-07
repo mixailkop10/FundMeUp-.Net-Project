@@ -50,9 +50,9 @@ namespace FundMeUpMVC.Controllers
         }
 
         [HttpDelete("DeleteBacker/{id}")]
-        public bool DeleteBacker(int backerId)
+        public bool DeleteBacker([FromRoute]int id)
         {
-            return backerManager.DeleteBackerById(backerId);
+            return backerManager.DeleteBackerById(id);
         }
 
         //[HttpDelete("DeleteBacker")]

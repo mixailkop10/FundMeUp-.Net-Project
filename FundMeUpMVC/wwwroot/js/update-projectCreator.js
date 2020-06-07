@@ -28,7 +28,7 @@
 
 }
 
-function Update() {
+function UpdatePC() {
 	actionMethod = "PUT"
 	actionUrl = `/ApiProjectCreator/EditProjectCreator/${id}`
 

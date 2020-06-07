@@ -13,17 +13,15 @@ function loadTProjects() {
 		success: function (data, textStatus, jQxhr) {
 
 			for (var i = 0, len = data.length; i < len; i++) {
-
+				
 				tr = $('<tr  class="table-info">');
 				tr.append("<td>" + data[i]["name"] + "</td>");
 				tr.append("<td>" + data[i]["description"] + "</td>");
 				tr.append("<td>" + data[i]["category"] + "</td>");
-				tr.append("<td>" + data[i]["budgetGoal"] + "</td>");
-				tr.append("<td>" + data[i]["balance"] + "</td>");
 				tr.append("<td>" + data[i]["statusUpdate"] + "</td>");
 				tr.append("<td>" + data[i]["available"] + "</td>");
-				tr.append("<td>" + data[i]["funded"] + "</td>");
-				tr.append("<td>" + data[i]["name"] + "</td>");
+				sum = data[i].budgetGoal - data[i].balance;
+				tr.append("<td>" + sum + "</td>");
 				tr.append('</tr>');
 				$('#resultTable').append(tr);
 				console.log(i,len,data)

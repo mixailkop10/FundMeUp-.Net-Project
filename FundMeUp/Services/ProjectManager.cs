@@ -37,7 +37,7 @@ namespace FundMeUp.Services
                 Name = projOption.Name,
                 Description = projOption.Description,
                 BudgetGoal = projOption.BudgetGoal,
-                DoΑ = projOption.DoA,
+                DoA = projOption.DoA,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
                 Available = true,
@@ -102,7 +102,18 @@ namespace FundMeUp.Services
         public List<Project> GetRecentProjects()
         {
             //Projects for the week
-            return db.Projects.Where(p=>p.DoΑ.AddDays(-(int)p.DoΑ.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek)).ToList();
+            return db.Projects
+                .Where(p=>p.DoA.AddDays(-(int)p.DoA.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek))
+                .ToList();
+        }
+        public IEnumerable<Project> GetRecProjects()
+        {
+            return db.Projects
+                .OrderByDescending(x => x.DoA)
+                .Take(5)
+                //.ThenByDescending(x => x.DoA.Date)
+                //.ThenByDescending(x => x.DoA.Year)
+                .ToList();
         }
 
         public List<Project> GetFamousProjects() 
@@ -127,6 +138,21 @@ namespace FundMeUp.Services
             var projects = db.Projects.Where(p => filterBalances.Contains(p.Id) || filterFundings.Contains(p.Id)).ToList();
 
             return projects;
+        }
+
+        public IEnumerable<Project> GetFamProjects()
+        {
+            var filterBalance = db.Projects
+                .OrderByDescending(p => p.BudgetGoal - p.Balance)
+                .Take(5)
+                .ToList();
+            return db.Projects
+                .Where(x => x.Funded == true)
+                .OrderBy(x => x.BudgetGoal - x.Balance)
+                .Take(5)
+                //.ThenByDescending(x => x.DoA.Date)
+                //.ThenByDescending(x => x.DoA.Year)
+                .ToList();
         }
 
         public bool DeleteProjectById(int id)
