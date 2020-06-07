@@ -35,51 +35,51 @@ namespace FundMeUpMVC.Controllers
             return View(viewModel);
         }
 
-        [HttpGet("Dashboard/{pcid}/{pid}")]
-        public IActionResult Dashboard( int? page, [FromRoute] int pcid, [FromRoute] int pid)
-        {
-            int pageSize = 2;
-            int pageNumber = (page ?? 1);
+        //[HttpGet("Dashboard/{pcid}/{pid}")]
+        //public IActionResult Dashboard( int? page, [FromRoute] int pcid, [FromRoute] int pid)
+        //{
+        //    int pageSize = 2;
+        //    int pageNumber = (page ?? 1);
 
-            int projectId=0;
-            var project = projectMng.FindProjectById(pid);
-            if (project != null)
-            {
-                projectId = project.Id;
-            }
+        //    int projectId=0;
+        //    var project = projectMng.FindProjectById(pid);
+        //    if (project != null)
+        //    {
+        //        projectId = project.Id;
+        //    }
 
-            PCDashboardViewModel pcdash = new PCDashboardViewModel()
-            {
-                PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
-                AcceptedBackerProjects = backerprojectMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
-                ProjectId = projectId,
-                ProjectCreatorId = pcid
-            };
-            return View(pcdash);
-        }
+        //    PCDashboardViewModel pcdash = new PCDashboardViewModel()
+        //    {
+        //        PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
+        //        AcceptedBackerProjects = backerprojectMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
+        //        ProjectId = projectId,
+        //        ProjectCreatorId = pcid
+        //    };
+        //    return View(pcdash);
+        //}
 
-        //Search for Accepted Fundings
-        [HttpPost("Dashboard /{pcid}/{pid}")]
-        public IActionResult Dashboard([FromBody] PCDashboardViewModel pcdashboard, int? page,[FromRoute] int pcid,[FromRoute] int pid)
-        {
-            int pageSize = 2;
-            int pageNumber = (page ?? 1);
-            int projectId = projectMng.FindProjectById(pid).Id;
-          //  int projectcreatorId = pcid;
+        ////Search for Accepted Fundings
+        //[HttpPost("Dashboard /{pcid}/{pid}")]
+        //public IActionResult Dashboard([FromBody] PCDashboardViewModel pcdashboard, int? page,[FromRoute] int pcid,[FromRoute] int pid)
+        //{
+        //    int pageSize = 2;
+        //    int pageNumber = (page ?? 1);
+        //    int projectId = projectMng.FindProjectById(pid).Id;
+        //  //  int projectcreatorId = pcid;
 
-            PCDashboardViewModel pcdash = new PCDashboardViewModel()
-            {
-                PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToList(),
-                AcceptedBackerProjects = backerprojectMng.GetAcceptedProjectFundings(projectId)
-                                .Where(f => f.DoF >= pcdashboard.SearchStartDate && f.DoF <= pcdashboard.SearchEndDate).ToPagedList(pageNumber, pageSize),
-                ProjectId = projectId,
-                SearchStartDate = pcdashboard.SearchStartDate,
-                SearchEndDate = pcdashboard.SearchEndDate,
-                ProjectCreatorId=pcid
-               
-            };
-            return PartialView("Dashboard", pcdash);
-        }
+        //    PCDashboardViewModel pcdash = new PCDashboardViewModel()
+        //    {
+        //        PendingBackerProjects = backerprojectMng.GetPendingProjectFundings(projectId).ToList(),
+        //        AcceptedBackerProjects = backerprojectMng.GetAcceptedProjectFundings(projectId)
+        //                        .Where(f => f.DoF >= pcdashboard.SearchStartDate && f.DoF <= pcdashboard.SearchEndDate).ToPagedList(pageNumber, pageSize),
+        //        ProjectId = projectId,
+        //        SearchStartDate = pcdashboard.SearchStartDate,
+        //        SearchEndDate = pcdashboard.SearchEndDate,
+        //        ProjectCreatorId=pcid
+
+        //    };
+        //    return PartialView("Dashboard", pcdash);
+        //}
 
         [HttpGet("IndexDashboard/{id}")]
         public IActionResult IndexDashboard([FromRoute] int id)
@@ -87,8 +87,8 @@ namespace FundMeUpMVC.Controllers
 
             PCDashboardViewModel indexDash = new PCDashboardViewModel()
             {
-                Projects=projectMng.FindProjectsByProjectCreator(id),
-                ProjectCreator=projectCreatorManager.FindProjectCreatorById(id)
+                Projects = projectMng.FindProjectsByProjectCreator(id),
+                ProjectCreator = projectCreatorManager.FindProjectCreatorById(id)
 
             };
             return View(indexDash);

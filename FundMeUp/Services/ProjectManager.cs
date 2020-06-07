@@ -94,7 +94,7 @@ namespace FundMeUp.Services
                 .Where(p => p.ProjectCreator.Id == pcid)
                // .FirstOrDefault();
                .ToList();
-        } 
+        }
 
         public List<Project> GetAll()
         {
