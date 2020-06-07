@@ -28,6 +28,7 @@
             alert(JSON.stringify(data));
             if (data != null)
             {
+                ///////// Prospatheia klisis ajax mesa se ajax /////////
                 //var projectid = parseInt(data["projectId"]);
                 //var projectid = JSON.parse(data["projectId"]);
                 //$.ajax({
@@ -43,8 +44,8 @@
                 //    }
                 //});
             }
-            //window.open(`/Backer/Dashboard/${backerid}`, "_self");
-            window.open(`/Backer/Dashboard`, "_self");
+            window.open(`/Backer/Dashboard/${backerid}`, "_self");
+            //window.open(`/Backer/Dashboard`, "_self");
 
         },
         error: function (jqXhr, textStatus, errorThrown) {
