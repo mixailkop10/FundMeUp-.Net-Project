@@ -3,6 +3,7 @@ using FundMeUp.Options;
 using FundMeUp.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -171,6 +172,21 @@ namespace FundMeUp.Services
 
             db.SaveChanges();
             return project;
+        }
+
+        public bool UpdateBalance(int projectId)
+        {
+            Project project = db.Projects.Find(projectId);
+            float sumbackerprojects = db.BackerProjects.Where(bp => bp.ProjectId == projectId).Sum(bp => bp.Fund);
+
+            if (sumbackerprojects > 0)
+            { 
+                project.Balance = sumbackerprojects;
+                db.Entry(project).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

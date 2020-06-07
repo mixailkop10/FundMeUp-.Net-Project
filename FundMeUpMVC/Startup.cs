@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using FundMeUp.Services;
 using FundMeUp.Repository;
 using FundMeUp.Options;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FundMeUpMVC
 {
@@ -27,16 +29,17 @@ namespace FundMeUpMVC
     public void ConfigureServices(IServiceCollection services)
     {
             services.AddDbContext<FundMeUpDbContext>(options =>
-             options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
-            //"/*Data Source = localhost;" +
-            //"Initial Catalog = fundmeup-db; " +
-            //"Integrated Security = True;"));
-            
+                options.UseSqlServer(FundMeUpDbContext.ConnectionString));
+            //"Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"
             services.AddScoped<IProjectManager, ProjectManager>();
             services.AddScoped<IBackerManager, BackerManager>();
             services.AddScoped<IProjectCreatorManager, ProjectCreatorManager>();
             services.AddScoped<IBackerProjectManager, BackerProjectManager>();
             services.AddScoped<IRewardManager, RewardManager>();
+
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddControllersWithViews();
             services.AddLogging();
