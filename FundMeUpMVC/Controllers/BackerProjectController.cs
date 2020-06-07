@@ -66,13 +66,13 @@ namespace FundMeUpMVC.Controllers
                 projectId = project.Id;
             }
 
-            ProjectFundingsViewModel pcdash = new ProjectFundingsViewModel()
+            ProjectFundingsViewModel pfviewmodel = new ProjectFundingsViewModel()
             {
                 PendingBackerProjects = bpMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
                 AcceptedBackerProjects = bpMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
                 ProjectId = projectId
             };
-            return View(pcdash);
+            return View(pfviewmodel);
         }
 
         //UI for backer - Search for Accepted Fundings
