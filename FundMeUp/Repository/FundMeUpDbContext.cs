@@ -33,8 +33,8 @@ namespace FundMeUp.Repository
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
-            //optionsBuilder.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+            //optionsBuilder.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=fundmeup-db;User Id=sa;Password=admin!@#123");
 
             //optionsBuilder.UseSqlServer(ConnectionString);
         }
