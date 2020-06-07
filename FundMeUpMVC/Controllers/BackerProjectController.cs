@@ -8,6 +8,7 @@ using FundMeUp.Services;
 using FundMeUpMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using X.PagedList;
 
 namespace FundMeUpMVC.Controllers
 {
@@ -49,6 +50,49 @@ namespace FundMeUpMVC.Controllers
             }
             viewmodel.BackerProjectOption.BackerId = 1;
             return View(viewmodel);
+        }
+
+        // UI for Backer with project fundings
+        [HttpGet("BackerProject/ProjectFundings/{id}")]
+        public IActionResult ProjectFundings(int? page, [FromRoute] int id)
+        {
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+
+            int projectId = 0;
+            var project = pMng.FindProjectById(id);
+            if (project != null)
+            {
+                projectId = project.Id;
+            }
+
+            ProjectFundingsViewModel pcdash = new ProjectFundingsViewModel()
+            {
+                PendingBackerProjects = bpMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
+                AcceptedBackerProjects = bpMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
+                ProjectId = projectId
+            };
+            return View(pcdash);
+        }
+
+        //UI for backer - Search for Accepted Fundings
+        [HttpPost("BackerProject/ProjectFundings/{id}")]
+        public IActionResult ProjectFundings([FromBody] ProjectFundingsViewModel projfunds, int? page, [FromRoute] int id)
+        {
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            int projectId = pMng.FindProjectById(id).Id;
+
+            ProjectFundingsViewModel pfviewmodel = new ProjectFundingsViewModel()
+            {
+                PendingBackerProjects = bpMng.GetPendingProjectFundings(projectId).ToList(),
+                AcceptedBackerProjects = bpMng.GetAcceptedProjectFundings(projectId)
+                                .Where(f => f.DoF >= projfunds.SearchStartDate && f.DoF <= projfunds.SearchEndDate).ToPagedList(pageNumber, pageSize),
+                ProjectId = projectId,
+                SearchStartDate = projfunds.SearchStartDate,
+                SearchEndDate = projfunds.SearchEndDate
+            };
+            return PartialView("ProjectFundings", pfviewmodel);
         }
 
         public IActionResult StatusUpdate(int id)

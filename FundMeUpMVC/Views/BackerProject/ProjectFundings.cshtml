@@ -1,4 +1,4 @@
-﻿@model FundMeUpMVC.Models.PCDashboardViewModel
+﻿@model FundMeUpMVC.Models.ProjectFundingsViewModel
 @using X.PagedList.Mvc.Core
 @using X.PagedList.Mvc.Bootstrap4.Core
 @using X.PagedList;
@@ -96,8 +96,8 @@
                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                         </div>
                         <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateTo" name="dateto">
-                        <button type="submit" id="btnCheckDates" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
-                        <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/ProjectCreator/Dashboard'">Clear<i class="fa fa-eraser"></i></button>
+                        <button type="submit" id="btnCheckDates" data-value="@Model.ProjectId" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/BackerProject/FundingsPerProject/'+ @Model.ProjectId">Clear<i class="fa fa-eraser"></i></button>
                     </div>
                 </div>
             </div>
@@ -134,8 +134,8 @@
                     }
                 </div>
                 <div class="card-footer">
-                    @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("Dashboard",
-                        new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+                    @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("ProjectFundings",
+                        new { page, Model.ProjectId }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
                 </div>
             </div>
             <br />
@@ -210,5 +210,5 @@
 
 @section Scripts
 {
-    <script src="~/js/pcdashboard-search.js"></script>
+    <script src="~/js/project-fundings-search.js"></script>
 } 

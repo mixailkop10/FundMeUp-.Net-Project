@@ -25,25 +25,28 @@
         processData: false,
         success: function (data, textStatus, jQxhr) {
             //$('#responseDiv').html(JSON.stringify(data));
-            alert(JSON.stringify(data));
-            if (data != null)
-            {
-                ///////// Prospatheia klisis ajax mesa se ajax /////////
-                //var projectid = parseInt(data["projectId"]);
-                //var projectid = JSON.parse(data["projectId"]);
-                //$.ajax({
-                //    url: "/ApiProject/UpdateBalance",
-                //    type: "POST",
-                //    contentType: 'application/json',
-                //    //data: JSON.stringify({ "id": typeof(+data["projectId"])}),
-                //    data: { id: data["projectId"]},
-                //    //data: { "id": projectid },
-                //    processData: false,
-                //    success: function (results) {
-                //        window.open(`/Backer/Dashboard`, "_self");
-                //    }
-                //});
-            }
+            //alert(JSON.stringify(data));
+            //if (data != null)
+            //{
+            //    ///////// Prospatheia klisis ajax mesa se ajax /////////
+            //    console.log(data);
+            //    //x = parseInt(data.ProjectId);
+            //    //var projectid = JSON.parse(data);
+            //    $.ajax({
+            //        url: "/ApiProject/UpdateBalance",
+            //        type: "POST",
+            //        //datatype: 'json',
+            //        //contentType: 'application/json',
+            //        contentType: 'application/x-www-form-urlencoded',  //paizei an fygei to [FromBody] apo ton ApiProjectController
+            //        //data: JSON.stringify({ "id": typeof(+data["projectId"])}),
+            //        //data: { "id": projectid },
+            //        data: data.ProjectId,
+            //        processData: false,
+            //        success: function (results) {
+            //            window.open(`/Backer/Dashboard`, "_self");
+            //        }
+            //    });
+            //}
             window.open(`/Backer/Dashboard/${backerid}`, "_self");
             //window.open(`/Backer/Dashboard`, "_self");
 
