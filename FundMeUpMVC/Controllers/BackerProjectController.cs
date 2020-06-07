@@ -118,8 +118,9 @@ namespace FundMeUpMVC.Controllers
         public JsonResult PostStatus(int id, bool accept)
         {
             var StatusAccepted = bpMng.StatusUpdate(id, accept);
+            var projectid = bpMng.FindFundingById(id).ProjectId;
 
-            return Json(Url.Action("Dashboard", "ProjectCreator"));
+            return Json(Url.Action("ProjectFundings", "BackerProject", new { id = projectid }));
         }
     }
 }
