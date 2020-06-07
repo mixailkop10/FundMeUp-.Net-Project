@@ -27,7 +27,6 @@ namespace FundMeUpMVC.Controllers
             this.backerprojectMng = backerprojectMng;
         }
        
-        
         public IActionResult AllProjectCreators()
         {
             var viewModel = new ProjectCreatorModel();
