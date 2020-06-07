@@ -40,7 +40,7 @@ function Delete() {
 	sendData = {
 		"Id": id
     }
-	alert (sendData)
+	
 	$.ajax({
 		url: actionUrl,
 		dataType: 'json',
