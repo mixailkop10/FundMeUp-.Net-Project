@@ -1,4 +1,5 @@
 ﻿using FundMeUp.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +16,7 @@ namespace FundMeUp.Options
     public DateTime DoA { get; set; }
     public string StatusUpdate { get; set; }
     public int ProjectCreatorId { get; set; }
+    public IFormFile MyImage { set; get; }
+    public string ImagePath { get; set; }
   }
 }

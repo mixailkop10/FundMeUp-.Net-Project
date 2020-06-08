@@ -14,9 +14,6 @@ namespace FundMeUpMVC.Models
         public int ProjectId { get; set; }
         public DateTime SearchStartDate { get; set; }
         public DateTime SearchEndDate { get; set; }
-
-
-    }
-
-
+        public string FileName { get; set; }
+  }
 }

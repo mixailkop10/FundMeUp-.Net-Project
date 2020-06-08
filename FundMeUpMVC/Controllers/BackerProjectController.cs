@@ -61,6 +61,7 @@ namespace FundMeUpMVC.Controllers
 
             int projectId = 0;
             var project = pMng.FindProjectById(id);
+
             if (project != null)
             {
                 projectId = project.Id;
@@ -70,7 +71,8 @@ namespace FundMeUpMVC.Controllers
             {
                 PendingBackerProjects = bpMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
                 AcceptedBackerProjects = bpMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
-                ProjectId = projectId
+                ProjectId = projectId,
+                FileName = project.FileName
             };
             return View(pfviewmodel);
         }
