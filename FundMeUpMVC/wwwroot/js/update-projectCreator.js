@@ -51,6 +51,7 @@ function UpdatePC() {
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
 			$('#responseDiv').html(JSON.stringify(data));
+			window.open(`/ProjectCreator/IndexDashboard/${id}`, "_self")
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
@@ -81,7 +82,7 @@ function DeletePC() {
 		success: function (data, textStatus, jQxhr) {
 			console.log(data)
 			console.log("fwefcacaa")
-			window.open("/ProjectCreator/AllProjectCreators", "_self")
+			window.open("/Home/Index", "_self")
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {

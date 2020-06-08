@@ -53,6 +53,7 @@ function Update() {
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
 			$('#responseDiv').html(JSON.stringify(data));
+			window.open(`/Backer/Dashboard/${id}`, "_self")
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
@@ -82,7 +83,7 @@ function DeleteB() {
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
 			console.log(data)
-			window.open("/Backer/AllBackers", "_self")
+			window.open("/Home/Index", "_self")
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
