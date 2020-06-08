@@ -14,7 +14,7 @@
         "RewardId": rewardid
         //"RewardId": $(".list-group a :active").attr("id")
     }
-    alert(JSON.stringify(sendData));
+    //alert(JSON.stringify(sendData));
     $.ajax({
         url: actionUrl,
         dataType: 'json',
