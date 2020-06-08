@@ -1,14 +1,15 @@
-﻿
+﻿@model FundMeUpMVC.Models.ProjectModel
 @{
     ViewData["Title"] = "TrendingProjects";
 }
 
-<h1 style="text-align:center; font-family:Georgia;">Trending Projects</h1><br>
+<h1 style="text-align:center; font-family:Georgia;">Trending Projects</h1>
+<br>
 
-<table id="resultTable" border="1" class="table table-sm">
+<table id="resultTable" border="1" class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">
+            <th scope="col">              
                 Name
             </th>
             <th scope="col">
@@ -18,18 +19,23 @@
                 Category
             </th>
             <th scope="col">
-                StatusUpdate
-            </th>
-            <th scope="col">
-                Available
-            </th>
-            <th scope="col">
                 Sum Left
             </th>
         </tr>
     </thead>
-  
-
+    <tbody>
+        @{
+            foreach (var project in Model.Projects)
+            {
+                <tr id="@project.Id" onclick="window.open('/Project/Project/'+this.id,'_self')" style="cursor:pointer;">
+                    <td> @project.Name </td>
+                    <td> @project.Description </td>
+                    <td> @project.Category</td>
+                    <td>sum = @project.BudgetGoal - @project.Balance</td>
+                </tr>
+            };
+        }
+    </tbody>
 </table>
 
 <script src="~/js/TrendingProjects.js"></script>

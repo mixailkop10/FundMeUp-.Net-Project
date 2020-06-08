@@ -18,8 +18,6 @@ function loadTProjects() {
 				tr.append("<td>" + data[i]["name"] + "</td>");
 				tr.append("<td>" + data[i]["description"] + "</td>");
 				tr.append("<td>" + data[i]["category"] + "</td>");
-				tr.append("<td>" + data[i]["statusUpdate"] + "</td>");
-				tr.append("<td>" + data[i]["available"] + "</td>");
 				sum = data[i].budgetGoal - data[i].balance;
 				tr.append("<td>" + sum + "</td>");
 				tr.append('</tr>');

@@ -4,13 +4,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="site.css"></script>
-<!-- Add jquery -->
-<script type="text/javascript" src="jquery.min.js"></script>
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="jquery.fancybox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="jquery.fancybox.pack.js"></script>
 
 <div class="container">
     <div class="row">
@@ -22,7 +15,7 @@
 
             <div class="btn-group" align="center" style="width:100%">
                 <ul class="nav nav-pills" align="center">
-                    <li class="" style="        width: 20%">
+                    <li class="" style="width: 20%">
                         <a class="btn btn-lg btn-default" data-toggle="tab"
                            href="#projectMenu" id="Project"
                            onclick="">Projects</a>
@@ -30,9 +23,9 @@
                     <li class=" " style="width:20%">
                         <a class=" btn btn-lg btn-default" data-toggle="tab"
                            href="#backerMenu" id="Backer"
-                           onclick="location.href = '/Backer/AllBackers'">Backers</a>
+                           onclick="loadBackers()">Backers</a>
                     </li>
-                    <li class=" " style="        width: 20%">
+                    <li class=" " style="width: 20%">
                         <a class=" btn btn-lg btn-default" data-toggle="tab"
                            href="#projectCreatorMenu" id="Creator"
                            onclick="location.href = '/ProjectCreator/AllProjectCreators'">Project Creators</a>
@@ -121,10 +114,6 @@
     </div>
 </div>
 
-
-<script src="~/js/all-projectCreators.js"></script>
-<script srv="~/js/all-backers.js"></script>
-<script src="~/js/AllProjects.js"></script>
-
+<script src="~/js/allLists.js"></script>
 
 

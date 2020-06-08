@@ -93,6 +93,11 @@ namespace FundMeUpMVC.Controllers
         {
             return View();
         }
+        [HttpGet("AdminPage")]
+        public IActionResult AdminPage()
+        {
+            return View();
+        }
         [HttpGet("Error")]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

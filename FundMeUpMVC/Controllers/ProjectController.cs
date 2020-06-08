@@ -61,6 +61,12 @@ namespace FundMeUpMVC.Controllers
             return View();
         }
 
+        [HttpGet("Test")]
+        public IActionResult Test()
+        {
+            return View();
+        }
+
         [HttpGet("ProjectPage/{id}")]
         public IActionResult ProjectPage()
         {
