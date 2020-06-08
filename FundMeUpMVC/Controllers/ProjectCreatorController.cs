@@ -26,11 +26,18 @@ namespace FundMeUpMVC.Controllers
             this.projectMng = projectMng;
             this.backerprojectMng = backerprojectMng;
         }
-       
+
+        [HttpGet("AllProjectCreators")]
         public IActionResult AllProjectCreators()
         {
             var viewModel = new ProjectCreatorModel();
             viewModel.ProjectCreators = projectCreatorManager.GetAllProjectCreators();
+            return View(viewModel);
+        }
+        [HttpGet("ProjectCreatorPage/{id}")]
+        public IActionResult ProjectCreatorPage([FromRoute] int id)
+        {
+            var viewModel = projectCreatorManager.FindProjectCreatorById(id);
             return View(viewModel);
         }
 

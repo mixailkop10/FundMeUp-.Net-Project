@@ -1,5 +1,5 @@
 ﻿
-function submitToServer() {
+function loadProjectCreators() {
 	actionMethod = "GET"
 	actionUrl = "/ApiProjectCreator/AllProjectCreators"
 
@@ -16,7 +16,8 @@ function submitToServer() {
 				tr.append("<td>" + data[i]["firstName"] + "</td>");
 				tr.append("<td>" + data[i]["lastName"] + "</td>");
 				tr.append("<td>" + data[i]["address"] + "</td>");
-				tr.append("<td>" + data[i]["email"] + "</td>");
+                tr.append("<td>" + data[i]["email"] + "</td>");
+                tr.append("<td>" + "<a class='btn-sm btn-warning' href = '/ProjectCreator/ProjectCreatorPage/" + data[i]["id"] + "' >< span > <i class='fa fa-edit'></i></span ></a > " + "</td > ");
 				tr.append('</tr>');
 				$('#resultTable').append(tr);
 			}

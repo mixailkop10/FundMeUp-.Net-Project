@@ -64,7 +64,7 @@
                     //ln = data["lastname"];
                     //localStorage.setItem("Creator", creator);
                     //document.getElementById("userlog").value = `${ln}(LogOut)`;
-                    ////user = JSON.parse(localStorage.getItem('creator'));
+                    //user = JSON.parse(localStorage.getItem('creator'));
 
                     //window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
 

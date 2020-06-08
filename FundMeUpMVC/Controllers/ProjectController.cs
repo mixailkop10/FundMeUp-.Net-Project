@@ -47,9 +47,18 @@ namespace FundMeUpMVC.Controllers
         [HttpGet("AllProjects")]
         public IActionResult AllProjects()
         {
-           
             return View();
+        }
 
+        [HttpGet("RecentProjects")]
+        public IActionResult RecentProjects()
+        {
+            return View();
+        }
+        [HttpGet("TrendingProjects")]
+        public IActionResult TrendingProjects()
+        {
+            return View();
         }
 
         [HttpGet("ProjectPage/{id}")]

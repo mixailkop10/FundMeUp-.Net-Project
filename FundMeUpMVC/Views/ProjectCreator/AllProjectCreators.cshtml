@@ -1,8 +1,9 @@
-﻿@model FundMeUpMVC.Models.ProjectCreatorModel
+﻿
+@model FundMeUpMVC.Models.ProjectCreatorModel
 @{
     ViewData["Title"] = "AllProjectCreators";
 }
-    <h1 style="text-align:center; font-family:Georgia;">A list of All Project Creators'</h1>
+<h1 style="text-align:center; font-family:Georgia;">A list of All Project Creators'</h1>
 <br />
 <table id="resultTable" border="1" class="table table-sm" cellpadding="1" cellspacing="1">
     <tr>
@@ -18,10 +19,14 @@
                 <td> @projectCreator.LastName</td>
                 <td> @projectCreator.Address</td>
                 <td> @projectCreator.Email</td>
-                <td> <a href="#" onclick="deleteProjectCreator(@projectCreator.Id)"> Delete</a></td>
+                <td>
+                    <a class='btn btn-warning' href='/ProjectCreator/ProjectCreatorPage/@projectCreator.Id'><span><i class='fa fa-edit'></i></span></a>
+                </td>
             </tr>
         }
     }
 </table>
+
+
 
 <script src="~/js/all-projectCreators.js"></script>

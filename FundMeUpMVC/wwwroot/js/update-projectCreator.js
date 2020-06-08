@@ -1,7 +1,7 @@
-﻿function Backer() {
+﻿function ProjectCreator(){
 
 	actionMethod = "GET"
-	actionUrl = `/ApiBacker/Backer/${id}`
+	actionUrl = `/ApiProjectCreator/ProjectCreator/${id}`
 
 	$.ajax({
 		url: actionUrl,
@@ -12,7 +12,6 @@
 			$("#NameAhead").html(data["firstName"] + " " + data["lastName"])
 			document.getElementById("FirstName").value = data["firstName"]
 			document.getElementById("LastName").value = data["lastName"]
-			document.getElementById("Profession").value = data["profession"]
 			document.getElementById("Address").value = data["address"]
 			document.getElementById("Email").value = data["email"]
 			document.getElementById("Password").value = data["password"]
@@ -29,14 +28,13 @@
 
 }
 
-function Update() {
+function UpdatePC() {
 	actionMethod = "PUT"
-	actionUrl = `/ApiBacker/EditBacker/${id}`
+	actionUrl = `/ApiProjectCreator/EditProjectCreator/${id}`
 
 	sendData = {
 		"FirstName": $('#FirstName').val(),
 		"LastName": $('#LastName').val(),
-		"Profession": $('#Profession').val(),
 		"Address": $('#Address').val(),
 		"Email": $('#Email').val(),
 		"Password": $('#Password').val(),
@@ -62,10 +60,10 @@ function Update() {
 
 }
 
-function DeleteB() {
+function DeletePC() {
 
 	actionMethod = "DELETE"
-	actionUrl = `/ApiBacker/DeleteBacker/${id}`
+	actionUrl = `/ApiProjectCreator/DeleteProjectCreator/${id}`
 	console.log(actionUrl)
 	sendData = {
 		"Id": id
@@ -82,7 +80,8 @@ function DeleteB() {
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
 			console.log(data)
-			window.open("/Backer/AllBackers", "_self")
+			console.log("fwefcacaa")
+			window.open("/ProjectCreator/AllProjectCreators", "_self")
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
@@ -110,5 +109,5 @@ console.log(typeof (id))
 
 ready(function () {
 	// do something
-	Backer()
+	ProjectCreator()
 });

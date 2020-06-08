@@ -14,14 +14,16 @@
     </tr>
     @{ foreach (var backer in Model.Backers)
         {
-            <tr id="cusTable@(backer.Id)">
-                <td> @backer.FirstName</td>
-                <td> @backer.LastName</td>
-                <td> @backer.Profession</td>
-                <td> @backer.Address</td>
-                <td> @backer.Email</td>
-                <td> <a href="#" onclick="deleteBacker(@backer.Id)"> Delete</a></td>
-            </tr>
+        <tr id="cusTable@(backer.Id)">
+            <td> @backer.FirstName</td>
+            <td> @backer.LastName</td>
+            <td> @backer.Profession</td>
+            <td> @backer.Address</td>
+            <td> @backer.Email</td>
+            <td>
+                <a class='btn btn-warning' href='/Backer/BackerPage/@backer.Id'><span><i class='fa fa-edit'></i></span></a>
+            </td>
+        </tr>
         }
     }
 </table>

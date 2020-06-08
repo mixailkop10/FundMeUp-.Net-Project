@@ -22,9 +22,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="CreateProject">Create Project</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="AllProjects">Browse all Projects</a>
                         </li>
                         <li class="nav-item">
@@ -37,13 +34,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllofLists">DB List</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Backer" asp-action="AllBackers">Backers' List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProjectCreator" asp-action="AllProjectCreators">ProjectCreators' List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" id="userlog" href="/Home/Login"  value="" onclick="localStorage.clear();">LogOut</a>
+                            <a class="nav-link text-dark" id="userlog" href="/Home/Login" value="" onclick="localStorage.clear();">LogOut</a>
                         </li>
 
                     </ul>
