@@ -24,13 +24,11 @@
                     //localStorage.setItem("Backer", backer);
                     //document.getElementById("userlog").value = `${ln}(LogOut)`;
                     //user = JSON.parse(localStorage.getItem('backer'));
-                    //dummy comment
-
+                    // window.open(`/Backer/Dashboard/${data.id}`, "_self");
+                    localStorage.clear()
                     backerId = data["id"]
                     localStorage.setItem("backerId", backerId)
-                    window.open(`/Backer/Dashboard/${backerId}`, "_self")
-
-                   // window.open(`/Backer/Dashboard/${data.id}`, "_self");
+                    window.open(`/Backer/Dashboard/${backerId}`, "_self")   
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -65,10 +63,8 @@
                     //localStorage.setItem("Creator", creator);
                     //document.getElementById("userlog").value = `${ln}(LogOut)`;
                     //user = JSON.parse(localStorage.getItem('creator'));
-
                     //window.open(`/ProjectCreator/Dashboard/${data.id}`, "_self");
-
-
+                    localStorage.clear()
                     creatorId = parseInt(data["id"])
                     localStorage.setItem("creatorId", creatorId)
                     window.open(`/ProjectCreator/IndexDashboard/${creatorId}`, "_self")
