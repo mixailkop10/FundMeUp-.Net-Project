@@ -20,7 +20,7 @@ function CreateProjectJS() {
   }
   formData.append("Name", $('#Name').val());
   formData.append("Description", $('#Description').val());
-  formData.append("DoA", $('#DoA').val());
+    formData.append("DateOfCreation", $('#DateOfCreation').val());
   formData.append("BudgetGoal", x);
   formData.append("Category", $('#Category').val());
   formData.append("StatusUpdate", $('#StatusUpdate').val());

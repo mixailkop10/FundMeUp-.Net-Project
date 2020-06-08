@@ -38,7 +38,7 @@ namespace FundMeUp.Services
                 Name = projOption.Name,
                 Description = projOption.Description,
                 BudgetGoal = projOption.BudgetGoal,
-                DoA = projOption.DoA,
+                DateOfCreation = projOption.DoA,
                 FileName = projOption.ImagePath,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
@@ -106,16 +106,16 @@ namespace FundMeUp.Services
         {
             //Projects for the week
             return db.Projects
-                .Where(p=>p.DoA.AddDays(-(int)p.DoA.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek))
+                .Where(p=>p.DateOfCreation.AddDays(-(int)p.DateOfCreation.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek))
                 .ToList();
         }
         public IEnumerable<Project> GetRecProjects()
         {
             return db.Projects
-                .OrderByDescending(x => x.DoA)
+                .OrderByDescending(x => x.DateOfCreation)
                 .Take(5)
-                //.ThenByDescending(x => x.DoA.Date)
-                //.ThenByDescending(x => x.DoA.Year)
+                //.ThenByDescending(x => x.DateOfCreation.Date)
+                //.ThenByDescending(x => x.DateOfCreation.Year)
                 .ToList();
         }
 
@@ -153,8 +153,8 @@ namespace FundMeUp.Services
                 .Where(x => x.Funded == true)
                 .OrderBy(x => x.BudgetGoal - x.Balance)
                 .Take(5)
-                //.ThenByDescending(x => x.DoA.Date)
-                //.ThenByDescending(x => x.DoA.Year)
+                //.ThenByDescending(x => x.DateOfCreation.Date)
+                //.ThenByDescending(x => x.DateOfCreation.Year)
                 .ToList();
         }
 

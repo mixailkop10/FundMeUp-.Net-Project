@@ -23,7 +23,7 @@ function loadRProjects() {
 				tr.append("<td>" + data[i]["statusUpdate"] + "</td>");
 				tr.append("<td>" + data[i]["available"] + "</td>");
 				tr.append("<td>" + data[i]["funded"] + "</td>");
-				mydate = data[i]["doA"].substring(0, 10);
+				mydate = data[i]["dateOfCreation"].substring(0, 10);
 				tr.append("<td>" + mydate + "</td>");
 				tr.append('</tr>');
 				$('#resultTable').append(tr);

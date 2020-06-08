@@ -29,10 +29,10 @@ namespace FundMeUpMVC
     public void ConfigureServices(IServiceCollection services)
     {
             services.AddDbContext<FundMeUpDbContext>(options =>
-             options.UseSqlServer(
-            "Data Source = localhost;" +
-       "Initial Catalog = fundmeup-db; " +
-       "Integrated Security = True;"));
+             options.UseSqlServer("Server=192.168.99.100;Database=fundmeup-db;User Id=sa;Password=admin!@#123"));
+            //     "Data Source = localhost;" +
+            //"Initial Catalog = fundmeup-db; " +
+            //"Integrated Security = True;"));
             //"/*Data Source = localhost;" +
             //"Initial Catalog = fundmeup-db; " +
             //"Integrated Security = True;"));
