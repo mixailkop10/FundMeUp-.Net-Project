@@ -1,9 +1,10 @@
 ﻿@model FundMeUpMVC.Models.PCDashboardViewModel;
 @{
     ViewData["Title"] = "IndexDashboard";
+    Layout = "~/Views/Shared/_UsersLayout.cshtml";
 }
 
-<
+
 <style>
     .dh-card {
         border: 2px solid #cbcbcb;
@@ -32,7 +33,7 @@
     }
 </style>
 
-<h1>IndexDashboard</h1>
+<h1 style="font-family:Georgia; text-align:center;">Welcome @Model.ProjectCreator.FirstName @Model.ProjectCreator.LastName</h1><br />
 
 
 <div id="content">
@@ -41,13 +42,13 @@
             <div class="card bprof-card text-black-50">
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <a href="/Home/Categories">
+                        <a href="/Project/CreateProject">
                             <span class="fa-stack fa-3x">
                                 <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                                 <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
-                        <h5>Explore Projects</h5>
+                        <h5>Create Project</h5>
                     </div>
                     <div class="col-md-4">
                         <a href="/Project/RecentProjects">
