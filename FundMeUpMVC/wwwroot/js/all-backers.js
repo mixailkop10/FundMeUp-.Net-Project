@@ -1,5 +1,5 @@
 ﻿
-function submitToServer() {
+function loadBackers() {
 	actionMethod = "GET"
 	actionUrl = "/ApiBacker/AllBackers"
 
@@ -17,7 +17,8 @@ function submitToServer() {
 				tr.append("<td>" + data[i]["lastName"] + "</td>");
 				tr.append("<td>" + data[i]["profession"] + "</td>");
 				tr.append("<td>" + data[i]["address"] + "</td>");
-				tr.append("<td>" + data[i]["email"] + "</td>");
+                tr.append("<td>" + data[i]["email"] + "</td>");
+                tr.append("<td>" + "<a class='btn-sm btn-warning' href = '/Backer/BackerPage/" + data[i]["id"] + "' >< span > <i class='fa fa-edit'></i></span ></a > " + "</td > ");
 				tr.append('</tr>');
 				$('#resultTable').append(tr);
 			}
