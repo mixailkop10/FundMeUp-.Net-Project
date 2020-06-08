@@ -22,5 +22,6 @@ namespace FundMeUp.Services
         List<Project> GetFamousProjects();
         IEnumerable<Project> GetRecProjects();
         IEnumerable<Project> GetFamProjects();
+        bool UpdateBalance(int projectId);
     }
 }

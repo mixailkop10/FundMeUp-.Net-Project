@@ -38,7 +38,7 @@ namespace FundMeUp.Services
                 Name = projOption.Name,
                 Description = projOption.Description,
                 BudgetGoal = projOption.BudgetGoal,
-                DoΑ = projOption.DoA,
+                DoA = projOption.DoA,
                 FileName = projOption.ImagePath,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
