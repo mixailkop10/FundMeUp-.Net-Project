@@ -24,6 +24,16 @@
         background-color: #ebebeb;
     }
 
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+
+    .pending-card {
+        background-color: rgba(253, 253, 253, 0.6);
+    }
+
     .dh-uimg {
         max-height: 50px;
         max-width: 50px;
@@ -42,14 +52,89 @@
     .accepted h5 {
         color: #189c43;
     }
+
+    .accepted-table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+        margin-top: 10px;
+        background-color: rgba(56, 128, 171, 0.2);
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #cbdbf4
+    }
+
+    th {
+        background-color: rgba(51, 149, 222, 0.20);
+        color: white;
+    }
+    progress {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Get rid of default border in Firefox. */
+        border: none;
+        /* Dimensions */
+        /*width: 250px;
+        height: 20px;*/
+        width: 85%;
+    }
+
+    .progress-outer {
+        border: 1px solid #28867e;
+        margin-top: 10px;
+    }
+
+    .progress-10 {
+        color: green;
+    }
+
+        .progress-10::-webkit-progress-value {
+            background-color: green;
+        }
+
+        .progress-10::-moz-progress-bar {
+            background-color: green;
+        }
+
+    .progress-20 {
+        color: #1f4688;
+    }
+
+        .progress-20::-webkit-progress-value {
+            background-color: #18768f;
+        }
+
+        .progress-20::-moz-progress-bar {
+            background-color: #18768f;
+        }
 </style>
+
 <div id="content">
-    <div class="pending">
-        <h5>Pending Fundings</h5>
+    <div class="text-right" style="margin-top:20px">
+        <a class="btn btn-sm btn-secondary" style="border-radius: 15px" href="/Project/Project/@Model.Project.Id">
+            <span>View Project</span>
+        </a>
+        <a class="btn btn-sm btn-primary text-light" style="border-radius: 15px" href="/Project/ProjectPage/@Model.Project.Id">
+            <span>Edit Project</span>
+        </a>
+        <button class="btn btn-sm btn-dark text-light" style="border-radius: 15px" onclick="location.href = '/ProjectCreator/IndexDashboard/' + localStorage.getItem('creatorId')">
+            <span>Change Project</span>
+        </button>
     </div>
+
     <div class="row">
-        <div class="col-md-7">
-            <div class="card">
+        <div class="col-md-8">
+            <div class="pending">
+                <h5>Pending Fundings</h5>
+            </div>
+            <div class="card pending-card">
                 <div class="card-heading">
                     @Model.PendingBackerProjects.Count Requests
                 </div>
@@ -83,87 +168,93 @@
                     }
                 </div>
             </div>
-            <div class="accepted" style="margin-top:30px;">
+            <div class="accepted" style="margin-top:50px;">
                 <h5>Accepted Fundings</h5>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="form-inline">
-                        <div class="input-group-prepend mb-2">
-                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                        </div>
-                        <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateFrom" name="datefrom">
-                        <div class="input-group-prepend mb-2">
-                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                        </div>
-                        <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateTo" name="dateto">
-                        <button type="submit" id="btnCheckDates" data-value="@Model.ProjectId" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
-                        <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/BackerProject/FundingsPerProject/'+ @Model.ProjectId">Clear<i class="fa fa-eraser"></i></button>
-                    </div>
+            <div class="form-inline">
+                <div class="input-group-prepend mb-2">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                 </div>
+                <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateFrom" name="datefrom">
+                <div class="input-group-prepend mb-2">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                </div>
+                <input type="date" class="form-control form-control-sm mb-2 mr-sm-2" placeholder="Search Date" id="dateTo" name="dateto">
+                <button type="submit" id="btnCheckDates" data-value="@Model.Project.Id" class="btn btn-secondary mb-2 btn-sm">Search<i class="fa fa-search"></i></button>
+                <button type="submit" class="btn mb-2 btn-sm" onclick="location.href='/BackerProject/ProjectFundings/'+ @Model.Project.Id">Clear<i class="fa fa-eraser"></i></button>
+
             </div>
-            <div class="card bg-light" style="margin-top:10px" id="acceptedBP">
-                <div class="card-heading">
-                    @Model.AcceptedBackerProjects.Count Requests
-                </div>
-                <div class="card-body">
+            <table class="accepted-table" id="acceptedBP">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            Backer F-Name
+                        </th>
+                        <th>
+                            Backer L-Name
+                        </th>
+                        <th>
+                            Package Reward
+                        </th>
+                        <th style="width:30%">
+                            Funding Date <small><span><i class="fa fa-clock"></i></span></small>
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th style="width:10%">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach (var item in Model.AcceptedBackerProjects)
                     {
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="https://www.flightonmobile.com/assets/images/user.png" alt="user image" class="img-responsive img-rounded dh-uimg">
-                                </div>
-                                <div class="col-md-8">
-                                    <p>
-                                        <a href="#">
-                                            @item.Backer.FirstName  @item.Backer.LastName
-                                        </a>
-                                        <small class="text-muted pull-right">@item.DoF<span><i class="fa fa-clock"></i></span></small>
-                                        Funding @item.Id
-                                    </p>
-                                </div>
-                                <div class="col-md-2">
-                                    <a class="btn btn-sm btn-secondary text-light">
-                                        <span><i class="fa fa-check"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- /.attachment -->
-                        </div>
-                        <hr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Backer.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Backer.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Reward.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DoF)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-secondary" disabled><span><i class="fa fa-check"></i></span></button>
+                            </td>
+                        </tr>
                     }
-                </div>
-                <div class="card-footer">
-                    @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("ProjectFundings",
-                        new { page, Model.ProjectId }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
-                </div>
-            </div>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            @Html.PagedListPager(Model.AcceptedBackerProjects, page => Url.Action("ProjectFundings",
+                                new { page, Model.Project.Id }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+                        </td>
+                    </tr>
+
+                </tfoot>
+            </table>
+
+
+
             <br />
         </div>
 
-        <div class="col-md-5">
-            <div class="card actions-card text-center">
-                <div class="card-header">
-                    <a class="btn btn-secondary" href="/Project/Project/@Model.ProjectId">
-                        <span>View Project</span>
-                    </a>
-                    <a class="btn btn-primary text-light" href="/Project/ProjectPage/@Model.ProjectId">
-                        <span>Edit Project</span>
-                    </a>
-                    <button class="btn btn-dark text-light" onclick="location.href = '/ProjectCreator/IndexDashboard/' + localStorage.getItem('creatorId')">
-                        <span>Change Project</span>
-                    </button>
+        <div class="col-md-4">
+
+            <!-- The slideshow -->
+            <div class="card bg-light" style="margin-top:30px">
+                <div class="card-body">
+                    <img src="@Model.FileName" class="card-img-top" alt="cοwork & cafe" width="400" height="300">
                 </div>
             </div>
-
-
-                <!-- The slideshow -->
-                <div class="card">
-                    <div class="card-body">
-                        <img src="@Model.FileName" alt="cοwork & cafe" width="400" height="300">
-                    </div>
-                </div>
 
             <div class="card dh-card">
                 <div class="card-heading">
@@ -173,12 +264,14 @@
                     Keep up the good work.
                 </div>
                 <div class="card-body">
-                    @DateTime.Now.ToString("MMMM") earnings
-                    30-day views<br />
-                    <a href="#">Details</a><br />
-                    Overall Amount
-                    Total Funding<br />
-                    <a href="#">Details</a>
+                    <div class="text-info"><h5>@Model.Project.Name</h5></div>
+                    Funding Goal:
+                    <div class="text-info">@Model.Project.BudgetGoal $</div>
+                    Project Progress:
+                    <div class="text-info">@Model.ProjectProgressBar%</div>
+                    <div class="progress progress-outer">
+                        <progress class="progress-20" style="width:@(Model.ProjectProgressBar)%" aria-valuenow="@(Model.ProjectProgressBar)" aria-valuemin="0" aria-valuemax="100"></progress>
+                    </div>
                 </div>
             </div>
         </div>

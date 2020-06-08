@@ -32,9 +32,37 @@
         color: #1d5797;
         margin-top: 22px;
     }
+    .welc h3 {
+        color: #1b6ca9;
+    }
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+        margin-top: 10px;
+        background-color: rgba(56, 128, 171, 0.2);
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #cbdbf4
+    }
+
+    th {
+        background-color: rgba(51, 149, 222, 0.20);
+        color: white;
+    }
 </style>
 <div id="content">
-    <div class="row">
+    <div class="welc">
+        <h3>Welcome back, @Model.Backer.FirstName @Model.Backer.LastName</h3>
+    </div>
+    <hr/>
+    <div class="row" style="margin-top:30px">
         <div class="col-md-8">
             <div class="card bprof-card text-black-50">
                 <div class="row text-center">
@@ -76,13 +104,13 @@
                 </div>
             </div>
             <table class="table">
-                <thead class="thead-light">
+                <thead>
                     <tr>
                         <th>
                             Project
                         </th>
                         <th>
-                            Reward Packet
+                            Reward
                         </th>
                         <th>
                             Fund
@@ -90,7 +118,7 @@
                         <th>
                             Status
                         </th>
-                        <th>
+                        <th style="width:30%">
                             Date of Funding
                         </th>
                     </tr>
@@ -100,7 +128,7 @@
                     {
                         <tr>
                             <td>
-                                <a href="/Project/ProjectPage/@item.ProjectId"> @Html.DisplayFor(modelItem => item.Project.Name) </a>
+                                <a href="/Project/Project/@item.ProjectId"> @Html.DisplayFor(modelItem => item.Project.Name) </a>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Reward.Name)
@@ -144,10 +172,7 @@
                     Keep up the good work.
                 </div>
                 <div class="card-body">
-                    @DateTime.Now.ToString("MMMM") rewards
-                    <br />
-                    <a href="#">Details</a><br />
-                    Total Funding<br />
+                    Total Funding @Model.BackerProjects.Count<br />
                     <a href="#">Details</a>
                 </div>
             </div>

@@ -71,7 +71,8 @@ namespace FundMeUpMVC.Controllers
             {
                 PendingBackerProjects = bpMng.GetPendingProjectFundings(projectId).ToList(), //Project - Startup
                 AcceptedBackerProjects = bpMng.GetAcceptedProjectFundings(projectId).ToPagedList(pageNumber, pageSize),
-                ProjectId = projectId,
+                Project = project,
+                ProjectProgressBar = project.Balance * 100 / project.BudgetGoal,
                 FileName = project.FileName
             };
             return View(pfviewmodel);
@@ -81,16 +82,24 @@ namespace FundMeUpMVC.Controllers
         [HttpPost("BackerProject/ProjectFundings/{id}")]
         public IActionResult ProjectFundings([FromBody] ProjectFundingsViewModel projfunds, int? page, [FromRoute] int id)
         {
-            int pageSize = 2;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
-            int projectId = pMng.FindProjectById(id).Id;
+            int projectId = 0;
+            var project = pMng.FindProjectById(id);
+
+            if (project != null)
+            {
+                projectId = project.Id;
+            }
 
             ProjectFundingsViewModel pfviewmodel = new ProjectFundingsViewModel()
             {
                 PendingBackerProjects = bpMng.GetPendingProjectFundings(projectId).ToList(),
                 AcceptedBackerProjects = bpMng.GetAcceptedProjectFundings(projectId)
                                 .Where(f => f.DoF >= projfunds.SearchStartDate && f.DoF <= projfunds.SearchEndDate).ToPagedList(pageNumber, pageSize),
-                ProjectId = projectId,
+                Project = project,
+                ProjectProgressBar = project.Balance * 100 / project.BudgetGoal,
+                FileName = project.FileName,
                 SearchStartDate = projfunds.SearchStartDate,
                 SearchEndDate = projfunds.SearchEndDate
             };
@@ -121,7 +130,10 @@ namespace FundMeUpMVC.Controllers
         {
             var StatusAccepted = bpMng.StatusUpdate(id, accept);
             var projectid = bpMng.FindFundingById(id).ProjectId;
-
+            if (StatusAccepted) 
+            {
+                bool update = pMng.UpdateBalance(projectid);
+            }
             return Json(Url.Action("ProjectFundings", "BackerProject", new { id = projectid }));
         }
     }
