@@ -42,7 +42,7 @@ function CreateProjectJS() {
         success: function (data, textStatus, jQxhr) {
             
                alert(JSON.stringify(data))
-               window.open(`/ProjectCreator/Dashboard/${creatorid}`, "_self")
+               window.open(`/ProjectCreator/IndexDashboard/${creatorid}`, "_self")
 
             
         },
