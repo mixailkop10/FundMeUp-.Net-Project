@@ -14,31 +14,35 @@ function CreateProjectJS() {
     creatorid = parseInt(localStorage.getItem("creatorId"));
     console.log(creatorid, typeof (creatorid));
 
-    sendData = {
-        "Name": $('#Name').val(),
-        "Description": $('#Description').val(),
-        "DoA": $('#DoA').val(),
-        "BudgetGoal": x,
-        "Category": $('#Category').val(),
-        "StatusUpdate": $('#StatusUpdate').val(),
-        "ProjectCreatorId": creatorid
-    }
+  var formData = new FormData();
+  for (var i = 0; i < $('#FileUpload_FormFile').length; i++) {
+    formData.append("MyImage", $('#FileUpload_FormFile')[0].files[i]);
+  }
+  formData.append("Name", $('#Name').val());
+  formData.append("Description", $('#Description').val());
+  formData.append("DoA", $('#DoA').val());
+  formData.append("BudgetGoal", x);
+  formData.append("Category", $('#Category').val());
+  formData.append("StatusUpdate", $('#StatusUpdate').val());
+  formData.append("ProjectCreatorId", creatorid);
 
-    
+
+
+
 
 
     $.ajax({
         url: actionUrl,
         dataType: 'json',
-        type: actionMethod,
-        data: JSON.stringify(sendData),
-        
-        contentType: 'application/json',
+      type: actionMethod,
+      data: formData,
+
+        contentType: false,
         processData: false,
         success: function (data, textStatus, jQxhr) {
             
                alert(JSON.stringify(data))
-               window.open(`/ProjectCreator/Dashboard/${creatorid}`, "_self")
+               window.open(`/ProjectCreator/IndexDashboard/${creatorid}`, "_self")
 
             
         },

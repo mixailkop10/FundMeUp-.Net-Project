@@ -41,6 +41,7 @@ namespace FundMeUp.Models
         public int ProjectCreatorId { get; set; }
         public bool Available { get; set; }
         public bool Funded { get; set; }
+        public string FileName { get; set; }
 
     }
 }

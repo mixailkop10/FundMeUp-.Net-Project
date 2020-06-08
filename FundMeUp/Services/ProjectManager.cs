@@ -3,6 +3,7 @@ using FundMeUp.Options;
 using FundMeUp.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,7 +38,8 @@ namespace FundMeUp.Services
                 Name = projOption.Name,
                 Description = projOption.Description,
                 BudgetGoal = projOption.BudgetGoal,
-                DoA = projOption.DoA,
+                DoΑ = projOption.DoA,
+                FileName = projOption.ImagePath,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
                 Available = true,
@@ -86,12 +88,13 @@ namespace FundMeUp.Services
                 .ToList();
         }
 
-        public Project FindProjectByProjectCreator(int pcid)
+        public List< Project> FindProjectsByProjectCreator(int pcid)
         {
             return db.Projects
                 .Include(p => p.ProjectCreator)
                 .Where(p => p.ProjectCreator.Id == pcid)
-                .FirstOrDefault();
+               // .FirstOrDefault();
+               .ToList();
         }
 
         public List<Project> GetAll()
@@ -197,6 +200,21 @@ namespace FundMeUp.Services
 
             db.SaveChanges();
             return project;
+        }
+
+        public bool UpdateBalance(int projectId)
+        {
+            Project project = db.Projects.Find(projectId);
+            float sumbackerprojects = db.BackerProjects.Where(bp => bp.ProjectId == projectId).Sum(bp => bp.Fund);
+
+            if (sumbackerprojects > 0)
+            { 
+                project.Balance = sumbackerprojects;
+                db.Entry(project).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

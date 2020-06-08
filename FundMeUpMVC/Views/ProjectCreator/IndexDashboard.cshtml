@@ -1,13 +1,9 @@
-﻿@model FundMeUpMVC.Models.BDashboardViewModel
-@using X.PagedList.Mvc.Core
-@using X.PagedList.Mvc.Bootstrap4.Core
-@using X.PagedList;
-
-
+﻿@model FundMeUpMVC.Models.PCDashboardViewModel;
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "IndexDashboard";
 }
 
+<
 <style>
     .dh-card {
         border: 2px solid #cbcbcb;
@@ -16,22 +12,29 @@
         padding: 2em;
         margin-top: 20px;
     }
+
     .bprof-card {
         border: 2px solid #fff;
         color: #2f2f2f;
         background-color: rgba(105, 174, 178, 0.1);
         padding: 2em;
     }
+
     .dh-uimg {
         max-height: 50px;
         max-width: 50px;
         float: left;
     }
+
     .bdash-title {
         color: #1d5797;
         margin-top: 22px;
     }
 </style>
+
+<h1>IndexDashboard</h1>
+
+
 <div id="content">
     <div class="row">
         <div class="col-md-8">
@@ -67,59 +70,55 @@
                 </div>
             </div>
             <div class="bdash-title">
-                <h4>Your Fundings</h4>
+                <h4>Your Projects</h4>
             </div>
             <div class="card" style="margin-top:22px">
                 <div class="card-header text-info">
-                    @Model.BackerProjects.Count Fundings
+                    Projects : @Model.Projects.Count
                 </div>
             </div>
             <table class="table">
                 <thead class="thead-light">
                     <tr>
                         <th>
-                            Project
+                            Name
                         </th>
                         <th>
-                            Reward Packet
+                            Category
                         </th>
                         <th>
-                            Fund
+                            BudgetGoal
                         </th>
                         <th>
-                            Status
+                            Balance
                         </th>
-                        <th>
-                            Date of Funding
-                        </th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.BackerProjects)
+                    @foreach (var item in Model.Projects)
                     {
                         <tr>
                             <td>
-                                <a href="/Project/ProjectPage/@item.ProjectId"> @Html.DisplayFor(modelItem => item.Project.Name) </a>
+                                <a href="/BackerProject/ProjectFundings/@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Reward.Name)
+                                @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Fund)
+                                @Html.DisplayFor(modelItem => item.BudgetGoal)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Status)
+                                @Html.DisplayFor(modelItem => item.Balance)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DoF)
-                            </td>
+                            
                         </tr>
                     }
                 </tbody>
             </table>
 
-            @Html.PagedListPager(Model.BackerProjects, page => Url.Action("Dashboard",
-                new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+            @*@Html.PagedListPager(Model.BackerProjects, page => Url.Action("Dashboard",
+                new { page }), Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)*@
 
         </div>
         <br />
@@ -128,10 +127,10 @@
             <div class="card bprof-card text-black-50">
                 <img src="https://www.flightonmobile.com/assets/images/user.png" alt="user image" class="img-responsive img-rounded dh-uimg">
 
-                <p>@Model.Backer.FirstName @Model.Backer.LastName</p>
-                <p>@Model.Backer.Email</p>
-                <p>Total Fundings: @Model.BackerProjects.Count</p>
-                <a class="btn btn-info" href="/Backer/BackerPage/@Model.Backer.Id"><span>Profile <i class="fa fa-edit"></i></span></a>
+                <p>@Model.ProjectCreator.FirstName @Model.ProjectCreator.LastName</p>
+                <p>@Model.ProjectCreator.Email</p>
+                <p>Total Projects: @Model.Projects.Count Projects</p>
+                <a class="btn btn-info" href="/Project/ProjectCreatorPage/@Model.ProjectCreator.Id"><span>Profile <i class="fa fa-edit"></i></span></a>
 
             </div>
 
@@ -154,10 +153,11 @@
     </div>
 </div>
 
-<script >
+<script>
 
     if (localStorage.length == 0) {
         console.log("fortose")
-        location.href= "/Home/Index"
+        location.href = "/Home/Index"
     }
 </script>
+

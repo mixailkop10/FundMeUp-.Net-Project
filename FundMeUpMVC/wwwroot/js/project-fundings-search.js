@@ -8,19 +8,19 @@
 $(document).on('click', "#btnCheckDates", function () {
     var dateTo = $('#dateTo').val();
     var dateFrom = $('#dateFrom').val();
+    var id = parseInt($(this).attr("data-value"));
 
     if (dateFrom >= dateTo) {
         alert("Oop! dateTo must be later than dateFrom.");
     }
     else {
-        //location.href = '/ProjectCreator/Dashboard';
         actionMethod = "POST"
-        actionUrl = "/ProjectCreator/Dashboard"
+        actionUrl = `/BackerProject/ProjectFundings/${id}`
         sendData = {
             "SearchStartDate": dateFrom,
             "SearchEndDate": dateTo
         }
-        alert(JSON.stringify(sendData))
+        //alert(JSON.stringify(sendData))
         $.ajax({
             url: actionUrl,
             //dataType: 'json',
@@ -31,6 +31,8 @@ $(document).on('click', "#btnCheckDates", function () {
             processData: false,
             async: true,
             success: function (data, textStatus, jQxhr) {
+                //alert(data);
+                //console.log(data);
                 //var newTarget = $("#acceptedBP").html(data)
                 //$("#acceptedBP").html(newTarget);
                 $("#content").html(data);
@@ -41,3 +43,11 @@ $(document).on('click', "#btnCheckDates", function () {
         });
     }
 });
+
+
+
+if (localStorage.length == 0) {
+    console.log("fortose")
+    location.href = "/Home/Index"
+}
+

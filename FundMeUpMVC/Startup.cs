@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using FundMeUp.Services;
 using FundMeUp.Repository;
 using FundMeUp.Options;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FundMeUpMVC
 {
@@ -39,6 +41,10 @@ namespace FundMeUpMVC
             services.AddScoped<IProjectCreatorManager, ProjectCreatorManager>();
             services.AddScoped<IBackerProjectManager, BackerProjectManager>();
             services.AddScoped<IRewardManager, RewardManager>();
+
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddControllersWithViews();
             services.AddLogging();
