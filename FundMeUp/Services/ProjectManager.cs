@@ -205,7 +205,10 @@ namespace FundMeUp.Services
         public bool UpdateBalance(int projectId)
         {
             Project project = db.Projects.Find(projectId);
-            float sumbackerprojects = db.BackerProjects.Where(bp => bp.ProjectId == projectId).Sum(bp => bp.Fund);
+            float sumbackerprojects = db.BackerProjects
+                .Where(bp => bp.ProjectId == projectId)
+                .Where(bp => bp.Status == Status.Accepted)
+                .Sum(bp => bp.Fund);
 
             if (sumbackerprojects > 0)
             { 

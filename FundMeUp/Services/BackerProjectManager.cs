@@ -77,6 +77,7 @@ namespace FundMeUp.Services
             return _db.BackerProjects
                 .Include(bp => bp.Project)
                 .Include(bp => bp.Backer)
+                .Include(bp => bp.Reward)
                 .Where(bp => bp.ProjectId == projectId && bp.Status == Status.Pending);
         }
 
@@ -85,6 +86,7 @@ namespace FundMeUp.Services
             return _db.BackerProjects
                 .Include(bp => bp.Project)
                 .Include(bp => bp.Backer)
+                .Include(bp => bp.Reward)
                 .Where(bp => bp.ProjectId == projectId && bp.Status == Status.Accepted)
                 .OrderByDescending(bp => bp.DoF);
         }
@@ -127,10 +129,19 @@ namespace FundMeUp.Services
 
                 if (backerProject != null)
                 {
-                    backerProject.Status = Status.Accepted;
-                    _db.Entry(backerProject).State = EntityState.Modified;
-                    _db.SaveChanges();
-                    return true;
+                    Project project = _db.Projects.Find(backerProject.ProjectId);
+                    float sumbackerprojects = _db.BackerProjects
+                        .Where(bp => bp.ProjectId == backerProject.ProjectId)
+                        .Where(bp => bp.Status == Status.Accepted)
+                        .Sum(bp => bp.Fund);
+
+                    if (sumbackerprojects < project.BudgetGoal)
+                    {
+                        backerProject.Status = Status.Accepted;
+                        _db.Entry(backerProject).State = EntityState.Modified;
+                        _db.SaveChanges();
+                        return true;
+                    }
                 }
             }
             return false;
