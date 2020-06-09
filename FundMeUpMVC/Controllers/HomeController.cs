@@ -10,6 +10,7 @@ using FundMeUp.Models;
 using FundMeUp.Options;
 using FundMeUp.Services;
 
+
 namespace FundMeUpMVC.Controllers
 {
     [Route("[controller]")]
@@ -36,7 +37,7 @@ namespace FundMeUpMVC.Controllers
             return View("Index");
         }
 
-        [HttpGet("Privacy22")]
+        [HttpGet("Privacy")]
         public IActionResult Privacy()
         {
             return View();

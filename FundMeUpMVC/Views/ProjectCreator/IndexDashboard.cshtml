@@ -1,9 +1,9 @@
 ﻿@model FundMeUpMVC.Models.PCDashboardViewModel;
 @{
     ViewData["Title"] = "IndexDashboard";
+    Layout = "~/Views/Shared/_UsersLayout.cshtml";
 }
 
-<
 <style>
     .dh-card {
         border: 2px solid #cbcbcb;
@@ -30,24 +30,49 @@
         color: #1d5797;
         margin-top: 22px;
     }
+    .welc h3 {
+        color: #1b6ca9;
+    }
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+        margin-top: 10px;
+        background-color: rgba(56, 128, 171, 0.2);
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #cbdbf4
+    }
+
+    th {
+        background-color: rgba(51, 149, 222, 0.20);
+        color: white;
+    }
 </style>
 
-<h1>IndexDashboard</h1>
-
-
 <div id="content">
-    <div class="row">
+    <div class="welc">
+        <h3>Welcome back, @Model.ProjectCreator.FirstName @Model.ProjectCreator.LastName</h3>
+    </div>
+    <hr/>
+    <div class="row" style="margin-top:30px">
         <div class="col-md-8">
             <div class="card bprof-card text-black-50">
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <a href="/Home/Categories">
+                        <a href="/Project/CreateProject">
                             <span class="fa-stack fa-3x">
                                 <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                                 <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
-                        <h5>Explore Projects</h5>
+                        <h5>Create Project</h5>
                     </div>
                     <div class="col-md-4">
                         <a href="/Project/RecentProjects">
@@ -78,7 +103,7 @@
                 </div>
             </div>
             <table class="table">
-                <thead class="thead-light">
+                <thead>
                     <tr>
                         <th>
                             Name
@@ -92,7 +117,7 @@
                         <th>
                             Balance
                         </th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -111,7 +136,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Balance)
                             </td>
-                            
+
                         </tr>
                     }
                 </tbody>

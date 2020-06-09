@@ -13,7 +13,7 @@ namespace FundMeUp.Options
     public string Category { get; set; } 
     public float BudgetGoal { get; set; }
     public float Balance { get; set; }
-    public DateTime DoA { get; set; }
+    public DateTime DateOfCreation { get; set; }
     public string StatusUpdate { get; set; }
     public int ProjectCreatorId { get; set; }
     public IFormFile MyImage { set; get; }

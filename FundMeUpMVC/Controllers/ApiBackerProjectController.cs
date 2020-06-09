@@ -24,12 +24,7 @@ namespace FundMeUpMVC.Controllers
         [HttpPost("CreateBackerProject")]
         public BackerProject CreateBackerProject([FromBody] BackerProjectOption backerProjectOption)
         {
-            var backerproject = bpMng.CreateFunding(backerProjectOption);
-            if (backerproject != null)
-            {
-                bool update = pMng.UpdateBalance(backerproject.ProjectId);
-            }
-            return backerproject;
+            return bpMng.CreateFunding(backerProjectOption);
         }
     }
 }

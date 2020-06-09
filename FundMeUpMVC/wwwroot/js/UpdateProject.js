@@ -77,7 +77,7 @@ function Update() {
 	sendData = {
 		"Name": $('#Name').val(),
 		"Description": $('#Description').val(),
-		"DoA": $('#DoA').val(),
+		"DateOfCreation": $('#DateOfCreation').val(),
 		"BudgetGoal": w,
 		"Category": $('#Category').val(),
 		"StatusUpdate": $('#StatusUpdate').val()
@@ -96,7 +96,7 @@ function Update() {
 		contentType: 'application/json',
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
-			$('#responseDiv').html(JSON.stringify(data));
+			window.open(`/BackerProject/ProjectFunding/${id}`)
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);

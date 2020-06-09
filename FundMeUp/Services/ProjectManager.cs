@@ -27,7 +27,7 @@ namespace FundMeUp.Services
         {
             if (projOption.Name == null) return null;
             if (projOption.Description == null) return null;
-            if (projOption.DoA == null) return null;
+            if (projOption.DateOfCreation == null) return null;
             if (projOption.StatusUpdate == null) return null;
 
             //var projectcreator = db.ProjectCreators.Find(projOption.ProjectCreatorId);
@@ -38,7 +38,7 @@ namespace FundMeUp.Services
                 Name = projOption.Name,
                 Description = projOption.Description,
                 BudgetGoal = projOption.BudgetGoal,
-                DoA = projOption.DoA,
+                DateOfCreation = projOption.DateOfCreation,
                 FileName = projOption.ImagePath,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
@@ -106,16 +106,16 @@ namespace FundMeUp.Services
         {
             //Projects for the week
             return db.Projects
-                .Where(p=>p.DoA.AddDays(-(int)p.DoA.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek))
+                .Where(p=>p.DateOfCreation.AddDays(-(int)p.DateOfCreation.DayOfWeek) ==  DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek))
                 .ToList();
         }
         public IEnumerable<Project> GetRecProjects()
         {
             return db.Projects
-                .OrderByDescending(x => x.DoA)
-                .Take(6)
-                //.ThenByDescending(x => x.DoA.Date)
-                //.ThenByDescending(x => x.DoA.Year)
+                .OrderByDescending(x => x.DateOfCreation)
+                .Take(5)
+                //.ThenByDescending(x => x.DateOfCreation.Date)
+                //.ThenByDescending(x => x.DateOfCreation.Year)
                 .ToList();
         }
 
@@ -203,7 +203,10 @@ namespace FundMeUp.Services
         public bool UpdateBalance(int projectId)
         {
             Project project = db.Projects.Find(projectId);
-            float sumbackerprojects = db.BackerProjects.Where(bp => bp.ProjectId == projectId).Sum(bp => bp.Fund);
+            float sumbackerprojects = db.BackerProjects
+                .Where(bp => bp.ProjectId == projectId)
+                .Where(bp => bp.Status == Status.Accepted)
+                .Sum(bp => bp.Fund);
 
             if (sumbackerprojects > 0)
             { 

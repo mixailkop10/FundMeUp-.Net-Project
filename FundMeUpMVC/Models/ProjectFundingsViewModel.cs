@@ -11,7 +11,9 @@ namespace FundMeUpMVC.Models
     {
         public List<BackerProject> PendingBackerProjects { get; set; }
         public IPagedList<BackerProject> AcceptedBackerProjects { get; set; }
-        public int ProjectId { get; set; }
+        public ProjectCreator ProjectCreator { get; set; }
+        public Project Project { get; set; }
+        public float ProjectProgressBar { get; set; }
         public DateTime SearchStartDate { get; set; }
         public DateTime SearchEndDate { get; set; }
         public string FileName { get; set; }

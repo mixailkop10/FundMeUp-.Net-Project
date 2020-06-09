@@ -2,9 +2,13 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_UsersLayout.cshtml";
 }
 
 <style>
+    .upst-card {
+        background-color: rgba(253, 253, 253, 0.4);
+    }
     .switch {
         position: relative;
         display: inline-block;
@@ -74,7 +78,7 @@
     </div>
 </div>
 <br />
-<div class="card bg-light">
+<div class="card upst-card">
     <div class="card-header">
         <dl>
             <dt>
@@ -95,7 +99,7 @@
     </div>
 </div>
 <hr />
-<div class="card bg-light">
+<div class="card upst-card">
     <div class="card-header">
         <h3>Funding Details</h3>
     </div>
