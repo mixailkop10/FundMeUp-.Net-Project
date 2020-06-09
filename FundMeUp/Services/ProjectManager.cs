@@ -58,7 +58,7 @@ namespace FundMeUp.Services
         //Search Results
         public Project FindProjectById(int projectId)
         {
-            return db.Projects.Find(projectId);
+            return db.Projects.Include(p => p.ProjectCreator).Where(p => p.Id == projectId).FirstOrDefault();
         }
 
         public List<Project> FindProjectByName(ProjectOption projectOption)

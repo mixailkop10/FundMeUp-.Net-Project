@@ -20,16 +20,18 @@ namespace FundMeUpMVC.Controllers
     public class ProjectController : Controller
     {
         private IProjectManager projManager;
+        private IProjectCreatorManager pcManager;
         private IRewardManager rewardManager;
         private readonly ILogger<ProjectController> _logger;
         private readonly IWebHostEnvironment hostingEnvironment;
 
     public ProjectController(ILogger<ProjectController> logger,IProjectManager _projManager,
-                             IRewardManager _rewardManager, IWebHostEnvironment environment)
+                             IRewardManager _rewardManager, IWebHostEnvironment environment, IProjectCreatorManager _projectCreatorManager)
         {
             hostingEnvironment = environment;
             rewardManager = _rewardManager;
             projManager = _projManager;
+            pcManager = _projectCreatorManager;
             _logger = logger;
         }
 
@@ -91,6 +93,7 @@ namespace FundMeUpMVC.Controllers
             
             RewardsByProject rewards = new RewardsByProject
             {
+                ProjectCreator= projManager.FindProjectById(id).ProjectCreator,
                 Rewards = rewardManager.GetRewards(id)
             };
             return View(rewards);

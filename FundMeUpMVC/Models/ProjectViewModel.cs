@@ -28,6 +28,7 @@ namespace FundMeUpMVC.Models
 
     public class RewardsByProject
     {
+        public ProjectCreator ProjectCreator { get; set; }
         public List<Reward> Rewards { get; set; }
     }
 
