@@ -74,7 +74,8 @@
     <script type="text/javascript">
 
         function UserDB() {
-            if (localStorage.key(1) == "admin1") {
+            password = localStorage.getItem("password")
+            if (password == "admin") {
                 window.open("/Home/AdminPage", "_self")
             }
             else if (localStorage.key(0) == "backerId") {

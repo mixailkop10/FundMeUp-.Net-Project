@@ -28,7 +28,7 @@
                     localStorage.clear()
                     backerId = data["id"]
                     localStorage.setItem("backerId", backerId)
-                    localStorage.setItem("admin1", data["password"])
+                    localStorage.setItem("password", data["password"])
                     if (data["email"] == "admin@gmail.com" && data["password"] == "admin") {
                         window.open(`/Home/AdminPage`, "_self")
                     }
@@ -73,7 +73,7 @@
                     localStorage.clear()
                     creatorId = parseInt(data["id"])
                     localStorage.setItem("creatorId", creatorId)
-                    localStorage.setItem("admin1", data["password"])
+                    localStorage.setItem("password", data["password"])
                     if (data["email"] == "admin@gmail.com" && data["password"] == "admin") {
                         window.open(`/Home/AdminPage`, "_self")
                     }
