@@ -9,21 +9,17 @@
 		contentType: 'application/json',
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
-			alert(JSON.stringify(data))
 			$("#NameAhead").html(data["firstName"] + " " + data["lastName"])
 			document.getElementById("FirstName").value = data["firstName"]
 			document.getElementById("LastName").value = data["lastName"]
 			document.getElementById("Address").value = data["address"]
 			document.getElementById("Email").value = data["email"]
 			document.getElementById("Password").value = data["password"]
-
-			console.log(data)
-
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			document.getElementById("responseDiv").innerHTML = "λαθος αληθειας"
+			document.getElementById("responseDiv").innerHTML = "Something went Wrong. Please try Again"
 		}
 	});
 
@@ -56,7 +52,7 @@ function UpdatePC() {
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			$('#responseDiv').html("lathos ");
+			$('#responseDiv').html("Something went Wrong. Please try Again");
 		}
 	});
 
@@ -82,13 +78,12 @@ function DeletePC() {
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
 			console.log(data)
-			console.log("fwefcacaa")
 			window.open("/Home/Index", "_self")
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			document.getElementById("responseDiv").innerHTML = "egine lathos"
+			document.getElementById("responseDiv").innerHTML = "Something went Wrong. Please try Again"
 		}
 	});
 }

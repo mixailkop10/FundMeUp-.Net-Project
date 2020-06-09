@@ -18,15 +18,11 @@ function Project() {
 			document.getElementById("BudgetGoal").value = data["budgetGoal"]
 			document.getElementById("StatusUpdate").value = data["statusUpdate"]
 			//document.getElementById("DelButton").value = data["id"]
-		
-			
-			console.log( data)
-			
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			document.getElementById("responseDiv").innerHTML = "egine lathos"
+			document.getElementById("responseDiv").innerHTML = "Something went Wrong. Please try Again"
 		}
 	});
 
