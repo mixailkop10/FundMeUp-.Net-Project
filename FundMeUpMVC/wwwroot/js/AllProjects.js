@@ -14,7 +14,6 @@ function loadProjects() {
 
 				tr = $('<tr  class="">');
 				tr.append("<td>" + data[i]["name"] + "</td>");
-				tr.append("<td>" + data[i]["description"] + "</td>");
 				tr.append("<td>" + data[i]["category"] + "</td>");
 				tr.append("<td>" + data[i]["budgetGoal"] + "</td>");
 				tr.append("<td>" + data[i]["balance"] + "</td>");
