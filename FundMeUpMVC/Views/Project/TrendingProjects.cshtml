@@ -144,11 +144,11 @@
                             <p>Category: @project.Category</p>
                         </div>
                         <div class="articles__footer">
-                            <p>BudgetGoal: @project.BudgetGoal</p>
+                            <p>BudgetGoal: @project.BudgetGoal €</p>
                         </div>
                         <div class="articles__footer">
                             <div class="progress progress-outer" style="font-size: 14px">
-                                <progress class="progress-30" aria-valuenow="@(100/project.BudgetGoal*project.Balance)" aria-valuemin="0" aria-valuemax="100"></progress>
+                                <progress class="progress-30" aria-valuenow="@(100/project.BudgetGoal*project.Balance) " aria-valuemin="0" aria-valuemax="100"></progress>
                                 <p>@(100/project.BudgetGoal*project.Balance)%Completed</p>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <p>Category: @project.Category</p>
                         </div>
                         <div class="articles__footer">
-                            <p>BudgetGoal: @project.BudgetGoal</p>
+                            <p>BudgetGoal: @project.BudgetGoal €</p>
                         </div>
                         <div class="articles__footer">
                             <div class="progress progress-outer" style="font-size: 14px">
