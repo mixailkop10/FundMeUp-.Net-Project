@@ -28,14 +28,30 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categories">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="RecentProjects">Recent Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="TrendingProjects">Trending Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AdminPage">Admin's Page</a>
-                        </li>                                       
+                            <a class="nav-link text-dark" ></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" ></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="login" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="signup" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="DB" onclick="UserDB()">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" id="userlog" href="/Home/Login" value="" onclick="localStorage.clear();">LogOut</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,13 +65,39 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - FundMeUp - <a href=https://github.com/fkoumidi > Fotis Koumidis </a> - <a href=https://github.com/LamprosTolis > Lampros Tolis </a> - <a href=https://github.com/elenanto > Elena Antonaki </a> - <a href=https://github.com/mixailkop10 > Mixalis Koptsis </a>  dotnet-skg-team2 
+            &copy; 2020 - FundMeUp - <a href=https://github.com/fkoumidi> Fotis Koumidis </a> - <a href=https://github.com/LamprosTolis> Lampros Tolis </a> - <a href=https://github.com/elenanto> Elena Antonaki </a> - <a href=https://github.com/mixailkop10> Mixalis Koptsis </a>  dotnet-skg-team2
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script type="text/javascript">
+
+        function UserDB() {
+            if (localStorage.key(1) == "admin1") {
+                window.open("/Home/AdminPage", "_self")
+            }
+            else if (localStorage.key(0) == "backerId") {
+                x = localStorage.getItem("backerId")
+                window.open(`/Backer/Dashboard/${x}`,"_self")
+            }
+            else {
+                x = localStorage.getItem("creatorId")
+                window.open(`/ProjectCreator/IndexDashboard/${x}`,"_self")
+            }
+        }
+
+
+        if (localStorage.length == 0) {
+            document.getElementById("DB").style.visibility = "hidden";
+            document.getElementById("userlog").style.visibility = "hidden";
+        }
+        else {
+            document.getElementById("login").style.visibility = "hidden";
+            document.getElementById("signup").style.visibility = "hidden";
+        }
+
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

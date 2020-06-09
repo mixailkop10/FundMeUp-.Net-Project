@@ -28,7 +28,13 @@
                     localStorage.clear()
                     backerId = data["id"]
                     localStorage.setItem("backerId", backerId)
-                    window.open(`/Backer/Dashboard/${backerId}`, "_self")   
+                    localStorage.setItem("admin1", data["password"])
+                    if (data["email"] == "admin@gmail.com" && data["password"] == "admin") {
+                        window.open(`/Home/AdminPage`, "_self")
+                    }
+                    else {
+                        window.open(`/Backer/Dashboard/${backerId}`, "_self")
+                    }
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
@@ -67,7 +73,13 @@
                     localStorage.clear()
                     creatorId = parseInt(data["id"])
                     localStorage.setItem("creatorId", creatorId)
-                    window.open(`/ProjectCreator/IndexDashboard/${creatorId}`, "_self")
+                    localStorage.setItem("admin1", data["password"])
+                    if (data["email"] == "admin@gmail.com" && data["password"] == "admin") {
+                        window.open(`/Home/AdminPage`, "_self")
+                    }
+                    else {
+                        window.open(`/ProjectCreator/IndexDashboard/${creatorId}`, "_self")
+                    }
                 }
             },
             error: function (jqXhr, textStatus, errorThrown) {
