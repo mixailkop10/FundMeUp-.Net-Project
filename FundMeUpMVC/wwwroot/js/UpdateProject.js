@@ -118,11 +118,10 @@ function CreatePackage()
 
 
 	sendData = {
-		"Name":"den exei" ,
+		"Name": $('#RewardName').val() ,
 		"Description": $('#RewardDescription').val(),
 		"ProjectId": ProjId,
 		"Price": x,
-	
 	}
 
 	alert(JSON.stringify(sendData))
