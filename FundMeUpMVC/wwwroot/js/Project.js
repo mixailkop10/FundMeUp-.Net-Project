@@ -13,7 +13,8 @@
 			document.getElementById("Name").innerHTML = data["name"]
 			document.getElementById("Description").innerHTML = data["description"]
 			document.getElementById("StatusUpdate").innerHTML = data["statusUpdate"]
-			document.getElementById("details").innerHTML = `BudgetGoal:${data["budgetGoal"]} , Total Fund:${data["balance"]} , Backers:`
+			document.getElementById("TotalFund").innerHTML = `Total Fund : ${data["balance"]} € `
+			document.getElementById("BudgetGoal").innerHTML = `BudgetGoal : ${data["budgetGoal"]} €`
 			document.getElementById("MyImage").src = data["fileName"]
 			
 			console.log(data)

@@ -158,21 +158,19 @@
 
                 <p>@Model.Backer.FirstName @Model.Backer.LastName</p>
                 <p>@Model.Backer.Email</p>
-                <p>Total Fundings: @Model.BackerProjects.Count</p>
+                
                 <a class="btn btn-info" href="/Backer/BackerPage/@Model.Backer.Id"><span>Profile <i class="fa fa-edit"></i></span></a>
 
             </div>
 
             <div class="card dh-card">
-                <div class="card-heading">
-                    <h3>Summary</h3>
-                    <b>Fantastic Job!</b><br />
-                    Identify high value “Super Backers“ – you’ve backed 5+ campaigns on FundMeUp.<br />
-                    Keep up the good work.
-                </div>
-                <div class="card-body">
-                    Total Funding @Model.BackerProjects.Count<br />
-                    <a href="#">Details</a>
+                <div class="card-heading" style="text-align:center;">
+                    <h3 >Summary</h3><br />
+                
+                    Name         : @Model.Backer.FirstName @Model.Backer.LastName <br />
+                    Profession   : @Model.Backer.Profession <br />
+                    Total Funding: @Model.BackerProjects.Count<br />
+                   
                 </div>
             </div>
         </div>

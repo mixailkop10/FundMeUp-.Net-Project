@@ -12,7 +12,7 @@ function loadProjects() {
 
 			for (var i = 0, len = data.length; i < len; i++) {
 
-				tr = $('<tr  class="table-info">');
+				tr = $('<tr  class="">');
 				tr.append("<td>" + data[i]["name"] + "</td>");
 				tr.append("<td>" + data[i]["description"] + "</td>");
 				tr.append("<td>" + data[i]["category"] + "</td>");

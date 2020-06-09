@@ -48,7 +48,7 @@
 </style>
 
 <div id="content">
-    <h1 id="Name" value=""></h1>
+    <h1 id="Name" value="" style="font-family:Georgia;"></h1>
 
     <div class="row" style="margin-top:20px">
         <div class="col-md-4">
@@ -58,26 +58,23 @@
                 </div>
             </div>
 
-            <div class="card dh-card">
+            <div class="card dh-card" style="text-align:center;">
                 <div class="card-heading">
                     <h3>Project Summary</h3>
-                    <b>Fantastic Job!</b><br />
-                    Guests love what you're doing.<br />
-                    Keep up the good work.
                 </div>
                 <div class="card-body">
-                    <div class="text-info"><h5 id="Name"></h5></div>
-                    <div class="text-info"><h5 id="details"></h5></div>
+                    @*<div class="text-info"><h5 id="Name"></h5></div>*@
+                    <div class="text-info"><h5 id="TotalFund"></h5><h5 id="BudgetGoal"></h5></div>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div id="hd">
+            <div id="hd" style="font-family:Georgia">
                 <h5 id="head">Description</h5>
                 <hr>
                 <p id="Description" value=""></p>
             </div>
-            <div id="hd">
+            <div id="hd" style="font-family:Georgia">
                 <h5 id="head" class="Date">Status Update</h5>
                 <hr>
                 <p id="StatusUpdate" value=""></p>
@@ -91,7 +88,7 @@
                             <div class="card bg-light" style="background-color: rgba(253, 253, 253, 0.6)">
                                 <div class="card-body">
                                     <h5 class="card-title">@reward.Name</h5>
-                                    <h5 class="card-title">@reward.Price$</h5>
+                                    <h5 class="card-title">@reward.Price€</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">Reward</h6>
                                     <p class="card-text">@reward.Description</p>
                                     <button type="button" class="btn btn-primary" onclick=" if (localStorage.key(0) == 'backerId') { location.href = '/BackerProject/RewardPackageFund/@reward.Id/' + localStorage.getItem('backerId') }">Fund Me Up</button>
