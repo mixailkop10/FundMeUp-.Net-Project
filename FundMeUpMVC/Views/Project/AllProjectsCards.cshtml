@@ -1,9 +1,9 @@
-﻿@model FundMeUpMVC.Models.BackerModel
+﻿@model FundMeUpMVC.Models.ProjectModel
 <style>
     :root {
         --base-grid: 8px;
-        --colour-body-background: #c6f8f7;
-        --colour-background: #f8cab8;
+        --colour-body-background: #cdf7f2;
+        --colour-background: #dfedfb;
         --colour-background-folded: #f5f5f5;
         --colour-background-stripes: rgba(255,255,255,.5);
         --colour-text: #1a1a1a;
@@ -14,11 +14,12 @@
         margin: 0;
     }
 
-    body {
+    /*body {
         background: var(--colour-body-background);
         font-family: Bitter;
         padding: calc(var(--base-grid)*10);
-    }
+        background-image: url(http://www.joburgchiropractor.co.za/images/background.jpg);
+    }*/
 
     .articles {
         margin: calc(var(--base-grid)*2) auto calc(var(--base-grid)*5);
@@ -102,7 +103,7 @@
     }
 
     .articles__title {
-        font-size: calc(var(--base-grid)*4);
+        font-size: calc(var(--base-grid)*4.2);
         line-height: 1.125;
         font-weight: 700;
         letter-spacing: -.02em;
@@ -110,8 +111,8 @@
 
     .articles__footer {
         margin-top: auto;
-        font-size: calc(var(--base-grid)*2);
-        line-height: calc(var(--base-grid)*2);
+        font-size: calc(var(--base-grid)*2.7);
+        line-height: calc(var(--base-grid)*2.2);
         display: flex;
         justify-content: space-between;
     }
@@ -127,69 +128,41 @@
         transition: opacity .5s ease-in,transform .3s ease-in-out .25s;
     }
 </style>
-<h1 style="text-align:center; font-family:Georgia;">Most Recent Projects</h1>
+<h1 style="text-align:center; font-family:Georgia;">All Projects</h1>
 <br>
 <ol class="articles">
-    @{ foreach (var project in Model.Backers)
+    @{ foreach (var project in Model.Projects)
         {
-        <li class="articles__article" style="--animation-order:1">
-            <a class="articles__link">
-                <div class="articles__content articles__content--lhs">
-                    <h2 class="articles__title">@project.FirstName</h2>
-                    <div class="articles__footer">
-                        <p>@project.Address</p>
-                        <time>@project.Email</time>
+            <li class="articles__article" style="--animation-order:1">
+                <a class="articles__link" href="/Project/Project/@project.Id">
+                    <div class="articles__content articles__content--lhs">
+                        <h2 class="articles__title">@project.Name</h2>
+                        <div class="articles__content--lhs" style="color:navy">
+                            <p>@project.Description</p>
+                        </div>
+                        <div class="articles__footer">
+                            <p>Category: @project.Category</p>
+                        </div>
+                        <div class="articles__footer">
+                            <p>BudgetGoal: @project.BudgetGoal</p>
+                        </div>
                     </div>
-                </div>
-                <div class="articles__content articles__content--rhs" aria-hidden="true">
-                    <h2 class="articles__title">Sweet roll gingerbread sweet roll jelly</h2>
-                    <div class="articles__footer">
-                        <p>Cakes</p>
-                        <time>1 Jan 2020</time>
+                    <div class="articles__content articles__content--rhs" aria-hidden="true">
+                        <h2 class="articles__title">@project.Name</h2>
+                        <div class="articles__content--rhs" style="color:navy">
+                            <p>@project.Description</p>
+                        </div>
+                        <div class="articles__footer">
+                            <p>Category: @project.Category</p>
+                        </div>
+                        <div class="articles__footer">
+                            <p>BudgetGoal: @project.BudgetGoal</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </li>
+                </a>
+            </li>
         }
     }
-    <li class="articles__article" style="--animation-order:2">
-        <a class="articles__link">
-            <div class="articles__content articles__content--lhs">
-                <h2 class="articles__title">Bar cupcake chocolate topping brownie</h2>
-                <div class="articles__footer">
-                    <p>Chocolates</p>
-                    <time>2 Feb 2020</time>
-                </div>
-            </div>
-            <div class="articles__content articles__content--rhs" aria-hidden="true">
-                <h2 class="articles__title">Bar cupcake chocolate topping brownie</h2>
-                <div class="articles__footer">
-                    <p>Chocolates</p>
-                    <time>2 Feb 2020</time>
-                </div>
-            </div>
-        </a>
-    </li>
-    <li class="articles__article" style="--animation-order:3">
-        <a class="articles__link">
-            <div class="articles__content articles__content--lhs">
-                <h2 class="articles__title">Powder tootsie roll chocolate sugar</h2>
-                <div class="articles__footer">
-                    <p>Puddings</p>
-                    <time>3 Mar 2020</time>
-                </div>
-            </div>
-            <div class="articles__content articles__content--rhs" aria-hidden="true">
-                <h2 class="articles__title">Powder tootsie roll chocolate sugar</h2>
-                <div class="articles__footer">
-                    <p>Puddings</p>
-                    <time>3 Mar 2020</time>
-                </div>
-            </div>
-        </a>
-    </li>
 </ol>
 
-<script src="~/js/RecentProjects.js"></script>
-
-
+<script src="~/js/AllProjects.js"></script>

@@ -24,9 +24,6 @@ function loadTProjects() {
 				$('#resultTable').append(tr);
 				console.log(i,len,data)
 			}
-
-
-
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);

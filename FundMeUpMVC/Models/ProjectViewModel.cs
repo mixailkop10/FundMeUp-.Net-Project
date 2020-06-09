@@ -34,7 +34,7 @@ namespace FundMeUpMVC.Models
     public class ProjectModel
     {
         public int ProjectId { get; set; }
-        public List<Project> Projects { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
     }
 }   
 

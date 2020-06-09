@@ -9,6 +9,7 @@
 		contentType: 'application/json',
 		processData: false,
 		success: function (data, textStatus, jQxhr) {
+			alert(JSON.stringify(data))
 			$("#NameAhead").html(data["firstName"] + " " + data["lastName"])
 			document.getElementById("FirstName").value = data["firstName"]
 			document.getElementById("LastName").value = data["lastName"]

@@ -38,15 +38,15 @@ namespace FundMeUpMVC.Controllers
         }
 
         [HttpGet("ProjectCreator/{id}")]
-        public ProjectCreator GetProjectCreator([FromRoute]int id)
+        public ProjectCreator GetProjectCreator(int id)
         {
             return projectCreatorManager.FindProjectCreatorById(id);
         }
 
         [HttpPut("EditProjectCreator/{id}")]
-        public ProjectCreator EditProjectCreator([FromBody] ProjectCreatorOption  projectCreatorOption, int projectCreatorId)
+        public ProjectCreator EditProjectCreator([FromBody] ProjectCreatorOption  projectCreatorOption,[FromRoute] int id)
         {
-            return projectCreatorManager.Update(projectCreatorOption, projectCreatorId);
+            return projectCreatorManager.Update(projectCreatorOption, id);
         }
 
         //[HttpDelete("DeleteProjectCreator")]
