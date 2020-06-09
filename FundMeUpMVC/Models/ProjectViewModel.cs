@@ -15,7 +15,7 @@ namespace FundMeUpMVC.Models
         public List<string> Categories { get; set; }
 
         public Project Project { get; set; }
-        
+
 
     }
 
@@ -34,6 +34,7 @@ namespace FundMeUpMVC.Models
     public class ProjectModel
     {
         public int ProjectId { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
     }
 }   
 

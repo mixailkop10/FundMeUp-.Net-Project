@@ -1,6 +1,4 @@
 ﻿
-
-
 function loadRProjects() {
 	actionMethod = "GET"
 	actionUrl = "/ApiProject/RecentProjects"

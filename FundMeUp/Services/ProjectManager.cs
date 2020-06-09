@@ -147,14 +147,12 @@ namespace FundMeUp.Services
         {
             var filterBalance = db.Projects
                 .OrderByDescending(p => p.BudgetGoal - p.Balance)
-                .Take(5)
+                .Take(6)
                 .ToList();
             return db.Projects
                 .Where(x => x.Funded == true)
                 .OrderBy(x => x.BudgetGoal - x.Balance)
-                .Take(5)
-                //.ThenByDescending(x => x.DateOfCreation.Date)
-                //.ThenByDescending(x => x.DateOfCreation.Year)
+                .Take(6)
                 .ToList();
         }
 

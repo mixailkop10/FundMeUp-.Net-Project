@@ -50,15 +50,27 @@ namespace FundMeUpMVC.Controllers
             return View();
         }
 
-        [HttpGet("RecentProjects")]
-        public IActionResult RecentProjects()
+        [HttpGet("AllProjectsCards")]
+        public IActionResult AllProjectsCards()
         {
-            return View();
+            var viewModel = new ProjectModel();
+            viewModel.Projects = projManager.GetAll();
+            return View(viewModel);
         }
         [HttpGet("TrendingProjects")]
         public IActionResult TrendingProjects()
         {
-            return View();
+            var viewModel = new ProjectModel();
+            viewModel.Projects = projManager.GetFamProjects();
+            return View(viewModel);
+        }
+
+        [HttpGet("RecentProjects")]
+        public IActionResult RecentProjects()
+        {
+            var viewModel = new ProjectModel();
+            viewModel.Projects = projManager.GetRecProjects();
+            return View(viewModel);
         }
 
         [HttpGet("ProjectPage/{id}")]

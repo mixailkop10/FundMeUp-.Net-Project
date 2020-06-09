@@ -68,6 +68,12 @@ namespace FundMeUpMVC.Controllers
             return projManager.GetAll();
         }
 
+        [HttpGet("AllProjectsCards")]
+        public List<Project> AllProjectsCards()
+        {
+            return projManager.GetAll();
+        }
+
         [HttpGet("RecentProjects")]
         public IEnumerable<Project> RecentProjects()
         {

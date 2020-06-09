@@ -1,6 +1,4 @@
 ﻿
-
-
 function loadProjects() {
 	actionMethod = "GET"
 	actionUrl = "/ApiProject/AllProjects"
@@ -28,9 +26,6 @@ function loadProjects() {
 				$('#resultTable').append(tr);
 				console.log(i,len,data)
 			}
-
-
-
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
@@ -39,8 +34,6 @@ function loadProjects() {
 	});
 
 }
-
-
 
 function ready(callback) {
     // in case the document is already rendered
