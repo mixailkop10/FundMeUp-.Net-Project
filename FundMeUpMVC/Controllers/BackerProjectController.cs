@@ -56,7 +56,7 @@ namespace FundMeUpMVC.Controllers
         [HttpGet("BackerProject/ProjectFundings/{id}")]
         public IActionResult ProjectFundings(int? page, [FromRoute] int id)
         {
-            int pageSize = 2;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
 
             int projectId = 0;

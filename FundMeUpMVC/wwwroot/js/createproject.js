@@ -41,7 +41,7 @@ function CreateProjectJS() {
         processData: false,
         success: function (data, textStatus, jQxhr) {
             
-               alert(JSON.stringify(data))
+               //alert(JSON.stringify(data))
                window.open(`/ProjectCreator/IndexDashboard/${creatorid}`, "_self")
 
             

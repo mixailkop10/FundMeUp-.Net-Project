@@ -27,7 +27,7 @@ namespace FundMeUp.Services
         {
             if (projOption.Name == null) return null;
             if (projOption.Description == null) return null;
-            if (projOption.DoA == null) return null;
+            if (projOption.DateOfCreation == null) return null;
             if (projOption.StatusUpdate == null) return null;
 
             //var projectcreator = db.ProjectCreators.Find(projOption.ProjectCreatorId);
@@ -38,7 +38,7 @@ namespace FundMeUp.Services
                 Name = projOption.Name,
                 Description = projOption.Description,
                 BudgetGoal = projOption.BudgetGoal,
-                DateOfCreation = projOption.DoA,
+                DateOfCreation = projOption.DateOfCreation,
                 FileName = projOption.ImagePath,
                 Category = projOption.Category,
                 StatusUpdate=projOption.StatusUpdate,
