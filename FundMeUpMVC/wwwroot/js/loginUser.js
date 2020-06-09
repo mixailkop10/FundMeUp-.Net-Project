@@ -16,7 +16,7 @@
             processData: false,
             success: function (data, textStatus, jQxhr) {
                 if (data == null) {
-                    $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+                    $('#responseDiv').html("Something went Wrong. Please try Again");
                 }
                 else {
                     //backer = JSON.stringify(data)
@@ -61,7 +61,7 @@
             processData: false,
             success: function (data, textStatus, jQxhr) {
                 if (data == null) {
-                    $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+                    $('#responseDiv').html("Something went Wrong. Please try Again");
                 }
                 else {
                     //creator = JSON.stringify(data)

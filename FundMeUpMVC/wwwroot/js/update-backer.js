@@ -16,14 +16,11 @@
 			document.getElementById("Address").value = data["address"]
 			document.getElementById("Email").value = data["email"]
 			document.getElementById("Password").value = data["password"]
-
-			console.log(data)
-
 		},
 
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			document.getElementById("responseDiv").innerHTML = "λαθος αληθειας"
+			document.getElementById("responseDiv").innerHTML = "Something went Wrong. Please try Again"
 		}
 	});
 
@@ -57,10 +54,9 @@ function Update() {
 		},
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			$('#responseDiv').html("lathos ");
+			$('#responseDiv').html("Something went Wrong. Please try Again");
 		}
 	});
-
 }
 
 function DeleteB() {
@@ -88,7 +84,7 @@ function DeleteB() {
 
 		error: function (jqXhr, textStatus, errorThrown) {
 			console.log(errorThrown);
-			document.getElementById("responseDiv").innerHTML = "egine lathos"
+			document.getElementById("responseDiv").innerHTML = "Something went Wrong. Please try Again"
 		}
 	});
 }

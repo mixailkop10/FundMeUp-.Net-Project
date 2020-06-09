@@ -10,7 +10,7 @@
         "Password": $('#Password').val()
     }
 
-    alert(JSON.stringify(sendData))
+    //alert(JSON.stringify(sendData))
 
 
     $.ajax({
@@ -23,7 +23,7 @@
         processData: false,
         success: function (data, textStatus, jQxhr) {
             if (data == null) {
-                $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+                $('#responseDiv').html("Something went Wrong. Please try Again");
             }
             else {
                 window.open("/Project/AllProject", "_self");
@@ -46,7 +46,7 @@ function submitToServerCreator() {
         "Email": $('#EmailC').val(),
         "Password": $('#PasswordC').val()
     }
-    alert(JSON.stringify(sendData))
+    //alert(JSON.stringify(sendData))
 
     $.ajax({
         url: actionUrl,
@@ -58,7 +58,7 @@ function submitToServerCreator() {
         processData: false,
         success: function (data, textStatus, jQxhr) {
             if (data == null) {
-                $('#responseDiv').html("ΛΑΘΟΣ ΑΛΗΘΕΙΑΣ");
+                $('#responseDiv').html("Something went Wrong. Please try Again");
             }
             else {
                 window.open("/Project/AllProject", "_self");
