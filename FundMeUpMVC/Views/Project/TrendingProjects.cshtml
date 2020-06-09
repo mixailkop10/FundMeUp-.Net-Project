@@ -133,7 +133,7 @@
 <ol class="articles">
     @{ foreach (var project in Model.Projects)
         {
-            <li class="articles__article" style="--animation-order:1">
+            <li class="articles__article" style="--animation-order:1" img="@project.FileName" >
                 <a class="articles__link" href="/Project/Project/@project.Id">
                     <div class="articles__content articles__content--lhs">
                         <h2 class="articles__title">@project.Name</h2>
